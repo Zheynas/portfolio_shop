@@ -1,0 +1,1 @@
+const PINK_DRESS_1 = ''
