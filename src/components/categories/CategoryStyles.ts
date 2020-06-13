@@ -56,6 +56,7 @@ const MenuStyles: MenuStyle = {
     right: 0,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'rgba(0,0,0,.3)',
   },
   categoryText: {
     color: Colours.white,
