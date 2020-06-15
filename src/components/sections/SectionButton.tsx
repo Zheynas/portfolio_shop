@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-import Styles from './CategoryStyles';
+import Styles from './SectionStyles';
 import Routes from '../../routes/Routes';
 import getImage from '../../../assets/images';
 
@@ -20,30 +20,30 @@ interface Props {
    */
   disabled?: boolean;
   /**
-   * Id of category
+   * Id of section
    */
   id?: string;
 }
 
 /**
- * Category button
+ * Section button
  */
-const CategoryButton = ({text, image, disabled, id}: Props) => {
+const SectionButton = ({text, image, disabled, id}: Props) => {
   const {navigate} = useNavigation();
   const imageSrc = getImage(image);
   return (
     <TouchableOpacity
       disabled={disabled}
-      style={Styles.categoryButton}
+      style={Styles.sectionButton}
       onPress={() => {
-        navigate(Routes.SHOP, {categoryId: id});
+        navigate(Routes.SHOP, {sectionId: id});
       }}>
-      <Image source={imageSrc} style={Styles.categoryImage} />
-      <View style={Styles.categoryTextWrapper}>
-        <Text style={Styles.categoryText}>{text}</Text>
+      <Image source={imageSrc} style={Styles.sectionImage} />
+      <View style={Styles.sectionTextWrapper}>
+        <Text style={Styles.sectionText}>{text}</Text>
       </View>
     </TouchableOpacity>
   );
 };
 
-export default CategoryButton;
+export default SectionButton;

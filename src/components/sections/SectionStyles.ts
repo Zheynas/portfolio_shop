@@ -3,30 +3,31 @@ import {moderateScale} from 'react-native-size-matters';
 
 import {FontSize, Fonts, Colours} from '../../styles/Themes';
 
-export interface MenuStyle {
+export interface SectionStyle {
   flexColumn: ViewStyle;
   profileButton: ViewStyle;
-  categoryButton: ViewStyle;
-  categoryImage: StyleProp<ImageStyle>;
-  categoryTextWrapper: ViewStyle;
-  categoryText: TextStyle;
-  categoryHeader: ViewStyle;
-  categoryHeaderText: TextStyle;
+  sectionButton: ViewStyle;
+  sectionImage: StyleProp<ImageStyle>;
+  sectionTextWrapper: ViewStyle;
+  sectionText: TextStyle;
+  sectionHeader: ViewStyle;
+  sectionHeaderText: TextStyle;
+  centerFlex: ViewStyle;
 }
 
-const MenuStyles: MenuStyle = {
+const SectionStyles: SectionStyle = {
   flexColumn: {
     flex: 1,
     flexDirection: 'column',
   },
-  categoryHeader: {
+  sectionHeader: {
     height: moderateScale(50),
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingLeft: moderateScale(10),
   },
-  categoryHeaderText: {
+  sectionHeaderText: {
     color: Colours.black,
     fontFamily: Fonts.bold,
     fontSize: FontSize.header,
@@ -35,18 +36,18 @@ const MenuStyles: MenuStyle = {
     justifyContent: 'center',
     alignItems: 'center',
   },
-  categoryButton: {
+  sectionButton: {
     height: moderateScale(150),
     marginBottom: moderateScale(10),
     justifyContent: 'center',
     alignItems: 'center',
   },
-  categoryImage: {
+  sectionImage: {
     width: '101%',
     height: moderateScale(150),
     zIndex: 1,
   },
-  categoryTextWrapper: {
+  sectionTextWrapper: {
     flex: 1,
     zIndex: 10,
     position: 'absolute',
@@ -58,11 +59,16 @@ const MenuStyles: MenuStyle = {
     alignItems: 'center',
     backgroundColor: 'rgba(0,0,0,.3)',
   },
-  categoryText: {
+  sectionText: {
     color: Colours.white,
     fontFamily: Fonts.semiBold,
     fontSize: FontSize.biggerLabel,
   },
+  centerFlex: {
+    flex:1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 };
 
-export default MenuStyles;
+export default SectionStyles;

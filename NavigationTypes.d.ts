@@ -22,7 +22,7 @@ export type NavigationParamList = {
   [Routes.SHOP]: {
     categoryId: string;
   };
-  [Routes.CATEGORY]: undefined;
+  [Routes.SECTIONS]: undefined;
   [Routes.MENU]: undefined;
   [Routes.PRODUCT_LIST]: {
     categoryId: string;

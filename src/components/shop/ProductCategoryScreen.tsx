@@ -12,7 +12,7 @@ import {connect} from 'react-redux';
 
 import Routes from '../../routes/Routes';
 import Styles from './ShopStyles';
-import CategoryButton from '../categories/CategoryButton';
+import CategoryButton from '../sections/SectionButton';
 import {NavigationParamList} from 'NavigationTypes';
 import {ApplicationState} from '../../redux/types';
 import {getOrFetchCategory} from '../../redux/resources/categorys';

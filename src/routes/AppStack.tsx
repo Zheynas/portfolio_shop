@@ -8,7 +8,7 @@ import LoginScreen from '../components/login/LoginScreen';
 import RegisterScreen from '../components/onboarding/RegisterScreen';
 import MenuScreen from '../components/menu/MenuScreen';
 import Header from '../components/headers/Header';
-import CategoryScreen from '../components/categories/CategoryScreen';
+import CategoryScreen from '../components/sections/SectionScreen';
 import ShopScreen from '../components/shop/ProductCategoryScreen';
 import ShopHeader from '../components/headers/ShopHeader';
 import ProductListScreen from '../components/shop/ProductListScreen';
