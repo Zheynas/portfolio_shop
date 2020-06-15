@@ -83,7 +83,7 @@ const SubSectionsScreen = ({
                   <TouchableOpacity
                     style={Styles.centerContainer}
                     onPress={() => {
-                      navigate(Routes.PRODUCT_LIST, {categoryId: id});
+                      navigate(Routes.PRODUCT_LIST, {id: id, title: catTitle});
                     }}>
                     <Text
                       style={Styles.categoryText}

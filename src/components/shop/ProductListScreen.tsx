@@ -1,26 +1,36 @@
 import React from 'react';
-import {View, ScrollView, Text, FlatList, TouchableOpacity} from 'react-native';
+import {
+  View,
+  ScrollView,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  ActivityIndicator,
+} from 'react-native';
 import {RouteProp} from '@react-navigation/native';
 import {connect} from 'react-redux';
-import {GenericItemOrCollection, ResourcesItem} from 'redux-and-the-rest';
+import {
+  GenericItemOrCollection,
+  ResourcesItem,
+  ResourcesCollection,
+  FETCHING,
+} from 'redux-and-the-rest';
 import _ from 'lodash';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {moderateScale} from 'react-native-size-matters';
 
 import {NavigationParamList} from 'NavigationTypes';
 import Routes from '../../routes/Routes';
 import Styles from './ShopStyles';
 import GridView from './grid/GridView';
-import BOOTSTRAPPED from '../../redux/custom/statuses';
-import {getOrFetchProductCategory} from '../../redux/resources/productcategorys';
 import {ApplicationState} from '../../redux/types';
-import {ProductCategory} from '../../models/productCategory';
 import OrderByBar from './OrderByBar';
 import OrderType from '../../util/enums/OrderType';
 import Order from '../../util/enums/Order';
 import {Product} from '../../models/product';
 import {Measurements, Colours} from '../../styles/Themes';
-import {moderateScale} from 'react-native-size-matters';
+import {getOrFetchProducts} from '../../redux/resources/products';
 
 /**
  * Adds typing to route.params for the correct route
@@ -36,20 +46,35 @@ interface Props {
    */
   route: ProductListScreenRouteProp;
   /**
-   * Product Category Item
+   * Collection of products for current category
    */
-  productCategoryItem: ResourcesItem<ProductCategory>;
+  productsCollection: ResourcesCollection<Product>;
 }
 
 const ProductListScreen = ({
-  productCategoryItem: {
-    values: {products, title},
+  productsCollection: {
+    items: products,
+    status: {type},
+  },
+  route: {
+    params: {title},
   },
 }: Props) => {
   const [selectedOrderType, setSelectedOrderType] = React.useState(
     OrderType.LATEST,
   );
   const [selectedOrder, setSelectedOrder] = React.useState(Order.ASCENDING);
+
+  const isLoading = type === FETCHING;
+
+  if (isLoading) {
+    return (
+      <View style={Styles.centerFlex}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
+  return null;
   const orderedProducts = orderItems(
     selectedOrderType,
     selectedOrder,
@@ -67,7 +92,7 @@ const ProductListScreen = ({
             color={Colours.grey}
           />
         </TouchableOpacity>
-        <View style={Styles.productListHeaderTextWrapper}>
+        <View style={Styles.centerFlex}>
           <Text style={Styles.productListHeaderText}>{title}</Text>
         </View>
         <TouchableOpacity>
@@ -80,12 +105,12 @@ const ProductListScreen = ({
       </View>
       <OrderByBar
         selectedOrderType={selectedOrderType}
-        setSelectedOrderType={(type: OrderType) => {
-          setSelectedOrderType(type);
+        setSelectedOrderType={(orderType: OrderType) => {
+          setSelectedOrderType(orderType);
         }}
         selectedOrder={selectedOrder}
-        setSelectedOrder={(type: Order) => {
-          setSelectedOrder(type);
+        setSelectedOrder={(orderType: Order) => {
+          setSelectedOrder(orderType);
         }}
       />
       <View style={Styles.productScrollContainer}>
@@ -135,22 +160,16 @@ function orderItems(orderType: OrderType, order: Order, items: Product[]) {
 }
 
 const mapStateToProps = (
-  {productcategorys}: ApplicationState,
+  {products}: ApplicationState,
   {
     route: {
-      params: {categoryId},
+      params: {id},
     },
-  }: ProductListScreenRouteProp,
+  }: Props,
 ) => ({
-  productCategoryItem: getOrFetchProductCategory(
-    productcategorys,
-    categoryId,
-    {},
-    {
-      forceFetch: ({projection: {type}}: GenericItemOrCollection) =>
-        type === BOOTSTRAPPED,
-    },
-  ),
+  productsCollection: getOrFetchProducts(products, {
+    id: id,
+  }),
 });
 
 export default connect(mapStateToProps)(ProductListScreen);

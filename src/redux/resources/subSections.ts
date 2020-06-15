@@ -16,7 +16,7 @@ const {
     name: 'subSections',
     localOnly: false,
     requestAdaptor: (subSection: any) => dataFormatter.serialize({ stuff: subSection }),
-    urlOnlyParams: ['include']
+    urlOnlyParams: ['include'],
   },
   ['index'],
 );

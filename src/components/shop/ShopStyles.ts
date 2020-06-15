@@ -32,7 +32,7 @@ export interface ShopStyle {
   productScrollContainer: TextStyle;
   productLengthText: TextStyle;
   productListHeader: ViewStyle;
-  productListHeaderTextWrapper: ViewStyle;
+  centerFlex: ViewStyle;
   productListHeaderText: TextStyle;
 }
 
@@ -172,7 +172,7 @@ const ShopStyles: ShopStyle = {
     alignItems: 'center',
     paddingHorizontal: moderateScale(10),
   },
-  productListHeaderTextWrapper: {
+  centerFlex: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
