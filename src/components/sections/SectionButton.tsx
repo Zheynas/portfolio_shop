@@ -36,7 +36,7 @@ const SectionButton = ({text, image, disabled, id}: Props) => {
       disabled={disabled}
       style={Styles.sectionButton}
       onPress={() => {
-        navigate(Routes.SHOP, {sectionId: id});
+        navigate(Routes.SUB_SECTIONS, {sectionId: id});
       }}>
       <Image source={imageSrc} style={Styles.sectionImage} />
       <View style={Styles.sectionTextWrapper}>

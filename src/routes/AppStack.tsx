@@ -9,6 +9,7 @@ import RegisterScreen from '../components/onboarding/RegisterScreen';
 import MenuScreen from '../components/menu/MenuScreen';
 import Header from '../components/headers/Header';
 import SectionScreen from '../components/sections/SectionScreen';
+import SubSectionsScreen from '../components/subSections/SubSectionsScreen';
 import ShopScreen from '../components/shop/ProductCategoryScreen';
 import ShopHeader from '../components/headers/ShopHeader';
 import ProductListScreen from '../components/shop/ProductListScreen';
@@ -61,6 +62,13 @@ const QboxStack = () => (
       component={SectionScreen}
       options={{
         header: () => null,
+      }}
+    />
+    <RootStack.Screen
+      name={Routes.SUB_SECTIONS}
+      component={SubSectionsScreen}
+      options={{
+        header: () => <ShopHeader />,
       }}
     />
   </RootStack.Navigator>

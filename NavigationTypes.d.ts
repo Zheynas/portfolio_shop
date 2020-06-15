@@ -26,8 +26,11 @@ export type NavigationParamList = {
   [Routes.MENU]: undefined;
   [Routes.PRODUCT_LIST]: {
     categoryId: string;
-  },
+  };
   [Routes.PRODUCT]: {
     productId: string;
-  }
+  };
+  [Routes.SUB_SECTIONS]: {
+    sectionId: string;
+  };
 };

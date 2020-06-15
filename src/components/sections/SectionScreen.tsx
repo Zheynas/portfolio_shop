@@ -72,7 +72,7 @@ const SectionScreen = ({
 };
 
 const mapStateToProps = ({sections}: ApplicationState) => ({
-  sectionsCollection: getOrFetchSections(sections, {include: 'subSections'}),
+  sectionsCollection: getOrFetchSections(sections, {}),
 });
 
 export default connect(mapStateToProps)(SectionScreen);

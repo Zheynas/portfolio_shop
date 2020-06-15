@@ -18,7 +18,7 @@ const ShopHeader = () => {
       <View style={Styles.shopHeaderContainer}>
         <TouchableOpacity
           onPress={() => {
-            navigate(Routes.CATEGORY);
+            navigate(Routes.SECTIONS);
           }}>
           <Icon name="navicon" size={moderateScale(35)} color={Colours.coral} />
         </TouchableOpacity>

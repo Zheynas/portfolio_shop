@@ -10,6 +10,7 @@ enum Routes {
   SECTIONS = 'SECTIONS',
   PRODUCT_LIST = 'PRODUCT_LIST',
   PRODUCT = 'PRODUCT',
+  SUB_SECTIONS='SUB_SECTIONS'
 }
 
 export default Routes;

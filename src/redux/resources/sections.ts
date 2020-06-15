@@ -10,6 +10,7 @@ const {
   reducers: sectionReducer,
   getOrFetchCollection: getOrFetchSections,
   getOrFetchItem: getOrFetchSection,
+  getItem,
 } = resources<Section>(
   {
     url,
@@ -21,4 +22,4 @@ const {
   ['index', 'show'],
 );
 
-export {sectionReducer, getOrFetchSections, getOrFetchSection};
+export {sectionReducer, getOrFetchSections, getOrFetchSection, getItem};
