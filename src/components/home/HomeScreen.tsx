@@ -20,7 +20,7 @@ const HomeScreen = () => {
         <View style={Styles.centerFlex}>
           <TouchableOpacity
             onPress={() => {
-              navigate(Routes.CATEGORY);
+              navigate(Routes.SECTIONS);
             }}>
             <Text style={Styles.middleText}>ENTER SHOP</Text>
           </TouchableOpacity>
