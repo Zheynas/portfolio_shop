@@ -9,7 +9,7 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import {moderateScale} from 'react-native-size-matters';
-import {GenericItemOrCollection, ResourcesCollection} from 'redux-and-the-rest';
+import {ResourcesCollection} from 'redux-and-the-rest';
 import {connect} from 'react-redux';
 
 import Routes from '../../routes/Routes';
@@ -17,23 +17,22 @@ import {Colours} from '../../styles/Themes';
 import CategoryButton from './CategoryButton';
 import Styles from './CategoryStyles';
 import {ApplicationState} from '../../redux/types';
-import BOOTSTRAPPED from '../../redux/custom/statuses';
-import {getOrFetchCategorys} from '../../redux/resources/categorys';
-import {Category} from '../../models/category';
+import {getOrFetchSections} from '../../redux/resources/sections';
+import {Section} from '../../models/section';
 
 interface Props {
   /**
    * Collection of categories
    */
-  categoryCollection: ResourcesCollection<Category>;
+  sectionsCollection: ResourcesCollection<Section>;
 }
 
 /**
  * Category screen
  */
-const CategoryScreen = ({categoryCollection: {items: categories}}: Props) => {
+const CategoryScreen = ({sectionsCollection: {items: sections}}: Props) => {
   const {navigate} = useNavigation();
-  console.log('categories', categories);
+  console.log('sections', sections);
   return (
     <View style={Styles.flexColumn}>
       <SafeAreaView style={Styles.flexColumn}>
@@ -48,13 +47,8 @@ const CategoryScreen = ({categoryCollection: {items: categories}}: Props) => {
           </TouchableOpacity>
         </View>
         <ScrollView style={Styles.flexColumn}>
-          {categories.map(({values: {id, imagePath, name}}) => (
-            <CategoryButton
-              text={name}
-              key={id}
-              id={id}
-              imagePath={imagePath}
-            />
+          {sections.map(({values: {id, image, title}}) => (
+            <CategoryButton text={title} key={id} id={id} image={image} />
           ))}
         </ScrollView>
       </SafeAreaView>
@@ -62,15 +56,8 @@ const CategoryScreen = ({categoryCollection: {items: categories}}: Props) => {
   );
 };
 
-const mapStateToProps = ({categorys}: ApplicationState) => ({
-  categoryCollection: getOrFetchCategorys(
-    categorys,
-    {},
-    {
-      forceFetch: ({projection: {type}}: GenericItemOrCollection) =>
-        type === BOOTSTRAPPED,
-    },
-  ),
+const mapStateToProps = ({sections}: ApplicationState) => ({
+  sectionsCollection: getOrFetchSections(sections, {include: 'subSections'}),
 });
 
 export default connect(mapStateToProps)(CategoryScreen);

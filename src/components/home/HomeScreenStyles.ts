@@ -7,6 +7,7 @@ export interface HomeScreenStyle {
   container: ViewStyle;
   background: ImageStyle;
   middleText: TextStyle;
+  centerFlex: ViewStyle;
 }
 
 const HomeScreenStyles: HomeScreenStyle = {
@@ -17,9 +18,17 @@ const HomeScreenStyles: HomeScreenStyle = {
   background: {
     flex: 1,
     resizeMode: 'cover',
+    paddingLeft: moderateScale(20),
+  },
+  centerFlex:{
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    left: 0,
+    right: 0,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingLeft: moderateScale(20),
+    backgroundColor: 'rgba(0,0,0,.1)',
   },
   middleText:{
     color: Colours.white,

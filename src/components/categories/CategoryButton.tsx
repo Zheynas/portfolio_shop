@@ -1,15 +1,10 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  Image,
-  ImageSourcePropType,
-} from 'react-native';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
 import Styles from './CategoryStyles';
 import Routes from '../../routes/Routes';
+import getImage from '../../../assets/images';
 
 interface Props {
   /**
@@ -19,7 +14,7 @@ interface Props {
   /**
    * Image path
    */
-  imagePath: ImageSourcePropType;
+  image: string;
   /**
    * Disabled state
    */
@@ -33,8 +28,9 @@ interface Props {
 /**
  * Category button
  */
-const CategoryButton = ({text, imagePath, disabled, id}: Props) => {
+const CategoryButton = ({text, image, disabled, id}: Props) => {
   const {navigate} = useNavigation();
+  const imageSrc = getImage(image);
   return (
     <TouchableOpacity
       disabled={disabled}
@@ -42,7 +38,7 @@ const CategoryButton = ({text, imagePath, disabled, id}: Props) => {
       onPress={() => {
         navigate(Routes.SHOP, {categoryId: id});
       }}>
-      <Image source={imagePath} style={Styles.categoryImage} />
+      <Image source={imageSrc} style={Styles.categoryImage} />
       <View style={Styles.categoryTextWrapper}>
         <Text style={Styles.categoryText}>{text}</Text>
       </View>

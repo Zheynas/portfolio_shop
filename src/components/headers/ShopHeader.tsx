@@ -1,5 +1,5 @@
 import React from 'react';
-import {TouchableOpacity, View, Text} from 'react-native';
+import {TouchableOpacity, View, Text, SafeAreaView} from 'react-native';
 import Icon from 'react-native-vector-icons/EvilIcons';
 
 import {useNavigation} from '@react-navigation/native';
@@ -14,24 +14,26 @@ const ShopHeader = () => {
   const {navigate} = useNavigation();
 
   return (
-    <View style={Styles.shopHeaderContainer}>
-      <TouchableOpacity
-        onPress={() => {
-          navigate(Routes.CATEGORY);
-        }}>
-        <Icon name="navicon" size={moderateScale(35)} color={Colours.coral} />
-      </TouchableOpacity>
-      <View style={Styles.shopHeaderTextContainer}>
-        <Text style={Styles.shopHeaderText}>FASHION</Text>
-      </View>
+    <SafeAreaView>
+      <View style={Styles.shopHeaderContainer}>
+        <TouchableOpacity
+          onPress={() => {
+            navigate(Routes.CATEGORY);
+          }}>
+          <Icon name="navicon" size={moderateScale(35)} color={Colours.coral} />
+        </TouchableOpacity>
+        <View style={Styles.shopHeaderTextContainer}>
+          <Text style={Styles.shopHeaderText}>FASHION</Text>
+        </View>
 
-      <TouchableOpacity>
-        <Icon name="search" size={moderateScale(35)} color={Colours.grey} />
-      </TouchableOpacity>
-      <TouchableOpacity>
-        <Icon name="cart" size={moderateScale(35)} color={Colours.grey} />
-      </TouchableOpacity>
-    </View>
+        <TouchableOpacity>
+          <Icon name="search" size={moderateScale(35)} color={Colours.grey} />
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <Icon name="cart" size={moderateScale(35)} color={Colours.grey} />
+        </TouchableOpacity>
+      </View>
+    </SafeAreaView>
   );
 };
 export default ShopHeader;

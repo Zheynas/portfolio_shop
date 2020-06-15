@@ -10,9 +10,6 @@ const {
   reducers: productReducer,
   getOrFetchCollection: getOrFetchProducts,
   getOrFetchItem: getOrFetchProduct,
-  actionCreators: {
-    fetchProducts,
-  },
 } = resources<Product>(
   {
     url,
@@ -23,4 +20,4 @@ const {
   ['index', 'show'],
 );
 
-export {productReducer, getOrFetchProducts, getOrFetchProduct, fetchProducts};
+export {productReducer, getOrFetchProducts, getOrFetchProduct};
