@@ -62,8 +62,8 @@ const SectionScreen = ({
           </TouchableOpacity>
         </View>
         <ScrollView style={Styles.flexColumn}>
-          {sections.map(({values: {id, image, title}}) => (
-            <SectionButton text={title} key={id} id={id} image={image} />
+          {sections.map(({values: {id, bannerUrl, title}}) => (
+            <SectionButton text={title} key={id} id={id} image={bannerUrl} />
           ))}
         </ScrollView>
       </SafeAreaView>

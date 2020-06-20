@@ -23,14 +23,20 @@ interface Props {
    * Id of section
    */
   id?: string;
+  /**
+   * Light mode
+   */
+  light?: boolean;
 }
 
 /**
  * Section button
  */
-const SectionButton = ({text, image, disabled, id}: Props) => {
+const SectionButton = ({text, image, disabled, id, light}: Props) => {
   const {navigate} = useNavigation();
-  const imageSrc = getImage(image);
+  const bannerImage = image ? {uri: image} : getImage('HANDBAG');
+  const backgroundColor = light ? 'transparent' : 'rgba(0,0,0,.3)';
+
   return (
     <TouchableOpacity
       disabled={disabled}
@@ -38,8 +44,9 @@ const SectionButton = ({text, image, disabled, id}: Props) => {
       onPress={() => {
         navigate(Routes.SUB_SECTIONS, {sectionId: id});
       }}>
-      <Image source={imageSrc} style={Styles.sectionImage} />
-      <View style={Styles.sectionTextWrapper}>
+      <Image source={bannerImage} style={Styles.sectionImage} />
+      <View
+        style={[Styles.sectionTextWrapper, {backgroundColor: backgroundColor}]}>
         <Text style={Styles.sectionText}>{text}</Text>
       </View>
     </TouchableOpacity>

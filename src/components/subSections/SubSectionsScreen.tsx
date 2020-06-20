@@ -51,7 +51,7 @@ interface Props {
 
 const SubSectionsScreen = ({
   currentSection: {
-    values: {image},
+    values: {bannerUrl},
   },
   subSectionsCollection: {
     items: subSections,
@@ -73,7 +73,7 @@ const SubSectionsScreen = ({
   return (
     <SafeAreaView style={Styles.flexContainer}>
       <View style={Styles.container}>
-        <CategoryButton image={image} disabled />
+        <CategoryButton image={bannerUrl} disabled light/>
         <ScrollView style={Styles.flexContainer}>
           {subSections.map(
             ({values: {title, categories, id: subSectionId}}) => (

@@ -4,6 +4,6 @@ export interface Section {
   id: string;
   name: string;
   title: string;
-  image: string;
+  bannerUrl: string;
   subSections: SubSection[];
 }
