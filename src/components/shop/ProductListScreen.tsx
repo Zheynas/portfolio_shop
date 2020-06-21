@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   ActivityIndicator,
 } from 'react-native';
-import {RouteProp} from '@react-navigation/native';
+import {RouteProp, useNavigation} from '@react-navigation/native';
 import {connect} from 'react-redux';
 import {
   GenericItemOrCollection,
@@ -60,6 +60,8 @@ const ProductListScreen = ({
     params: {title},
   },
 }: Props) => {
+  const {goBack} = useNavigation();
+
   const [selectedOrderType, setSelectedOrderType] = React.useState(
     OrderType.LATEST,
   );
@@ -74,18 +76,25 @@ const ProductListScreen = ({
       </View>
     );
   }
-  return null;
+  console.log('products', products);
+
   const orderedProducts = orderItems(
     selectedOrderType,
     selectedOrder,
     products,
   );
+
+  console.log('orderedProducts', orderedProducts);
+
   const items = _.chunk(orderedProducts, 3);
 
   return (
     <View style={Styles.flexColumn}>
       <View style={Styles.productListHeader}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            goBack();
+          }}>
           <Icon
             name="ios-arrow-round-back"
             size={Measurements.headerHeight}
@@ -114,16 +123,14 @@ const ProductListScreen = ({
         }}
       />
       <View style={Styles.productScrollContainer}>
-        <ScrollView style={Styles.flexContainer}>
-          <Text
-            style={
-              Styles.productLengthText
-            }>{`${products.length} results`}</Text>
-          <FlatList
-            data={items}
-            renderItem={({item}) => <GridView group={item} />}
-          />
-        </ScrollView>
+        <Text
+          style={Styles.productLengthText}>{`${products.length} results`}</Text>
+        <FlatList
+          data={items}
+          keyExtractor={(item, index)=> `row-${index}`}
+          contentContainerStyle={{ paddingBottom: moderateScale(150)}}
+          renderItem={({item}) => <GridView group={item} />}
+        />
       </View>
     </View>
   );
@@ -136,24 +143,44 @@ function sortByNumber(firstNumber: number, secondNumber: number, order: Order) {
   return firstNumber > secondNumber ? 1 : -1;
 }
 
-function orderItems(orderType: OrderType, order: Order, items: Product[]) {
+function orderItems(
+  orderType: OrderType,
+  order: Order,
+  items: ResourcesItem<Product>[],
+) {
   switch (orderType) {
     case OrderType.LATEST:
       return items.sort((item_1, item_2) => {
-        const {dateAdded} = item_1;
-        const {dateAdded: secondDate} = item_2;
-        return sortByNumber(dateAdded, secondDate, order);
+        const {
+          values: {createdAt},
+        } = item_1;
+        const {
+          values: {createdAt: secondDate},
+        } = item_2;
+        return sortByNumber(
+          new Date(createdAt).getTime(),
+          new Date(secondDate).getTime(),
+          order,
+        );
       });
     case OrderType.PRICE:
       return items.sort((item_1, item_2) => {
-        const {price} = item_1;
-        const {price: secondPrice} = item_2;
+        const {
+          values: {price},
+        } = item_1;
+        const {
+          values: {price: secondPrice},
+        } = item_2;
         return sortByNumber(price, secondPrice, order);
       });
     case OrderType.BEST_SELLER:
       return items.sort((item_1, item_2) => {
-        const {rating} = item_1;
-        const {rating: secondRating} = item_2;
+        const {
+          values: {rating},
+        } = item_1;
+        const {
+          values: {rating: secondRating},
+        } = item_2;
         return sortByNumber(rating, secondRating, order);
       });
   }

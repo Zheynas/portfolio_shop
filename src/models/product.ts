@@ -3,8 +3,8 @@ export interface Product {
   name: string;
   description: string;
   price: number;
-  smallPicture: string;
-  largePicture: string;
-  dateAdded: string;
+  smallPictureUrl: string;
+  largePictureUrl: string;
+  createdAt: string;
   rating: number;
 }

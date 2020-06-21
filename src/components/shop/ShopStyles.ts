@@ -77,7 +77,6 @@ const ShopStyles: ShopStyle = {
     flexDirection: 'column',
   },
   flexRow: {
-    flex: 1,
     flexDirection: 'row',
     marginBottom: moderateScale(20),
   },
@@ -85,7 +84,6 @@ const ShopStyles: ShopStyle = {
     width: moderateScale(10),
   },
   gridContainer: {
-    height: moderateScale(500),
     flexDirection: 'column',
   },
   smallTextWrapper: {
@@ -156,7 +154,6 @@ const ShopStyles: ShopStyle = {
     fontSize: FontSize.footer,
   },
   productScrollContainer: {
-    flex: 1,
     paddingTop: moderateScale(20),
     paddingHorizontal: moderateScale(20),
   },
