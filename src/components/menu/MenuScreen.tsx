@@ -11,7 +11,10 @@ const profileButtons = [
   {text: 'Order Histories', icon: 'credit-card', route: Routes.HOME},
   {text: 'Contact Us', icon: 'envelope', route: Routes.HOME},
   {text: 'Help', icon: 'question', route: Routes.HOME},
-  {text: 'Setting', icon: 'gear', route: Routes.HOME},
+  {text: 'Settings', icon: 'gear', route: Routes.HOME},
+  {text: 'Cart', icon: 'cart', route: Routes.CART},
+  {text: 'Login', icon: 'gear', route: Routes.LOGIN},
+  {text: 'Register', icon: 'gear', route: Routes.REGISTER},
 ];
 
 const MenuScreen = () => {

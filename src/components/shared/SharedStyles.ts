@@ -12,6 +12,10 @@ export interface SharedStyle {
   icon: TextStyle;
   smallButtonContainer: ViewStyle;
   smallButtonText: TextStyle;
+  absoluteBottomButtonContainer: ViewStyle;
+  bottomButton: ViewStyle;
+  bottomButtonText: TextStyle;
+  bottomButtonContainer: ViewStyle;
 }
 
 const SharedStyles: SharedStyle = {
@@ -53,6 +57,27 @@ const SharedStyles: SharedStyle = {
     color: Colours.white,
     fontFamily: Fonts.bold,
     fontSize: FontSize.small,
+  },
+  absoluteBottomButtonContainer: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    padding: moderateScale(20),
+  },
+  bottomButtonContainer: {
+    height: moderateScale(50),
+  },
+  bottomButton: {
+    flex: 1,
+    height: moderateScale(50),
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fe8080',
+  },
+  bottomButtonText: {
+    color: Colours.white,
+    fontFamily: Fonts.semiBold,
   },
 };
 

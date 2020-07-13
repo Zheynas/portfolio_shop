@@ -35,10 +35,10 @@ interface Props {
 
 const ProductScreen = ({
   productItem: {
-    values: {name, smallPicture, price, id, largePicture, description},
+    values: {name, smallPictureUrl, price, id, largePictureUrl, description},
   },
 }: Props) => {
-  const {goBack} = useNavigation();
+  const {goBack, navigate} = useNavigation();
   return (
     <View style={Styles.columnContainer}>
       <TouchableOpacity
@@ -61,11 +61,14 @@ const ProductScreen = ({
           top: moderateScale(10),
           right: moderateScale(10),
           zIndex: 4,
+        }}
+        onPress={() => {
+          navigate(Routes.CART);
         }}>
         <EvilIcon name="cart" size={moderateScale(35)} color={Colours.grey} />
       </TouchableOpacity>
       <View style={Styles.flexContainer}>
-        <Image source={largePicture} style={Styles.image} />
+        <Image source={{uri: largePictureUrl}} style={Styles.image} />
       </View>
       <View style={Styles.productInfoContainer}>
         <Text style={Styles.productHeaderText}>{name.toUpperCase()}</Text>

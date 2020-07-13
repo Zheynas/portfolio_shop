@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, ActivityIndicator} from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
+import Icon from 'react-native-vector-icons/Entypo';
 
 import Styles from './ShopStyles';
 import {Colours} from '../../styles/Themes';

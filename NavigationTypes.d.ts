@@ -34,4 +34,7 @@ export type NavigationParamList = {
   [Routes.SUB_SECTIONS]: {
     sectionId: string;
   };
+  [Routes.CART]: undefined;
+  [Routes.CHECKOUT]: undefined;
+  [Routes.PAYMENT]: undefined;
 };

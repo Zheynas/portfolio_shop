@@ -29,7 +29,10 @@ const ShopHeader = () => {
         <TouchableOpacity>
           <Icon name="search" size={moderateScale(35)} color={Colours.grey} />
         </TouchableOpacity>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigate(Routes.CART);
+          }}>
           <Icon name="cart" size={moderateScale(35)} color={Colours.grey} />
         </TouchableOpacity>
       </View>
