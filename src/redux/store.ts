@@ -7,8 +7,6 @@ import {configure} from 'redux-and-the-rest';
 
 import resources from './resources';
 import deserializeJsonApiData from './deserializeJsonApiData';
-import {initialCategorys} from './resources/categorys';
-import {initialProductCategorys} from './resources/productcategorys';
 
 const middleWare = [
   // Middleware to handle asyncronous actions in Redux
@@ -29,8 +27,6 @@ const persistedReducer = persistReducer(persistConfig, resources);
 const store = createStore(
   persistedReducer,
   {
-    categorys: initialCategorys,
-    productcategorys: initialProductCategorys,
   },
   compose(applyMiddleware(...middleWare)),
 );

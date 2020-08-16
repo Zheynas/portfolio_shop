@@ -34,7 +34,7 @@ interface Props {
  */
 const SectionButton = ({text, image, disabled, id, light}: Props) => {
   const {navigate} = useNavigation();
-  const bannerImage = image ? {uri: image} : getImage('HANDBAG');
+  const bannerImage = image ? {uri: image} : null;
   const backgroundColor = light ? 'transparent' : 'rgba(0,0,0,.3)';
 
   return (

@@ -56,7 +56,7 @@ function getImageUrl(
       return {uri: smallPictureUrl};
     }
   }
-  return getImage('HANDBAG');
+  return null;
 }
 
 export default GridContainer;
