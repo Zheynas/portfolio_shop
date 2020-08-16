@@ -13,7 +13,8 @@ enum Routes {
   SUB_SECTIONS = 'SUB_SECTIONS',
   CART = 'CART',
   CHECKOUT = 'CHECKOUT',
-  PAYMENT = 'PAYMENT'
+  PAYMENT = 'PAYMENT',
+  SHIPPING = 'SHIPPING'
 }
 
 export default Routes;
