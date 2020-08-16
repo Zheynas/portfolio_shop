@@ -45,6 +45,20 @@ const DetailsButton = ({onPress, text}: Props) => {
 
 function renderText(textToDisplay: string[]) {
   const extraText = textToDisplay.slice(1);
+
+  if (textToDisplay.length === 1) {
+    return (
+      <Text
+        style={{
+          color: Colours.black,
+          fontFamily: Fonts.regular,
+          fontSize: FontSize.small,
+          lineHeight: FontSize.question,
+        }}>
+        {textToDisplay[0]}
+      </Text>
+    );
+  }
   return (
     <>
       <Text

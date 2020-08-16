@@ -48,7 +48,7 @@ const PaymentScreen = () => {
               }}>
               Payment Method
             </Text>
-            <DetailsButton text={["Robert smith", "23 Nene close"]} onPress={()=>{navigate(Routes.PAYMENT_SELECTION)}}/> 
+            <DetailsButton text={["Select a payment method"]} onPress={()=>{navigate(Routes.PAYMENT_SELECTION)}}/> 
           </ScrollView>
           <View
             style={{

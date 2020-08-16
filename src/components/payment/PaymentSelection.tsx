@@ -18,6 +18,8 @@ import CheckoutNav from '../../util/enums/CheckoutNav';
 import {ApplicationState} from '../../redux/types';
 import {getOrFetchShippingMethods} from '../../redux/resources/shippingMethods';
 import {ShippingMethod} from '../../models/shippingMethod';
+import Image from '../../../assets/images/Images';
+import PaymentButton from './PaymentButton';
 
 const PaymentSelection = () => {
   const {goBack} = useNavigation();
@@ -34,8 +36,12 @@ const PaymentSelection = () => {
                 fontFamily: Fonts.bold,
                 fontSize: FontSize.question,
               }}>
-              Choose Payment Method
+              Choose Payment Methods
             </Text>
+            <PaymentButton text="Apple Pay" image={Image.APPLE_PAY} onPress={goBack}/>
+            <PaymentButton text="Visa" image={Image.VISA} onPress={goBack}/>
+            <PaymentButton text="MasterCard" image={Image.MASTERCARD} onPress={goBack}/>
+            <PaymentButton text="Google Pay" image={Image.GOOGLE_PAY} onPress={goBack}/>
           </ScrollView>
         </View>
       </View>
