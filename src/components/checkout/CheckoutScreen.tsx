@@ -10,6 +10,7 @@ import BottomButton from '../shared/BottomButton';
 import TextField from '../shared/TextField';
 import {Colours} from '../../styles/Themes';
 import CheckoutNavBar from './CheckoutNavBar';
+import CheckoutNav from '../../util/enums/CheckoutNav';
 
 const CheckoutScreen = () => {
   const {navigate} = useNavigation();
@@ -21,7 +22,7 @@ const CheckoutScreen = () => {
   return (
     <SafeAreaView style={Styles.flexContainer}>
       <View style={Styles.container}>
-        <CheckoutNavBar />
+        <CheckoutNavBar currentScreen={CheckoutNav.CHECKOUT}/>
         <View style={Styles.scrollContainer}>
           <ScrollView style={Styles.flexContainer}>
             <View>
