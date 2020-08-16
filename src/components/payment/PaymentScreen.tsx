@@ -8,8 +8,10 @@ import Routes from '../../routes/Routes';
 import Styles from './PaymentStyles';
 import BottomButton from '../shared/BottomButton';
 import TextField from '../shared/TextField';
-import {Colours} from '../../styles/Themes';
+import {Colours, Fonts, FontSize} from '../../styles/Themes';
 import CheckoutNavBar from '../checkout/CheckoutNavBar';
+import PaymentButton from './PaymentButton';
+import CheckoutNav from '../../util/enums/CheckoutNav';
 
 const PaymentScreen = () => {
   const {navigate} = useNavigation();
@@ -21,35 +23,46 @@ const PaymentScreen = () => {
   return (
     <SafeAreaView style={Styles.flexContainer}>
       <View style={Styles.container}>
-        <CheckoutNavBar />
-        <View style={Styles.scrollContainer}>
-          <ScrollView style={Styles.flexContainer}>
-            <View>
-              <TextField label="Name" value={name} setValue={setName} />
-              <TextField
-                label="Phone Number"
-                value={number}
-                setValue={setNumber}
-              />
-              <TextField
-                label="Address"
-                value={address}
-                setValue={setAddress}
-              />
-              <TextField
-                label="Postcode"
-                value={postcode}
-                setValue={setPostcode}
-              />
-            </View>
+        <CheckoutNavBar currentScreen={CheckoutNav.PAYMENT}/>
+        <View style={{flex: 1, padding: moderateScale(20)}}>
+          <ScrollView style={{flex: 1}}>
+            <Text
+              style={{
+                color: Colours.black,
+                fontFamily: Fonts.bold,
+                fontSize: FontSize.question,
+              }}>
+              Complete your order
+            </Text>
+            <PaymentButton text={["Robert smith", "23 Nene close", "LS83DS", "2348383472"]}/>
+            <PaymentButton text={["Standard Delivery", "Saturday 27 - Tuesday 30", "Cost: $10"]}/> 
+            <Text
+              style={{
+                color: Colours.black,
+                fontFamily: Fonts.bold,
+                fontSize: FontSize.question,
+                marginTop: moderateScale(20),
+              }}>
+              Payment Method
+            </Text>
+            <PaymentButton text={["Robert smith", "23 Nene close"]}/>
           </ScrollView>
+          <View
+            style={{
+              height: moderateScale(60),
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            <Text>Free shipping for orders over £250</Text>
+          </View>
+          <BottomButton
+            text="BUY"
+            positionIsNotAbsolute
+            onPress={() => {
+              navigate(Routes.HOME);
+            }}
+          />
         </View>
-        <BottomButton
-          text="BUY"
-          onPress={() => {
-            navigate(Routes.HOME);
-          }}
-        />
       </View>
     </SafeAreaView>
   );
