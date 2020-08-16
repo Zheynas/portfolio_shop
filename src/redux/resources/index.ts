@@ -6,6 +6,7 @@ import {productCategoryReducer} from './productcategorys';
 import {sectionReducer} from './sections';
 import {subSectionReducer} from './subSections';
 import {shippingMethodReducer} from './shippingMethods';
+import { userReducer } from './user';
 
 export default combineReducers({
   products: productReducer,
@@ -14,4 +15,5 @@ export default combineReducers({
   sections: sectionReducer,
   subSections: subSectionReducer,
   shippingMethods: shippingMethodReducer,
+  users: userReducer,
 });

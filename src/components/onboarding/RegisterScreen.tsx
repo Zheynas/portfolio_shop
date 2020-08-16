@@ -7,20 +7,36 @@ import {
   ScrollView,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {AnyAction} from 'redux';
+import {connect} from 'react-redux';
 
 import Routes from '../../routes/Routes';
 import Styles from './RegisterStyle';
 import TextField from '../shared/TextField';
 import BottomButton from '../shared/BottomButton';
+import {ThunkDispatch} from 'redux-thunk';
 
-const RegisterScreen = () => {
+import {createUser} from '../../redux/resources/user';
+
+const TEMP_QUESTION_ID = '0';
+
+interface Props {
+  register: (
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+  ) => void;
+}
+
+const RegisterScreen = ({register}: Props) => {
   const {navigate} = useNavigation();
 
-  const [firstName, setFirstName] = React.useState('');
-  const [lastName, setLastName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [confirmPassword, setConfirmPassword] = React.useState('');
+  const [firstName, setFirstName] = React.useState('Hey');
+  const [lastName, setLastName] = React.useState('Hey');
+  const [email, setEmail] = React.useState('sasdf@adsf.com');
+  const [password, setPassword] = React.useState('Passw1');
+  const [confirmPassword, setConfirmPassword] = React.useState('Passw1');
 
   return (
     <SafeAreaView style={Styles.flexContainer}>
@@ -43,18 +59,20 @@ const RegisterScreen = () => {
               label="Password"
               value={password}
               setValue={setPassword}
+              secureTextEntry
             />
             <TextField
               label="Confirm Password"
               value={confirmPassword}
               setValue={setConfirmPassword}
+              secureTextEntry
             />
           </View>
         </ScrollView>
         <BottomButton
           text="REGISTER"
           onPress={() => {
-            navigate(Routes.HOME);
+            register(email, password, firstName, lastName);
           }}
         />
       </View>
@@ -62,4 +80,25 @@ const RegisterScreen = () => {
   );
 };
 
-export default RegisterScreen;
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<void, unknown, AnyAction>,
+) => ({
+  register: (
+    email: string,
+    password: string,
+    firstName: string,
+    lastName: string,
+  ) => {
+    dispatch(
+      createUser(TEMP_QUESTION_ID, {
+        email,
+        password,
+        firstName,
+        lastName,
+        type: 'user',
+      }),
+    );
+  },
+});
+
+export default connect(null, mapDispatchToProps)(RegisterScreen);

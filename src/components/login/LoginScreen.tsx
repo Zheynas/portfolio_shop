@@ -14,8 +14,8 @@ import BottomButton from '../shared/BottomButton';
 
 const LoginScreen = () => {
   const {navigate} = useNavigation();
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [email, setEmail] = React.useState('sasdf@adsfs.com');
+  const [password, setPassword] = React.useState('Passw1');
 
   return (
     <SafeAreaView style={Styles.flexContainer}>

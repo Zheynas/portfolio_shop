@@ -5,7 +5,8 @@ import {Category} from '../../models/category';
 import {ProductCategory} from '../../models/productCategory';
 import {Section} from '../../models/section';
 import {SubSection} from '../../models/subSection';
-import {ShippingMethod} from 'src/models/shippingMethod';
+import {ShippingMethod} from '../../models/shippingMethod';
+import {User} from '../../models/user';
 
 export type ApplicationState = {
   products: ResourcesReduxState<Product>;
@@ -14,4 +15,5 @@ export type ApplicationState = {
   sections: ResourcesReduxState<Section>;
   subSections: ResourcesReduxState<SubSection>;
   shippingMethods: ResourcesReduxState<ShippingMethod>;
+  users: ResourcesReduxState<User>;
 };

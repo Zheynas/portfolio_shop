@@ -8,9 +8,10 @@ interface Props {
   label: string;
   value: string;
   setValue: (value: string) => void;
+  secureTextEntry?: boolean;
 }
 
-const TextField = ({label, value, setValue}: Props) => {
+const TextField = ({label, value, setValue, secureTextEntry}: Props) => {
   const displayLabel = value ? label : '';
 
   return (
@@ -34,6 +35,7 @@ const TextField = ({label, value, setValue}: Props) => {
           color: 'black',
           padding:0
         }}
+        secureTextEntry={secureTextEntry}
       />
     </View>
   );
