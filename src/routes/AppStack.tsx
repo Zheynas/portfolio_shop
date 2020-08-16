@@ -19,6 +19,9 @@ import CheckoutScreen from '../components/checkout/CheckoutScreen';
 import PaymentScreen from '../components/payment/PaymentScreen';
 import ShippingSelection from '../components/payment/ShippingSelection';
 import PaymentSelection from '../components/payment/PaymentSelection';
+import ProfileScreen from '../components/profile/ProfileScreen';
+import ChangeEmailScreen from '../components/credentials/ChangeEmailScreen';
+import ChangePasswordScreen from '../components/credentials/ChangePasswordScreen';
 
 const RootStack = createStackNavigator<NavigationParamList>();
 const DEFAULT_ROOT = Routes.HOME;
@@ -65,6 +68,9 @@ const QboxStack = () => (
     <RootStack.Screen name={Routes.CHECKOUT} component={CheckoutScreen} />
     <RootStack.Screen name={Routes.PAYMENT} component={PaymentScreen} />
     <RootStack.Screen name={Routes.SHIPPING} component={ShippingSelection} />
+    <RootStack.Screen name={Routes.PROFILE} component={ProfileScreen} />
+    <RootStack.Screen name={Routes.CHANGE_EMAIL} component={ChangeEmailScreen} />
+    <RootStack.Screen name={Routes.CHANGE_PASSWORD} component={ChangePasswordScreen} />
     <RootStack.Screen
       name={Routes.PAYMENT_SELECTION}
       component={PaymentSelection}
