@@ -14,7 +14,8 @@ enum Routes {
   CART = 'CART',
   CHECKOUT = 'CHECKOUT',
   PAYMENT = 'PAYMENT',
-  SHIPPING = 'SHIPPING'
+  SHIPPING = 'SHIPPING',
+  PAYMENT_SELECTION = 'PAYMENT_SELECTION'
 }
 
 export default Routes;

@@ -18,6 +18,7 @@ import CartScreen from '../components/cart/CartScreen';
 import CheckoutScreen from '../components/checkout/CheckoutScreen';
 import PaymentScreen from '../components/payment/PaymentScreen';
 import ShippingSelection from '../components/payment/ShippingSelection';
+import PaymentSelection from '../components/payment/PaymentSelection';
 
 const RootStack = createStackNavigator<NavigationParamList>();
 const DEFAULT_ROOT = Routes.HOME;
@@ -64,6 +65,10 @@ const QboxStack = () => (
     <RootStack.Screen name={Routes.CHECKOUT} component={CheckoutScreen} />
     <RootStack.Screen name={Routes.PAYMENT} component={PaymentScreen} />
     <RootStack.Screen name={Routes.SHIPPING} component={ShippingSelection} />
+    <RootStack.Screen
+      name={Routes.PAYMENT_SELECTION}
+      component={PaymentSelection}
+    />
     <RootStack.Screen
       name={Routes.CART}
       component={CartScreen}

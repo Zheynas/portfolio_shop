@@ -38,4 +38,5 @@ export type NavigationParamList = {
   [Routes.CHECKOUT]: undefined;
   [Routes.PAYMENT]: undefined;
   [Routes.SHIPPING]: undefined;
+  [Routes.PAYMENT_SELECTION]: undefined;
 };
