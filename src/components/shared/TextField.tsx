@@ -7,7 +7,7 @@ import {moderateScale} from 'react-native-size-matters';
 interface Props {
   label: string;
   value: string;
-  setValue: (value: string) => void;
+  setValue?: (value: string) => void;
   secureTextEntry?: boolean;
 }
 
