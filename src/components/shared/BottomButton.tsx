@@ -35,7 +35,7 @@ interface Props {
   /**
    * Colour for button
    */
-  colour?: string;
+  grey?: boolean;
   /**
    *
    */
@@ -50,22 +50,37 @@ const BottomButton = ({
   text,
   loading,
   disable,
-  colour,
-  style,
+  grey,
+  style = {},
   positionIsNotAbsolute,
 }: Props) => {
   const buttonStyle = positionIsNotAbsolute
     ? Styles.bottomButtonContainer
     : Styles.absoluteBottomButtonContainer;
 
+  const extraStyles = grey
+    ? {
+        borderColor: Colours.grey,
+        borderWidth: 1,
+        backgroundColor: 'transparent',
+      }
+    : {backgroundColor: Colours.coral};
+
+  const indicatorColor = grey ? Colours.grey : Colours.white;
+  const textColor = grey ? Colours.black : Colours.white;
+
   return (
-    <View style={buttonStyle}>
+    <View style={[buttonStyle, style]}>
       <TouchableOpacity
-        style={Styles.bottomButton}
+        style={[Styles.bottomButton, {...extraStyles}]}
         onPress={onPress}
         disabled={disable}>
-        {!loading && <Text style={Styles.bottomButtonText}>{text}</Text>}
-        {loading && <ActivityIndicator size="large" color={Colours.white} />}
+        {!loading && (
+          <Text style={[Styles.bottomButtonText, {color: textColor}]}>
+            {text}
+          </Text>
+        )}
+        {loading && <ActivityIndicator size="large" color={indicatorColor} />}
       </TouchableOpacity>
     </View>
   );
