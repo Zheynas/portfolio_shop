@@ -4,7 +4,7 @@ import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Entypo';
 import {moderateScale} from 'react-native-size-matters';
 import {connect} from 'react-redux';
-import {ResourcesCollection} from 'redux-and-the-rest';
+import {ResourcesList} from 'redux-and-the-rest';
 import moment from 'moment';
 
 import Routes from '../../routes/Routes';
@@ -23,7 +23,7 @@ interface Props {
   /**
    * Collection of sections
    */
-  shippingCollection: ResourcesCollection<ShippingMethod>;
+  shippingCollection: ResourcesList<ShippingMethod>;
 }
 
 const ShippingSelection = ({shippingCollection: {items}}: Props) => {

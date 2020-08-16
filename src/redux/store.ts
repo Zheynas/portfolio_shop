@@ -1,18 +1,19 @@
-import {createStore, applyMiddleware, compose} from 'redux';
+import {createStore, applyMiddleware, compose, Middleware} from 'redux';
 import Thunk from 'redux-thunk';
 import {createLogger} from 'redux-logger';
+import {configure} from 'redux-and-the-rest';
 import AsyncStorage from '@react-native-community/async-storage';
 import {persistReducer, persistStore} from 'redux-persist';
-import {configure} from 'redux-and-the-rest';
 
-import resources from './resources';
-import deserializeJsonApiData from './deserializeJsonApiData';
+import reducers from './resources';
+import deserializeResponse from './utils/deserializeResponse';
+import serializeRequest from './utils/serializeRequest';
+import setGlobalConfig from './middleware/setGlobalConfig';
 
-const middleWare = [
+const middleWare: Middleware[] = [
   // Middleware to handle asyncronous actions in Redux
   Thunk,
-
-  // Redux-logger to help see the current state of the store in a debugging tool
+  setGlobalConfig,
   createLogger(),
 ];
 
@@ -22,16 +23,21 @@ const persistConfig = {
   whitelist: [],
 };
 
-const persistedReducer = persistReducer(persistConfig, resources);
+const persistedReducer = persistReducer(persistConfig, reducers);
 
 const store = createStore(
   persistedReducer,
-  {
-  },
+  {},
   compose(applyMiddleware(...middleWare)),
 );
 
 const persistor = persistStore(store);
 
-configure({store, responseAdaptor: deserializeJsonApiData});
+configure({
+  store,
+  responseAdaptor: deserializeResponse,
+  requestAdaptor: serializeRequest,
+  contentType: 'application/vnd.api+json',
+});
+
 export {store, persistor};

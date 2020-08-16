@@ -1,21 +1,25 @@
 import {resources} from 'redux-and-the-rest';
-import Jsona from 'jsona';
 
 import {User} from '../../models/user';
 
-const dataFormatter = new Jsona();
 const registrationUrl = 'http://localhost:3000/api/v1/users/registration';
+const url = 'http://localhost:3000/api/v1/users/';
 
 const {
   reducers: userReducer,
-  actionCreators: {createUser},
+  actionCreators: {createItem: createUser, fetchItem: fetchUser},
+  actions: userActions,
 } = resources<User>(
   {
-    url: registrationUrl,
+    url: url,
     name: 'users',
-    requestAdaptor: (user: any) => dataFormatter.serialize({ stuff: user }),
   },
-  ['create', 'show'],
+  {
+    createItem: {
+      url: registrationUrl,
+    },
+    fetchItem: true,
+  },
 );
 
-export {userReducer, createUser};
+export {userReducer, createUser, fetchUser, userActions};

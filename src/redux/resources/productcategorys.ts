@@ -6,14 +6,14 @@ const url = '';
 
 const {
   reducers: productCategoryReducer,
-  getOrFetchCollection: getOrFetchProductCategorys,
+  getOrFetchList: getOrFetchProductCategorys,
   getOrFetchItem: getOrFetchProductCategory,
 } = resources<ProductCategory>(
   {
     url,
     name: 'products',
   },
-  ['index', 'show'],
+  {fetchList: true, show: true, index: true, create: true},
 );
 
 export {

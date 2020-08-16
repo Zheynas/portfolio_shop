@@ -12,7 +12,7 @@ import {connect} from 'react-redux';
 import {
   GenericItemOrCollection,
   ResourcesItem,
-  ResourcesCollection,
+  ResourcesList,
   FETCHING,
 } from 'redux-and-the-rest';
 import _ from 'lodash';
@@ -48,7 +48,7 @@ interface Props {
   /**
    * Collection of products for current category
    */
-  productsCollection: ResourcesCollection<Product>;
+  productsCollection: ResourcesList<Product>;
 }
 
 const ProductListScreen = ({

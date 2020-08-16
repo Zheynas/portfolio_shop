@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {connect} from 'react-redux';
-import {ResourcesCollection} from 'redux-and-the-rest';
+import {ResourcesList} from 'redux-and-the-rest';
 import {moderateScale} from 'react-native-size-matters';
 import Icon from 'react-native-vector-icons/EvilIcons';
 
@@ -25,7 +25,7 @@ interface Props {
   /**
    * Collection of products for current category
    */
-  productsCollection: ResourcesCollection<Product>;
+  productsCollection: ResourcesList<Product>;
 }
 
 const CartScreen = ({

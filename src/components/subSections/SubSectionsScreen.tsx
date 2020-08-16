@@ -11,7 +11,7 @@ import {useNavigation, RouteProp} from '@react-navigation/native';
 import {
   GenericItemOrCollection,
   ResourcesItem,
-  ResourcesCollection,
+  ResourcesList,
   FETCHING,
 } from 'redux-and-the-rest';
 import {connect} from 'react-redux';
@@ -42,7 +42,7 @@ interface Props {
   /**
    * Collection of sub sections
    */
-  subSectionsCollection: ResourcesCollection<SubSection>;
+  subSectionsCollection: ResourcesList<SubSection>;
   /**
    * Current section
    */

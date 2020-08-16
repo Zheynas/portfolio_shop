@@ -10,7 +10,7 @@ import {
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import {moderateScale} from 'react-native-size-matters';
-import {ResourcesCollection, FETCHING, ERROR} from 'redux-and-the-rest';
+import {ResourcesList, FETCHING} from 'redux-and-the-rest';
 import {connect} from 'react-redux';
 
 import Routes from '../../routes/Routes';
@@ -25,7 +25,7 @@ interface Props {
   /**
    * Collection of sections
    */
-  sectionsCollection: ResourcesCollection<Section>;
+  sectionsCollection: ResourcesList<Section>;
 }
 
 /**
