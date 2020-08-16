@@ -5,7 +5,7 @@ import {moderateScale} from 'react-native-size-matters';
 
 import Styles from './styles/ConfirmButtonStyles';
 import {Colours, Fonts} from '../../styles/Themes';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
 
 interface Props {
   /**
@@ -20,13 +20,22 @@ interface Props {
    * Route to navigate to
    */
   route: string;
+  /**
+   * Show state
+   */
+  show: boolean;
 }
 
 /**
  * Menu button
  */
-const MenuButton = ({text, icon,route}: Props) =>{
+const MenuButton = ({text, icon, route, show}: Props) => {
   const {navigate} = useNavigation();
+
+  if (!show) {
+    return null;
+  }
+
   return (
     <TouchableOpacity
       style={{
@@ -38,16 +47,19 @@ const MenuButton = ({text, icon,route}: Props) =>{
       }}
       onPress={() => {
         navigate(route);
-      }}
-      >
+      }}>
       <Icon name={icon} size={moderateScale(35)} color={Colours.grey} />
       <View style={{flex: 1, paddingLeft: moderateScale(10)}}>
         <Text style={{fontFamily: Fonts.regular}}>{text}</Text>
       </View>
-  
-      <Icon name="chevron-right" size={moderateScale(35)} color={Colours.grey} />
+
+      <Icon
+        name="chevron-right"
+        size={moderateScale(35)}
+        color={Colours.grey}
+      />
     </TouchableOpacity>
-  )
-} 
+  );
+};
 
 export default MenuButton;

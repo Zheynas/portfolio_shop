@@ -20,7 +20,7 @@ const MenuStyles: MenuStyle = {
     flexDirection: 'column',
   },
   avatarContainer: {
-    height: moderateScale(280),
+    height: moderateScale(180),
     justifyContent: 'center',
     alignItems: 'center',
   },
