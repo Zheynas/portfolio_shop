@@ -1,25 +1,27 @@
-import {resources} from 'redux-and-the-rest';
+import {resource} from 'redux-and-the-rest';
 
 import {User} from '../../models/user';
 
-const registrationUrl = 'http://localhost:3000/api/v1/users/registration';
-const url = 'http://localhost:3000/api/v1/users/';
-
 const {
   reducers: userReducer,
-  actionCreators: {createItem: createUser, fetchItem: fetchUser},
+  actionCreators: {
+    createItem: createUser,
+    destroyItem: destroyUser,
+    fetchItem: fetchUser,
+  },
   actions: userActions,
-} = resources<User>(
+  getItem: getUser,
+} = resource<User>(
   {
-    url: url,
+    url: 'http://localhost:3000/api/v1/users/session',
     name: 'users',
   },
   {
-    createItem: {
-      url: registrationUrl,
-    },
+    createItem: true,
     fetchItem: true,
+    fetch: true,
+    destroyItem: true,
   },
 );
 
-export {userReducer, createUser, fetchUser, userActions};
+export {userReducer, createUser, fetchUser, userActions, getUser, destroyUser};

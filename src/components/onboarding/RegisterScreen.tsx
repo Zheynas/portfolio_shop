@@ -15,7 +15,6 @@ import Styles from './RegisterStyle';
 import TextField from '../shared/TextField';
 import BottomButton from '../shared/BottomButton';
 import {ThunkDispatch} from 'redux-thunk';
-
 import {createUser} from '../../redux/resources/user';
 
 const TEMP_QUESTION_ID = '0';
@@ -90,13 +89,15 @@ const mapDispatchToProps = (
     lastName: string,
   ) => {
     dispatch(
-      createUser(TEMP_QUESTION_ID, {
-        email,
-        password,
-        firstName,
-        lastName,
-        type: 'user',
-      }),
+      createUser(
+        {
+          email,
+          password,
+          firstName,
+          lastName,
+          type: 'user',
+        },
+      ),
     );
   },
 });

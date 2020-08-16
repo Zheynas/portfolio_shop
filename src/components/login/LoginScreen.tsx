@@ -1,21 +1,29 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  SafeAreaView,
-  ScrollView,
-} from 'react-native';
+import {View, Text, SafeAreaView, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
+import {ThunkDispatch} from 'redux-thunk';
+import {AnyAction} from 'redux';
+import {connect} from 'react-redux';
 
 import Routes from '../../routes/Routes';
 import Styles from './LoginStyle';
 import TextField from '../shared/TextField';
 import BottomButton from '../shared/BottomButton';
+import {createUser} from '../../redux/resources/user';
 
-const LoginScreen = () => {
-  const {navigate} = useNavigation();
+interface Props {
+  login: (email: string, password: string) => void;
+}
+
+const LoginScreen = ({login}: Props) => {
+  const {goBack} = useNavigation();
   const [email, setEmail] = React.useState('sasdf@adsfs.com');
   const [password, setPassword] = React.useState('Passw1');
+
+  const onPress = () => {
+    login(email, password);
+    goBack();
+  };
 
   return (
     <SafeAreaView style={Styles.flexContainer}>
@@ -31,15 +39,24 @@ const LoginScreen = () => {
             />
           </View>
         </ScrollView>
-        <BottomButton
-          text="LOGIN"
-          onPress={() => {
-            navigate(Routes.HOME);
-          }}
-        />
+        <BottomButton text="LOGIN" onPress={onPress} />
       </View>
     </SafeAreaView>
   );
 };
 
-export default LoginScreen;
+const mapDispatchToProps = (
+  dispatch: ThunkDispatch<void, unknown, AnyAction>,
+) => ({
+  login: (email: string, password: string) => {
+    dispatch(
+      createUser({
+        email,
+        password,
+        type: 'user',
+      }),
+    );
+  },
+});
+
+export default connect(null, mapDispatchToProps)(LoginScreen);
