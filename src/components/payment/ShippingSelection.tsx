@@ -13,7 +13,7 @@ import BottomButton from '../shared/BottomButton';
 import TextField from '../shared/TextField';
 import {Colours, Fonts, FontSize} from '../../styles/Themes';
 import CheckoutNavBar from '../checkout/CheckoutNavBar';
-import PaymentButton from './PaymentButton';
+import DetailsButton from './DetailsButton';
 import CheckoutNav from '../../util/enums/CheckoutNav';
 import {ApplicationState} from '../../redux/types';
 import {getOrFetchShippingMethods} from '../../redux/resources/shippingMethods';
@@ -46,7 +46,7 @@ const ShippingSelection = ({shippingCollection: {items}}: Props) => {
             {items.map(({values}) => {
               const {id} = values;
               return (
-                <PaymentButton
+                <DetailsButton
                   text={generateTextForMethod(values)}
                   key={id}
                   onPress={goBack}

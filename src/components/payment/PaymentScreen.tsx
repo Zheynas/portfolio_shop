@@ -11,7 +11,7 @@ import BottomButton from '../shared/BottomButton';
 import TextField from '../shared/TextField';
 import {Colours, Fonts, FontSize} from '../../styles/Themes';
 import CheckoutNavBar from '../checkout/CheckoutNavBar';
-import PaymentButton from './PaymentButton';
+import DetailsButton from './DetailsButton';
 import CheckoutNav from '../../util/enums/CheckoutNav';
 import { ApplicationState } from '../../redux/types';
 import {getOrFetchShippingMethods} from '../../redux/resources/shippingMethods'
@@ -37,8 +37,8 @@ const PaymentScreen = () => {
               }}>
               Complete your order
             </Text>
-            <PaymentButton text={["Robert smith", "23 Nene close", "LS83DS", "2348383472"]}/>
-            <PaymentButton text={["Standard Delivery", "Saturday 27 - Tuesday 30", "Cost: $10"]} onPress={()=>{navigate(Routes.SHIPPING)}}/> 
+            <DetailsButton text={["Robert smith", "23 Nene close", "LS83DS", "2348383472"]}/>
+            <DetailsButton text={["Standard Delivery", "Saturday 27 - Tuesday 30", "Cost: $10"]} onPress={()=>{navigate(Routes.SHIPPING)}}/> 
             <Text
               style={{
                 color: Colours.black,
@@ -48,7 +48,7 @@ const PaymentScreen = () => {
               }}>
               Payment Method
             </Text>
-            <PaymentButton text={["Robert smith", "23 Nene close"]}/>
+            <DetailsButton text={["Robert smith", "23 Nene close"]} onPress={()=>{navigate(Routes.PAYMENT_SELECTION)}}/> 
           </ScrollView>
           <View
             style={{

@@ -21,7 +21,7 @@ interface Props {
    */
   text: string[];
 }
-const PaymentButton = ({onPress, text}: Props) => {
+const DetailsButton = ({onPress, text}: Props) => {
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -71,4 +71,4 @@ function renderText(textToDisplay: string[]) {
   );
 }
 
-export default PaymentButton;
+export default DetailsButton;
