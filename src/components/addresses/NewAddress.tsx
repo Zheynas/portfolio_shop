@@ -1,46 +1,73 @@
 import React from 'react';
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+// Navigation
 import {useNavigation} from '@react-navigation/native';
+// Redux
 import {ThunkDispatch} from 'redux-thunk';
 import {AnyAction} from 'redux';
 import {connect} from 'react-redux';
 
-import Routes from '../../routes/Routes';
-import Styles from './CredentialsStyle';
-import TextField from '../shared/TextField';
-import BottomButton from '../shared/BottomButton';
-import {createUser} from '../../redux/resources/user';
-import AddressForm from './AddressForm';
-import {ShippingAddress} from '../../models/shippingAddress';
+// Redux
 import {createAddress} from '../../redux/resources/shippingAddresses';
+// Util
+import FormItem from '../../util/enums/FormItem';
+import {ShippingAddress} from '../../models/shippingAddress';
+// Components
+import FormScreen from '../shared/form/FormScreen';
 
 interface Props {
+  /**
+   * Save address API call
+   * @param {ShippingAddress} address -> New address info to save
+   * @returns void
+   */
   saveAddress: (address: ShippingAddress) => void;
 }
 
+/**
+ * Create a new shipping address screen
+ */
 const NewAddress = ({saveAddress}: Props) => {
+  /**
+   * Navigation
+   */
   const {goBack} = useNavigation();
+
+  /**
+   * State
+   */
   const [name, setName] = React.useState('');
   const [houseNumber, setHouseNumber] = React.useState('');
   const [lineOne, setLineOne] = React.useState('');
   const [postCode, setPostCode] = React.useState('');
   const [phoneNumber, setPhoneNumber] = React.useState('');
 
-  const onPress = () => {
+  /**
+   * Address values
+   */
+  const addressIsLoading = false; // TODO: loading and errors
+
+  /**
+   * Create shipping address
+   */
+  const onCreatePress = () => {
     const newAddress: ShippingAddress = {
+      id: '',
       label: name,
       houseNumber,
       lineOne,
       postCode,
       phoneNumber,
-      type: 'shipping_address',
     };
 
     saveAddress(newAddress);
+    // TODO: validation and error handling
     goBack();
   };
 
-  const fields = [
+  /**
+   * Fields for form screen
+   */
+  const formFields: FormItem[] = [
     {
       label: 'Name',
       value: name,
@@ -67,12 +94,14 @@ const NewAddress = ({saveAddress}: Props) => {
       setValue: setPhoneNumber,
     },
   ];
+
   return (
-    <AddressForm
-      header="New address"
-      fields={fields}
+    <FormScreen
+      header="New Shipping Address"
+      fields={formFields}
       buttonText="SAVE CHANGE"
-      buttonOnPress={onPress}
+      buttonOnPress={onCreatePress}
+      loading={addressIsLoading}
     />
   );
 };
@@ -85,6 +114,7 @@ const mapDispatchToProps = (
     dispatch(
       createAddress({
         ...address,
+        type: 'shipping_address',
       }),
     );
   },

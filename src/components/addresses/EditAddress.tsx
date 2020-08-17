@@ -1,47 +1,93 @@
 import React from 'react';
+// Navigation
 import {useNavigation, RouteProp} from '@react-navigation/native';
+// Redux
+import {
+  isSyncingWithRemote,
+  ResourcesItem,
+  ResourcesReduxState,
+} from 'redux-and-the-rest';
 import {ThunkDispatch} from 'redux-thunk';
 import {AnyAction} from 'redux';
 import {connect} from 'react-redux';
-import {ResourcesItem} from 'redux-and-the-rest';
 
+// Navigation
 import {NavigationParamList} from 'NavigationTypes';
 import Routes from '../../routes/Routes';
-import AddressForm from './AddressForm';
+// Redux
 import {
   getAddress,
   updateAddress,
   destroyAddress,
 } from '../../redux/resources/shippingAddresses';
 import {ApplicationState} from '../../redux/types';
+// Util
+import FormItem from '../../util/enums/FormItem';
 import {ShippingAddress} from '../../models/shippingAddress';
+// Components
+import FormScreen from '../shared/form/FormScreen';
 
+/**
+ * Adds typing to route.params for the correct route
+ */
 type EditAddressRouteProps = RouteProp<
   NavigationParamList,
   Routes.EDIT_ADDRESS
 >;
 
 interface Props {
+  /**
+   * Save address API call
+   * @param {ShippingAddress} address -> New address info to save
+   * @returns void
+   */
   saveAddress: (address: ShippingAddress) => void;
+  /**
+   * Address we are editing
+   */
   addressItem: ResourcesItem<ShippingAddress>;
-  deleteAddress: (id?: string) => void;
+  /**
+   * Delete address API call
+   * @param {string} id -> Id of the address to delete
+   * @returns void
+   */
+  deleteAddress: (id: string) => void;
+  /**
+   * The react-navigation route containing passed parameters
+   */
+  route: EditAddressRouteProps;
 }
 
-const EditAddress = ({
-  saveAddress,
-  deleteAddress,
-  addressItem: {
-    values: {id, label, houseNumber, lineOne, postCode, phoneNumber},
-  },
-}: Props) => {
+/**
+ * Edit shipping address screen
+ */
+const EditAddress = ({saveAddress, deleteAddress, addressItem}: Props) => {
+  /**
+   * Navigation
+   */
   const {goBack} = useNavigation();
+
+  /**
+   * Address values
+   */
+  const {
+    values: {id, label, houseNumber, lineOne, postCode, phoneNumber},
+  } = addressItem;
+  const addressIsLoading = isSyncingWithRemote(addressItem);
+
+  /**
+   * State with initial values from selected address
+   */
   const [name, setName] = React.useState(label);
   const [houseNum, setHouseNumber] = React.useState(houseNumber);
   const [addressLineOne, setLineOne] = React.useState(lineOne);
   const [postcode, setPostCode] = React.useState(postCode);
   const [phoneNum, setPhoneNumber] = React.useState(phoneNumber);
 
-  const onPress = () => {
+  /**
+   * Save changes onPress
+   */
+  const onSavePress = () => {
     const newAddress: ShippingAddress = {
       id,
       label: name,
@@ -49,19 +95,26 @@ const EditAddress = ({
       lineOne,
       postCode,
       phoneNumber,
-      type: 'shipping_address',
     };
 
     saveAddress(newAddress);
+    // TODO: validation and error handling
     goBack();
   };
 
+  /**
+   * Delete button onPress
+   */
   const onDeletePress = () => {
     deleteAddress(id);
+    // TODO: error handling
     goBack();
   };
 
-  const fields = [
+  /**
+   * Fields for form screen
+   */
+  const formFields: FormItem[] = [
     {
       label: 'Name',
       value: name,
@@ -88,47 +141,83 @@ const EditAddress = ({
       setValue: setPhoneNumber,
     },
   ];
+
   return (
-    <AddressForm
-      header="Edit address"
-      fields={fields}
+    <FormScreen
+      header="Edit Shipping Address"
+      fields={formFields}
       buttonText="SAVE CHANGE"
-      buttonOnPress={onPress}
+      buttonOnPress={onSavePress}
       bottomButtonText="DELETE"
       bottomButtonOnPress={onDeletePress}
+      loading={addressIsLoading}
     />
   );
 };
 
-const mapStateToProps = (
-  {shippingAddresses}: ApplicationState,
-  {
-    route: {
-      params: {id},
-    },
-  }: EditAddressRouteProps,
-) => ({
-  addressItem: getAddress(shippingAddresses, {id}),
+interface StateProps {
+  /**
+   * User's shipping addresses
+   */
+  shippingAddresses: ResourcesReduxState<ShippingAddress>;
+}
+
+interface DispatchProps {
+  /**
+   * Delete address API call
+   * @param {string} id -> Id of the address to delete
+   * @returns void
+   */
+  deleteShippingAddress: (id: string) => void;
+  /**
+   * Save address API call
+   * @param {ShippingAddress} address -> New address info to save
+   * @returns void
+   */
+  saveShippingAddress: (address: ShippingAddress) => void;
+}
+
+const mapStateToProps = ({shippingAddresses}: ApplicationState) => ({
+  shippingAddresses,
 });
 
 const mapDispatchToProps = (
   dispatch: ThunkDispatch<void, unknown, AnyAction>,
 ) => ({
-  saveAddress: (address: ShippingAddress) => {
+  saveShippingAddress: (address: ShippingAddress) => {
     //TODO: add addresses to list straight away
     dispatch(
       updateAddress(
         {id: address.id},
         {
           ...address,
+          type: 'shipping_address',
         },
       ),
     );
   },
-  deleteAddress: (id?: string) => {
+  deleteShippingAddress: (id: string) => {
     //TODO: remove address from list straight away
     dispatch(destroyAddress({id}));
   },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditAddress);
+const mergeProps = (
+  stateProps: StateProps,
+  dispatchProps: DispatchProps,
+  ownProps: Props,
+) => ({
+  ...ownProps,
+  addressItem: getAddress(stateProps.shippingAddresses, {
+    id: ownProps.route.params.id,
+  }),
+  saveAddress: (address: ShippingAddress) =>
+    dispatchProps.saveShippingAddress(address),
+  deleteAddress: (id: string) => dispatchProps.deleteShippingAddress(id),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  mergeProps,
+)(EditAddress);
