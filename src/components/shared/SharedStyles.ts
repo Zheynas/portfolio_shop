@@ -4,6 +4,7 @@ import {moderateScale} from 'react-native-size-matters';
 import {FontSize, Fonts, Colours, Measurements} from '../../styles/Themes';
 
 export interface SharedStyle {
+  appContainer: ViewStyle;
   flexColumn: ViewStyle;
   shopHeaderContainer: ViewStyle;
   shopHeaderText: TextStyle;
@@ -29,6 +30,10 @@ const headerText: TextStyle = {
 };
 
 const SharedStyles: SharedStyle = {
+  appContainer: {
+    flex: 1,
+    backgroundColor: Colours.backgroundLight,
+  },
   flexColumn: {
     flex: 1,
     flexDirection: 'column',

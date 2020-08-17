@@ -4,7 +4,6 @@ import {
   Text,
   TouchableOpacity,
   ScrollView,
-  SafeAreaView,
   ActivityIndicator,
 } from 'react-native';
 import {useNavigation} from '@react-navigation/native';
@@ -50,23 +49,21 @@ const SectionScreen = ({
 
   return (
     <View style={Styles.flexColumn}>
-      <SafeAreaView style={Styles.flexColumn}>
-        <View style={Styles.sectionHeader}>
-          <Text style={Styles.sectionHeaderText}>FASHION</Text>
-          <TouchableOpacity
-            style={Styles.profileButton}
-            onPress={() => {
-              navigate(Routes.MENU);
-            }}>
-            <Icon name="user" size={moderateScale(50)} color={Colours.grey} />
-          </TouchableOpacity>
-        </View>
-        <ScrollView style={Styles.flexColumn}>
-          {sections.map(({values: {id, bannerUrl, title}}) => (
-            <SectionButton text={title} key={id} id={id} image={bannerUrl} />
-          ))}
-        </ScrollView>
-      </SafeAreaView>
+      <View style={Styles.sectionHeader}>
+        <Text style={Styles.sectionHeaderText}>FASHION</Text>
+        <TouchableOpacity
+          style={Styles.profileButton}
+          onPress={() => {
+            navigate(Routes.MENU);
+          }}>
+          <Icon name="user" size={moderateScale(50)} color={Colours.grey} />
+        </TouchableOpacity>
+      </View>
+      <ScrollView style={Styles.flexColumn}>
+        {sections.map(({values: {id, bannerUrl, title}}) => (
+          <SectionButton text={title} key={id} id={id} image={bannerUrl} />
+        ))}
+      </ScrollView>
     </View>
   );
 };

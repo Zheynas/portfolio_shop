@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
 
 import TextField from '../TextField';
 import BottomButton from '../BottomButton';
@@ -70,30 +70,28 @@ const FormScreen = ({
   };
 
   return (
-    <SafeAreaView style={SharedStyles.flexContainer}>
-      <View style={SharedStyles.container}>
-        <ScrollView style={SharedStyles.flexContainer}>
-          <Text style={SharedStyles.headerText}>{header}</Text>
-          <View>
-            {fields.map(({label, value, setValue, password}: FormItem) => (
-              <TextField
-                label={label}
-                value={value}
-                setValue={setValue}
-                key={label}
-                secureTextEntry={password}
-              />
-            ))}
-          </View>
-        </ScrollView>
-        <BottomButton
-          text={buttonText}
-          onPress={buttonOnPress}
-          loading={loading}
-        />
-        {renderBottomButton()}
-      </View>
-    </SafeAreaView>
+    <View style={SharedStyles.container}>
+      <Text style={SharedStyles.headerText}>{header}</Text>
+      <ScrollView style={SharedStyles.flexContainer}>
+        <View>
+          {fields.map(({label, value, setValue, password}: FormItem) => (
+            <TextField
+              label={label}
+              value={value}
+              setValue={setValue}
+              key={label}
+              secureTextEntry={password}
+            />
+          ))}
+        </View>
+      </ScrollView>
+      <BottomButton
+        text={buttonText}
+        onPress={buttonOnPress}
+        loading={loading}
+      />
+      {renderBottomButton()}
+    </View>
   );
 };
 

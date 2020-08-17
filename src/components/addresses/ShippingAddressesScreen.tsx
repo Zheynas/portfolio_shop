@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  ScrollView,
-  SafeAreaView,
-  ActivityIndicator,
-} from 'react-native';
+import {View, Text, ScrollView, ActivityIndicator} from 'react-native';
 // Navigation
 import {useNavigation} from '@react-navigation/native';
 // Redux
@@ -87,22 +81,20 @@ const ShippingAddressesScreen = ({userAddressList}: Props) => {
   };
 
   return (
-    <SafeAreaView style={SharedStyles.flexContainer}>
-      <View style={SharedStyles.container}>
-        <Text style={SharedStyles.headerText}>Address Book</Text>
+    <View style={SharedStyles.container}>
+      <Text style={SharedStyles.headerText}>Address Book</Text>
 
-        {renderAddresses()}
+      {renderAddresses()}
 
-        <BottomButton
-          text="Add Shipping Address"
-          grey
-          onPress={() => {
-            navigate(Routes.NEW_ADDRESS);
-          }}
-          style={SharedStyles.standardTopMargin}
-        />
-      </View>
-    </SafeAreaView>
+      <BottomButton
+        text="Add Shipping Address"
+        grey
+        onPress={() => {
+          navigate(Routes.NEW_ADDRESS);
+        }}
+        style={SharedStyles.standardTopMargin}
+      />
+    </View>
   );
 };
 

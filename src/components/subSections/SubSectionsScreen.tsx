@@ -4,7 +4,6 @@ import {
   ScrollView,
   Text,
   TouchableOpacity,
-  SafeAreaView,
   ActivityIndicator,
 } from 'react-native';
 import {useNavigation, RouteProp} from '@react-navigation/native';
@@ -71,36 +70,30 @@ const SubSectionsScreen = ({
   }
 
   return (
-    <SafeAreaView style={Styles.flexContainer}>
-      <View style={Styles.container}>
-        <CategoryButton image={bannerUrl} disabled light />
-        <ScrollView style={Styles.flexContainer}>
-          {subSections.map(
-            ({values: {title, categories, id: subSectionId}}) => (
-              <View
-                style={Styles.categoryScrollContainer}
-                key={`sect-${subSectionId}`}>
-                <Text style={Styles.headerText}>{title}</Text>
-                {categories.map(({id, title: catTitle}) => (
-                  <TouchableOpacity
-                    key={`cat-${id}`}
-                    style={Styles.centerContainer}
-                    onPress={() => {
-                      navigate(Routes.PRODUCT_LIST, {id: id, title: catTitle});
-                    }}>
-                    <Text
-                      style={Styles.categoryText}
-                      key={`${subSectionId}-${id}`}>
-                      {catTitle}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
-              </View>
-            ),
-          )}
-        </ScrollView>
-      </View>
-    </SafeAreaView>
+    <View style={Styles.container}>
+      <CategoryButton image={bannerUrl} disabled light />
+      <ScrollView style={Styles.flexContainer}>
+        {subSections.map(({values: {title, categories, id: subSectionId}}) => (
+          <View
+            style={Styles.categoryScrollContainer}
+            key={`sect-${subSectionId}`}>
+            <Text style={Styles.headerText}>{title}</Text>
+            {categories.map(({id, title: catTitle}) => (
+              <TouchableOpacity
+                key={`cat-${id}`}
+                style={Styles.centerContainer}
+                onPress={() => {
+                  navigate(Routes.PRODUCT_LIST, {id: id, title: catTitle});
+                }}>
+                <Text style={Styles.categoryText} key={`${subSectionId}-${id}`}>
+                  {catTitle}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        ))}
+      </ScrollView>
+    </View>
   );
 };
 

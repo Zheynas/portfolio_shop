@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  View,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  SafeAreaView,
-} from 'react-native';
+import {View, ScrollView, Text, TouchableOpacity} from 'react-native';
 import {useNavigation, RouteProp} from '@react-navigation/native';
 import {GenericItemOrCollection, ResourcesItem} from 'redux-and-the-rest';
 import {connect} from 'react-redux';
@@ -43,31 +37,29 @@ const ShopScreen = ({
   const {navigate} = useNavigation();
 
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <View style={Styles.container}>
-        <CategoryButton imagePath={imagePath} disabled />
-        <ScrollView style={Styles.flexContainer}>
-          {subcategories.map(({header, categories, id: subcategoryId}) => (
-            <View style={Styles.categoryScrollContainer}>
-              <Text style={Styles.headerText}>{header}</Text>
-              {categories.map(({id, title}) => (
-                <TouchableOpacity
-                  style={Styles.centerContainer}
-                  onPress={() => {
-                    navigate(Routes.PRODUCT_LIST, {categoryId: id});
-                  }}>
-                  <Text
-                    style={Styles.categoryText}
-                    key={`${subcategoryId}-${id}`}>
-                    {title}
-                  </Text>
-                </TouchableOpacity>
-              ))}
-            </View>
-          ))}
-        </ScrollView>
-      </View>
-    </SafeAreaView>
+    <View style={Styles.container}>
+      <CategoryButton imagePath={imagePath} disabled />
+      <ScrollView style={Styles.flexContainer}>
+        {subcategories.map(({header, categories, id: subcategoryId}) => (
+          <View style={Styles.categoryScrollContainer}>
+            <Text style={Styles.headerText}>{header}</Text>
+            {categories.map(({id, title}) => (
+              <TouchableOpacity
+                style={Styles.centerContainer}
+                onPress={() => {
+                  navigate(Routes.PRODUCT_LIST, {categoryId: id});
+                }}>
+                <Text
+                  style={Styles.categoryText}
+                  key={`${subcategoryId}-${id}`}>
+                  {title}
+                </Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        ))}
+      </ScrollView>
+    </View>
   );
 };
 

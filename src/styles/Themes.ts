@@ -12,7 +12,8 @@ const Colours = {
   grey: '#a9a9a9',
   white: '#fff',
   black: '#000',
-  coral: '#ff8181'
+  coral: '#ff8181',
+  backgroundLight: '#f2f2f2',
 };
 
 /**

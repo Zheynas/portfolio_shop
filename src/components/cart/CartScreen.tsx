@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  SafeAreaView,
-  FlatList,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, FlatList, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {connect} from 'react-redux';
 import {ResourcesList} from 'redux-and-the-rest';
@@ -97,7 +91,7 @@ const CartScreen = ({
   };
 
   return (
-    <SafeAreaView style={Styles.flexContainer}>
+    <>
       {renderIcon()}
       <View style={Styles.container}>
         {renderContent()}
@@ -108,7 +102,7 @@ const CartScreen = ({
           }}
         />
       </View>
-    </SafeAreaView>
+    </>
   );
 };
 

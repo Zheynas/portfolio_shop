@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, SafeAreaView} from 'react-native';
+import {View, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {ResourcesItem, ResourcesList} from 'redux-and-the-rest';
 import {connect} from 'react-redux';
@@ -16,7 +16,7 @@ import DetailsButton from '../payment/DetailsButton';
 import BottomButton from '../shared/BottomButton';
 import {Colours} from '../../styles/Themes';
 import {getOrFetchAddresses} from '../../redux/resources/shippingAddresses';
-import { ShippingAddress } from '../../models/shippingAddress';
+import {ShippingAddress} from '../../models/shippingAddress';
 
 interface Props {
   // Current user in state
@@ -24,7 +24,7 @@ interface Props {
   addresses: ResourcesList<ShippingAddress>;
 }
 
-const ProfileScreen = ({addresses,currentUserItem: {values: user}}: Props) => {
+const ProfileScreen = ({addresses, currentUserItem: {values: user}}: Props) => {
   const {navigate} = useNavigation();
   console.log('addresses', addresses);
   const loggedIn = Boolean(user && user.authenticationToken);
@@ -33,49 +33,47 @@ const ProfileScreen = ({addresses,currentUserItem: {values: user}}: Props) => {
     : 'Welcome!';
 
   return (
-    <SafeAreaView style={Styles.flexContainer}>
-      <View style={Styles.container}>
-        <Text style={Styles.loginHeader}>Personal Information</Text>
-        <Text>{headerName}</Text>
-        <Text>Preferred shipping address</Text>
-        <DetailsButton
-          text={['Robert smith', '23 Nene close', 'LS83DS', '2348383472']}
+    <View style={Styles.container}>
+      <Text style={Styles.loginHeader}>Personal Information</Text>
+      <Text>{headerName}</Text>
+      <Text>Preferred shipping address</Text>
+      <DetailsButton
+        text={['Robert smith', '23 Nene close', 'LS83DS', '2348383472']}
+        onPress={() => {
+          navigate(Routes.SHIPPING_ADDRESSES);
+        }}
+      />
+      <View
+        style={{
+          flex: 1,
+          flexDirection: 'column',
+          justifyContent: 'flex-end',
+        }}>
+        <BottomButton
+          text="Shipping Addresses"
+          grey
           onPress={() => {
             navigate(Routes.SHIPPING_ADDRESSES);
           }}
         />
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'column',
-            justifyContent: 'flex-end',
-          }}>
-            <BottomButton
-            text="Shipping Addresses"
-            grey
-            onPress={() => {
-              navigate(Routes.SHIPPING_ADDRESSES);
-            }}
-          />
-          <BottomButton
-            text="Change Password"
-            grey
-            style={{marginTop: moderateScale(20)}}
-            onPress={() => {
-              navigate(Routes.CHANGE_PASSWORD);
-            }}
-          />
-          <BottomButton
-            text="Change Email"
-            grey
-            style={{marginTop: moderateScale(20)}}
-            onPress={() => {
-              navigate(Routes.CHANGE_EMAIL);
-            }}
-          />
-        </View>
+        <BottomButton
+          text="Change Password"
+          grey
+          style={{marginTop: moderateScale(20)}}
+          onPress={() => {
+            navigate(Routes.CHANGE_PASSWORD);
+          }}
+        />
+        <BottomButton
+          text="Change Email"
+          grey
+          style={{marginTop: moderateScale(20)}}
+          onPress={() => {
+            navigate(Routes.CHANGE_EMAIL);
+          }}
+        />
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 

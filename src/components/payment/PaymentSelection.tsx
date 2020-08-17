@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+import {View, Text, ScrollView} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {moderateScale} from 'react-native-size-matters';
 import {connect} from 'react-redux';
@@ -24,27 +24,37 @@ const PaymentSelection = () => {
   const {goBack} = useNavigation();
 
   return (
-    <SafeAreaView style={Styles.flexContainer}>
-      <View style={Styles.container}>
-        <CheckoutNavBar currentScreen={CheckoutNav.PAYMENT} />
-        <View style={{flex: 1, padding: moderateScale(20)}}>
-          <ScrollView style={{flex: 1}}>
-            <Text
-              style={{
-                color: Colours.black,
-                fontFamily: Fonts.bold,
-                fontSize: FontSize.question,
-              }}>
-              Choose Payment Methods
-            </Text>
-            <PaymentButton text="Apple Pay" image={Image.APPLE_PAY} onPress={goBack}/>
-            <PaymentButton text="Visa" image={Image.VISA} onPress={goBack}/>
-            <PaymentButton text="MasterCard" image={Image.MASTERCARD} onPress={goBack}/>
-            <PaymentButton text="Google Pay" image={Image.GOOGLE_PAY} onPress={goBack}/>
-          </ScrollView>
-        </View>
+    <View style={Styles.container}>
+      <CheckoutNavBar currentScreen={CheckoutNav.PAYMENT} />
+      <View style={{flex: 1, padding: moderateScale(20)}}>
+        <ScrollView style={{flex: 1}}>
+          <Text
+            style={{
+              color: Colours.black,
+              fontFamily: Fonts.bold,
+              fontSize: FontSize.question,
+            }}>
+            Choose Payment Methods
+          </Text>
+          <PaymentButton
+            text="Apple Pay"
+            image={Image.APPLE_PAY}
+            onPress={goBack}
+          />
+          <PaymentButton text="Visa" image={Image.VISA} onPress={goBack} />
+          <PaymentButton
+            text="MasterCard"
+            image={Image.MASTERCARD}
+            onPress={goBack}
+          />
+          <PaymentButton
+            text="Google Pay"
+            image={Image.GOOGLE_PAY}
+            onPress={goBack}
+          />
+        </ScrollView>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 

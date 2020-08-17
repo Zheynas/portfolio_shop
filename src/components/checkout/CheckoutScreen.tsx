@@ -19,39 +19,33 @@ const CheckoutScreen = () => {
   const [postcode, setPostcode] = React.useState('');
 
   return (
-    <SafeAreaView style={Styles.flexContainer}>
-      <View style={Styles.container}>
-        <CheckoutNavBar currentScreen={CheckoutNav.CHECKOUT}/>
-        <View style={Styles.scrollContainer}>
-          <ScrollView style={Styles.flexContainer}>
-            <View>
-              <TextField label="Name" value={name} setValue={setName} />
-              <TextField
-                label="Phone Number"
-                value={number}
-                setValue={setNumber}
-              />
-              <TextField
-                label="Address"
-                value={address}
-                setValue={setAddress}
-              />
-              <TextField
-                label="Postcode"
-                value={postcode}
-                setValue={setPostcode}
-              />
-            </View>
-          </ScrollView>
-        </View>
-        <BottomButton
-          text="PAYMENT"
-          onPress={() => {
-            navigate(Routes.PAYMENT);
-          }}
-        />
+    <View style={Styles.container}>
+      <CheckoutNavBar currentScreen={CheckoutNav.CHECKOUT} />
+      <View style={Styles.scrollContainer}>
+        <ScrollView style={Styles.flexContainer}>
+          <View>
+            <TextField label="Name" value={name} setValue={setName} />
+            <TextField
+              label="Phone Number"
+              value={number}
+              setValue={setNumber}
+            />
+            <TextField label="Address" value={address} setValue={setAddress} />
+            <TextField
+              label="Postcode"
+              value={postcode}
+              setValue={setPostcode}
+            />
+          </View>
+        </ScrollView>
       </View>
-    </SafeAreaView>
+      <BottomButton
+        text="PAYMENT"
+        onPress={() => {
+          navigate(Routes.PAYMENT);
+        }}
+      />
+    </View>
   );
 };
 
