@@ -52,7 +52,6 @@ const ProfileScreen = ({addresses,currentUserItem: {values: user}}: Props) => {
           }}>
             <BottomButton
             text="Shipping Addresses"
-            positionIsNotAbsolute
             grey
             onPress={() => {
               navigate(Routes.SHIPPING_ADDRESSES);
@@ -60,7 +59,6 @@ const ProfileScreen = ({addresses,currentUserItem: {values: user}}: Props) => {
           />
           <BottomButton
             text="Change Password"
-            positionIsNotAbsolute
             grey
             style={{marginTop: moderateScale(20)}}
             onPress={() => {
@@ -69,7 +67,6 @@ const ProfileScreen = ({addresses,currentUserItem: {values: user}}: Props) => {
           />
           <BottomButton
             text="Change Email"
-            positionIsNotAbsolute
             grey
             style={{marginTop: moderateScale(20)}}
             onPress={() => {

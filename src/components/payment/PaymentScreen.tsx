@@ -59,7 +59,6 @@ const PaymentScreen = () => {
           </View>
           <BottomButton
             text="BUY"
-            positionIsNotAbsolute
             onPress={() => {
               navigate(Routes.HOME);
             }}

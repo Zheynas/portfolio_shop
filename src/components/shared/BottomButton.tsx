@@ -36,10 +36,6 @@ interface Props {
    * Colour for button
    */
   grey?: boolean;
-  /**
-   *
-   */
-  positionIsNotAbsolute?: boolean;
 }
 
 /**
@@ -52,12 +48,7 @@ const BottomButton = ({
   disable,
   grey,
   style = {},
-  positionIsNotAbsolute,
 }: Props) => {
-  const buttonStyle = positionIsNotAbsolute
-    ? Styles.bottomButtonContainer
-    : Styles.absoluteBottomButtonContainer;
-
   const extraStyles = grey
     ? {
         borderColor: Colours.grey,
@@ -70,7 +61,7 @@ const BottomButton = ({
   const textColor = grey ? Colours.black : Colours.white;
 
   return (
-    <View style={[buttonStyle, style]}>
+    <View style={[Styles.bottomButtonContainer, style]}>
       <TouchableOpacity
         style={[Styles.bottomButton, {...extraStyles}]}
         onPress={onPress}

@@ -64,7 +64,6 @@ const FormScreen = ({
         text={bottomButtonText}
         onPress={bottomButtonOnPress}
         style={Styles.bottomButton}
-        positionIsNotAbsolute
         grey
       />
     );
@@ -90,7 +89,6 @@ const FormScreen = ({
         <BottomButton
           text={buttonText}
           onPress={buttonOnPress}
-          positionIsNotAbsolute
           loading={loading}
         />
         {renderBottomButton()}

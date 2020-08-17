@@ -106,7 +106,6 @@ const CartScreen = ({
           onPress={() => {
             navigate(Routes.CHECKOUT);
           }}
-          positionIsNotAbsolute
         />
       </View>
     </SafeAreaView>
