@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/Entypo';
+import Icon from 'react-native-vector-icons/Ionicons';
 import {moderateScale} from 'react-native-size-matters';
 
 import Routes from '../../routes/Routes';
@@ -47,7 +47,7 @@ const PaymentButton = ({onPress, text, image}: Props) => {
         <Text>{text}</Text>
       </View>
       <Icon
-        name="chevron-thin-right"
+        name="chevron-forward-outline"
         size={moderateScale(16)}
         color={Colours.grey}
       />

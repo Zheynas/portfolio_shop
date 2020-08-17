@@ -12,7 +12,7 @@ import Routes from '../../routes/Routes';
 import Styles from './ShopStyles';
 import BOOTSTRAPPED from '../../redux/custom/statuses';
 import {ApplicationState} from '../../redux/types';
-import {getOrFetchProduct} from '../../redux/resources/products';
+import {getProduct} from '../../redux/resources/products';
 import {Product} from '../../models/product';
 import SmallButton from '../shared/SmallButton';
 import {Measurements, Colours} from '../../styles/Themes';
@@ -90,15 +90,7 @@ const mapStateToProps = (
     },
   }: ProductScreenRouteProp,
 ) => ({
-  productItem: getOrFetchProduct(
-    products,
-    productId,
-    {},
-    {
-      forceFetch: ({projection: {type}}: GenericItemOrCollection) =>
-        type === BOOTSTRAPPED,
-    },
-  ),
+  productItem: getProduct(products, {id: productId}),
 });
 
 export default connect(mapStateToProps)(ProductScreen);

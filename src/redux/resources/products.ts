@@ -8,15 +8,16 @@ const {
   reducers: productReducer,
   getOrFetchList: getOrFetchProducts,
   getOrFetchItem: getOrFetchProduct,
-  getItem,
+  getItem: getProduct,
 } = resources<Product>(
   {
     url,
     name: 'products',
     localOnly: false,
-    urlOnlyParams: ['include']
+    urlOnlyParams: ['include'],
+    keyBy: ['id'],
   },
-  {fetchList: true, show: true, index: true, create: true},
+  {fetchList: true, show: true, index: true, create: true, fetchItem: true},
 );
 
-export {productReducer, getOrFetchProducts, getOrFetchProduct, getItem};
+export {productReducer, getOrFetchProducts, getOrFetchProduct, getProduct};

@@ -4,6 +4,7 @@ import {useNavigation} from '@react-navigation/native';
 import {ThunkDispatch} from 'redux-thunk';
 import {AnyAction} from 'redux';
 import {connect} from 'react-redux';
+import { moderateScale } from 'react-native-size-matters';
 
 import Routes from '../../routes/Routes';
 import Styles from './LoginStyle';
@@ -16,7 +17,7 @@ interface Props {
 }
 
 const LoginScreen = ({login}: Props) => {
-  const {goBack} = useNavigation();
+  const {goBack, navigate} = useNavigation();
   const [email, setEmail] = React.useState('sasdf@adsfs.com');
   const [password, setPassword] = React.useState('Passw1');
 
@@ -39,7 +40,20 @@ const LoginScreen = ({login}: Props) => {
             />
           </View>
         </ScrollView>
-        <BottomButton text="LOGIN" onPress={onPress} />
+        <BottomButton
+            text="LOGIN"
+            positionIsNotAbsolute
+            onPress={onPress}
+          />
+          <BottomButton
+            text="REGISTER"
+            positionIsNotAbsolute
+            grey
+            style={{marginTop: moderateScale(20)}}
+            onPress={() => {
+              navigate(Routes.REGISTER);
+            }}
+          />
       </View>
     </SafeAreaView>
   );

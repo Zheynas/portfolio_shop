@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/Entypo';
+import Icon from 'react-native-vector-icons/EvilIcons';
 import {moderateScale} from 'react-native-size-matters';
 
 import Routes from '../../routes/Routes';
@@ -34,8 +34,8 @@ const DetailsButton = ({onPress, text}: Props) => {
       <View style={{flex: 1, flexDirection: 'column'}}>{renderText(text)}</View>
       <View style={{alignItems: 'center', justifyContent: 'center'}}>
         <Icon
-          name="chevron-thin-right"
-          size={moderateScale(16)}
+          name="chevron-right"
+          size={moderateScale(40)}
           color={Colours.grey}
         />
       </View>

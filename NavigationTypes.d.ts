@@ -1,5 +1,5 @@
 import {StackNavigationProp} from '@react-navigation/stack';
-import { ImageSourcePropType } from 'react-native';
+import {ImageSourcePropType} from 'react-native';
 
 import Routes from './src/routes/Routes';
 
@@ -42,4 +42,15 @@ export type NavigationParamList = {
   [Routes.PROFILE]: undefined;
   [Routes.CHANGE_EMAIL]: undefined;
   [Routes.CHANGE_PASSWORD]: undefined;
+  [Routes.SHIPPING_ADDRESSES]: undefined;
+  [Routes.EDIT_ADDRESS]: {
+    id: string;
+  };
+  [Routes.NEW_ADDRESS]: undefined;
+  [Routes.HELP]: undefined;
+  [Routes.HELP_INFO]:{
+    header: string;
+  };
+  [Routes.SETTINGS]: undefined;
+  [Routes.CONTACT_US]: undefined;
 };

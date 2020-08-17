@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/Entypo';
+import Icon from 'react-native-vector-icons/Ionicons';
 import {moderateScale} from 'react-native-size-matters';
 
 import Routes from '../../routes/Routes';
@@ -31,7 +31,7 @@ const CheckoutNavBar = ({currentScreen}: Props) => {
         <Text style={getTextStyle(currentScreen, CheckoutNav.CART)}>CART</Text>
       </TouchableOpacity>
       <View style={{alignItems: 'center', justifyContent: 'center'}}>
-        <Icon name="chevron-thin-right" size={moderateScale(16)} />
+        <Icon name="chevron-forward-outline" size={moderateScale(16)} />
       </View>
       <TouchableOpacity
         style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}
@@ -43,7 +43,7 @@ const CheckoutNavBar = ({currentScreen}: Props) => {
         </Text>
       </TouchableOpacity>
       <View style={{alignItems: 'center', justifyContent: 'center'}}>
-        <Icon name="chevron-thin-right" size={moderateScale(16)} />
+        <Icon name="chevron-forward-outline" size={moderateScale(16)} />
       </View>
       <TouchableOpacity
         style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}

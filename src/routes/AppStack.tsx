@@ -22,6 +22,13 @@ import PaymentSelection from '../components/payment/PaymentSelection';
 import ProfileScreen from '../components/profile/ProfileScreen';
 import ChangeEmailScreen from '../components/credentials/ChangeEmailScreen';
 import ChangePasswordScreen from '../components/credentials/ChangePasswordScreen';
+import ShippingAddressesScreen from '../components/addresses/ShippingAddressesScreen';
+import EditAddress from '../components/addresses/EditAddress';
+import NewAddress from '../components/addresses/NewAddress';
+import HelpScreen from '../components/help/HelpScreen';
+import InformationScreen from '../components/help/InformationScreen';
+import SettingsScreen from '../components/settings/SettingsScreen';
+import ContactScreen from '../components/contact/ContactScreen';
 
 const RootStack = createStackNavigator<NavigationParamList>();
 const DEFAULT_ROOT = Routes.HOME;
@@ -63,14 +70,30 @@ const QboxStack = () => (
         header: () => null,
       }}
     />
+    <RootStack.Screen name={Routes.CONTACT_US} component={ContactScreen} />
+    <RootStack.Screen name={Routes.HELP_INFO} component={InformationScreen} />
+    <RootStack.Screen name={Routes.SETTINGS} component={SettingsScreen} />
+    <RootStack.Screen name={Routes.HELP} component={HelpScreen} />
     <RootStack.Screen name={Routes.REGISTER} component={RegisterScreen} />
     <RootStack.Screen name={Routes.MENU} component={MenuScreen} />
     <RootStack.Screen name={Routes.CHECKOUT} component={CheckoutScreen} />
     <RootStack.Screen name={Routes.PAYMENT} component={PaymentScreen} />
     <RootStack.Screen name={Routes.SHIPPING} component={ShippingSelection} />
     <RootStack.Screen name={Routes.PROFILE} component={ProfileScreen} />
-    <RootStack.Screen name={Routes.CHANGE_EMAIL} component={ChangeEmailScreen} />
-    <RootStack.Screen name={Routes.CHANGE_PASSWORD} component={ChangePasswordScreen} />
+    <RootStack.Screen
+      name={Routes.CHANGE_EMAIL}
+      component={ChangeEmailScreen}
+    />
+    <RootStack.Screen
+      name={Routes.CHANGE_PASSWORD}
+      component={ChangePasswordScreen}
+    />
+    <RootStack.Screen
+      name={Routes.SHIPPING_ADDRESSES}
+      component={ShippingAddressesScreen}
+    />
+    <RootStack.Screen name={Routes.EDIT_ADDRESS} component={EditAddress} />
+    <RootStack.Screen name={Routes.NEW_ADDRESS} component={NewAddress} />
     <RootStack.Screen
       name={Routes.PAYMENT_SELECTION}
       component={PaymentSelection}

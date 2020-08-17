@@ -15,26 +15,45 @@ interface Props {
   /**
    * Icon
    */
-  icon: string;
+  icon?: string;
   /**
    * Route to navigate to
    */
   route: string;
   /**
-   * Show state
+   * hide state
    */
-  show: boolean;
+  hide?: boolean;
+  /**
+   * params
+   */
+  params?: {[key: string]: string | number};
 }
 
 /**
  * Menu button
  */
-const MenuButton = ({text, icon, route, show}: Props) => {
+const MenuButton = ({text, icon, route, hide, params = {}}: Props) => {
   const {navigate} = useNavigation();
 
-  if (!show) {
+  if (hide) {
     return null;
   }
+
+  const renderIcon = () => {
+    if (!icon) {
+      return null;
+    }
+
+    return (
+      <Icon
+        name={icon}
+        size={moderateScale(35)}
+        color={Colours.grey}
+        style={{marginRight: moderateScale(10)}}
+      />
+    );
+  };
 
   return (
     <TouchableOpacity
@@ -46,10 +65,10 @@ const MenuButton = ({text, icon, route, show}: Props) => {
         alignItems: 'center',
       }}
       onPress={() => {
-        navigate(route);
+        navigate(route, params);
       }}>
-      <Icon name={icon} size={moderateScale(35)} color={Colours.grey} />
-      <View style={{flex: 1, paddingLeft: moderateScale(10)}}>
+      {renderIcon()}
+      <View style={{flex: 1}}>
         <Text style={{fontFamily: Fonts.regular}}>{text}</Text>
       </View>
 

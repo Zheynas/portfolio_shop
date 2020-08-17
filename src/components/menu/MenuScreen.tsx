@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import {ResourcesItem} from 'redux-and-the-rest';
+import {ResourcesItem, ResourcesList} from 'redux-and-the-rest';
 import {connect} from 'react-redux';
 
 import Routes from '../../routes/Routes';
@@ -12,6 +12,7 @@ import {ApplicationState} from '../../redux/types';
 import {getUser, destroyUser} from '../../redux/resources/user';
 import {ThunkDispatch} from 'redux-thunk';
 import {AnyAction} from 'redux';
+import {ShippingAddress} from '../../models/shippingAddress';
 
 interface Props {
   // Current user in state
@@ -34,38 +35,31 @@ const MenuScreen = ({logout, currentUserItem: {values: user}}: Props) => {
       </View>
       <View style={Styles.buttonContainer}>
         <MenuButton
-          text="Login"
+          text="Login / Register"
           icon="user"
           route={Routes.LOGIN}
-          show={!loggedIn}
-        />
-        <MenuButton
-          text="Register"
-          icon="user"
-          route={Routes.REGISTER}
-          show={!loggedIn}
+          hide={loggedIn}
         />
         <MenuButton
           text="My Profile"
           icon="user"
           route={Routes.PROFILE}
-          show={loggedIn}
+          hide={!loggedIn}
         />
-        <MenuButton text="Cart" icon="cart" route={Routes.CART} show />
         <MenuButton
           text="Order Histories"
           icon="credit-card"
           route={Routes.HOME}
-          show={loggedIn}
+          hide={!loggedIn}
         />
-        <MenuButton text="Help" icon="question" route={Routes.HOME} show />
+        <MenuButton text="Help" icon="question" route={Routes.HELP} />
+        <MenuButton text="Contact us" icon="envelope" route={Routes.CONTACT_US} />
         <MenuButton
-          text="Contact us"
-          icon="envelope"
-          route={Routes.HOME}
-          show
+          text="Settings"
+          icon="gear"
+          route={Routes.SETTINGS}
+          hide={!loggedIn}
         />
-        <MenuButton text="Settings" icon="gear" route={Routes.HOME} show />
       </View>
       {loggedIn && (
         <View style={Styles.logoutContainer}>

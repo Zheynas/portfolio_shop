@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, ActivityIndicator} from 'react-native';
-import Icon from 'react-native-vector-icons/Entypo';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import Styles from './ShopStyles';
 import {Colours} from '../../styles/Themes';
@@ -54,7 +54,7 @@ const OrderByBar = ({
             setSelectedOrder(Order.ASCENDING);
           }}>
           <Icon
-            name="chevron-up"
+            name="ios-chevron-up-sharp"
             size={moderateScale(25)}
             color={chevronColour(selectedOrder, Order.ASCENDING)}
           />
@@ -64,7 +64,7 @@ const OrderByBar = ({
             setSelectedOrder(Order.DESCENDING);
           }}>
           <Icon
-            name="chevron-down"
+            name="ios-chevron-down-sharp"
             size={moderateScale(25)}
             color={chevronColour(selectedOrder, Order.DESCENDING)}
           />

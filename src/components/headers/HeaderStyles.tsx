@@ -13,7 +13,7 @@ const HeaderStyles: HeaderStyle = {
   backButton: {
     zIndex: 5,
     position: 'absolute',
-    top: moderateScale(5),
+    top: moderateScale(15),
     justifyContent: 'center',
     alignItems: 'center',
     left: moderateScale(10),
