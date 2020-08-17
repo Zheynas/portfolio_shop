@@ -1,4 +1,4 @@
-import {ViewStyle, TextStyle, StyleProp, ImageStyle} from 'react-native';
+import {ViewStyle, TextStyle} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 
 import {FontSize, Fonts, Colours, Measurements} from '../../styles/Themes';
@@ -16,7 +16,15 @@ export interface SharedStyle {
   bottomButton: ViewStyle;
   bottomButtonText: TextStyle;
   bottomButtonContainer: ViewStyle;
+  headerText: TextStyle;
+  container: ViewStyle;
 }
+
+const headerText: TextStyle = {
+  color: Colours.black,
+  fontFamily: Fonts.bold,
+  fontSize: FontSize.header,
+};
 
 const SharedStyles: SharedStyle = {
   flexColumn: {
@@ -26,6 +34,15 @@ const SharedStyles: SharedStyle = {
   flexContainer: {
     flex: 1,
   },
+  container: {
+    flex: 1,
+    padding: Measurements.padding,
+    paddingTop: moderateScale(100),
+  },
+  headerText: {
+    ...headerText,
+    marginBottom: Measurements.padding
+  },
   shopHeaderContainer: {
     height: Measurements.shopHeaderHeight,
     flexDirection: 'row',
@@ -34,9 +51,7 @@ const SharedStyles: SharedStyle = {
     paddingHorizontal: moderateScale(5),
   },
   shopHeaderText: {
-    color: Colours.black,
-    fontFamily: Fonts.bold,
-    fontSize: FontSize.header,
+    ...headerText,
   },
   shopHeaderTextContainer: {
     flex: 1,
@@ -44,7 +59,7 @@ const SharedStyles: SharedStyle = {
     paddingLeft: moderateScale(5),
   },
   icon: {
-    marginTop: -5
+    marginTop: -5,
   },
   smallButtonContainer: {
     paddingHorizontal: moderateScale(10),

@@ -102,6 +102,7 @@ const Gradients = {
 const Measurements = {
   headerHeight: moderateScale(40),
   shopHeaderHeight: moderateScale(60),
+  padding: moderateScale(20)
 };
 
 export {Colours, Fonts, Zindex, Measurements, FontSize, Gradients};
