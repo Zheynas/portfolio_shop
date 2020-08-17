@@ -18,6 +18,8 @@ export interface SharedStyle {
   bottomButtonContainer: ViewStyle;
   headerText: TextStyle;
   container: ViewStyle;
+  standardTopMargin: ViewStyle;
+  centeredContainer: ViewStyle;
 }
 
 const headerText: TextStyle = {
@@ -39,9 +41,12 @@ const SharedStyles: SharedStyle = {
     padding: Measurements.padding,
     paddingTop: moderateScale(100),
   },
+  standardTopMargin: {
+    marginTop: Measurements.padding,
+  },
   headerText: {
     ...headerText,
-    marginBottom: Measurements.padding
+    marginBottom: Measurements.padding,
   },
   shopHeaderContainer: {
     height: Measurements.shopHeaderHeight,
@@ -93,6 +98,11 @@ const SharedStyles: SharedStyle = {
   bottomButtonText: {
     color: Colours.white,
     fontFamily: Fonts.semiBold,
+  },
+  centeredContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 };
 

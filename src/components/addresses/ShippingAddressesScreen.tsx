@@ -1,68 +1,114 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, SafeAreaView} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  SafeAreaView,
+  ActivityIndicator,
+} from 'react-native';
+// Navigation
 import {useNavigation} from '@react-navigation/native';
-import {ResourcesItem, ResourcesList} from 'redux-and-the-rest';
+// Redux
+import {ResourcesList, isSyncingWithRemote} from 'redux-and-the-rest';
 import {connect} from 'react-redux';
-import {moderateScale} from 'react-native-size-matters';
 
+// Navigation
 import Routes from '../../routes/Routes';
-import Styles from './ShippingAddressStyle';
-import {User} from '../../models/user';
+// Redux
 import {ApplicationState} from '../../redux/types';
-import {getUser, destroyUser} from '../../redux/resources/user';
-import {ThunkDispatch} from 'redux-thunk';
-import {AnyAction} from 'redux';
+import {getOrFetchAddresses} from '../../redux/resources/shippingAddresses';
+// Components
 import DetailsButton from '../payment/DetailsButton';
 import BottomButton from '../shared/BottomButton';
-import {Colours} from '../../styles/Themes';
-import {getOrFetchAddresses} from '../../redux/resources/shippingAddresses';
+// Util
 import {ShippingAddress} from '../../models/shippingAddress';
-import {ScrollView} from 'react-native-gesture-handler';
+// Styling
+import SharedStyles from '../shared/SharedStyles';
 
 interface Props {
-  // Current user in state
-  currentUserItem: ResourcesItem<User>;
+  /**
+   * Current user's shipping addresses
+   */
   userAddressList: ResourcesList<ShippingAddress>;
 }
 
-const ShippingAddressesScreen = ({
-  userAddressList: {items: addresses},
-  currentUserItem: {values: user},
-}: Props) => {
+/**
+ * Screen with a list of shipping addresses
+ */
+const ShippingAddressesScreen = ({userAddressList}: Props) => {
+  /**
+   * Navigation
+   */
   const {navigate} = useNavigation();
-  console.log('addresses', addresses);
+
+  /**
+   * Shipping address values
+   */
+  const {items: addresses} = userAddressList;
+  // TODO: Handle errors
+  const addressIsLoading = isSyncingWithRemote(userAddressList);
+
+  /**
+   * Address list renderer
+   */
+  const renderAddresses = () => {
+    // Loading
+    if (addressIsLoading) {
+      return (
+        <View style={SharedStyles.centeredContainer}>
+          <ActivityIndicator size="large" />
+        </View>
+      );
+    }
+
+    // No addresses found
+    if (addresses.length === 0) {
+      return (
+        <View style={SharedStyles.centeredContainer}>
+          <Text>No Addresses found...</Text>
+        </View>
+      );
+    }
+
+    // Addresses to render
+    return (
+      <ScrollView style={SharedStyles.flexContainer}>
+        {addresses.map(({values: address, values: {id}}) => (
+          <DetailsButton
+            key={id}
+            text={convertAddressForButton(address)}
+            onPress={() => {
+              navigate(Routes.EDIT_ADDRESS, {id});
+            }}
+          />
+        ))}
+      </ScrollView>
+    );
+  };
 
   return (
-    <SafeAreaView style={Styles.flexContainer}>
-      <View style={Styles.container}>
-        <Text style={Styles.loginHeader}>Address Book</Text>
-        <View style={{flex: 1}}>
-          <ScrollView>
-            {addresses.map(({values: address}) => (
-              <DetailsButton
-                text={convertAddressForButton(address)}
-                onPress={() => {
-                  navigate(Routes.EDIT_ADDRESS,{id: address.id});
-                }}
-                key={address.id}
-              />
-            ))}
-          </ScrollView>
-        </View>
+    <SafeAreaView style={SharedStyles.flexContainer}>
+      <View style={SharedStyles.container}>
+        <Text style={SharedStyles.headerText}>Address Book</Text>
+
+        {renderAddresses()}
 
         <BottomButton
           text="Add Shipping Address"
           grey
-          style={{marginTop: moderateScale(20)}}
           onPress={() => {
             navigate(Routes.NEW_ADDRESS);
           }}
+          style={SharedStyles.standardTopMargin}
         />
       </View>
     </SafeAreaView>
   );
 };
 
+/**
+ * Helper function to convert ShippingAddress object into array of strings to display
+ */
 function convertAddressForButton({
   label,
   houseNumber,
@@ -73,8 +119,7 @@ function convertAddressForButton({
   return [label, `${houseNumber} ${lineOne}`, postCode, phoneNumber];
 }
 
-const mapStoreDataToProps = ({users, shippingAddresses}: ApplicationState) => ({
-  currentUserItem: getUser(users),
+const mapStoreDataToProps = ({shippingAddresses}: ApplicationState) => ({
   userAddressList: getOrFetchAddresses(shippingAddresses),
 });
 

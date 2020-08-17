@@ -1,7 +1,7 @@
 import {resources} from 'redux-and-the-rest';
 
 import {ShippingAddress} from '../../models/shippingAddress';
-
+// TODO: Make dependant on user (clear this resource when user destroyed)
 const {
   reducers: addressReducer,
   actionCreators: {
