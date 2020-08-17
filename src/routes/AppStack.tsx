@@ -1,5 +1,7 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
+import {ResourcesItem, isSuccessfullyFetched} from 'redux-and-the-rest';
+import {connect} from 'react-redux';
 
 import {NavigationParamList} from 'NavigationTypes';
 import Routes from './Routes';
@@ -29,97 +31,131 @@ import HelpScreen from '../components/help/HelpScreen';
 import InformationScreen from '../components/help/InformationScreen';
 import SettingsScreen from '../components/settings/SettingsScreen';
 import ContactScreen from '../components/contact/ContactScreen';
+import {getUser} from '../redux/resources/user';
+import {ApplicationState} from '../redux/types';
+import {User} from '../models/user';
 
 const RootStack = createStackNavigator<NavigationParamList>();
 const DEFAULT_ROOT = Routes.HOME;
 
-const QboxStack = () => (
-  <RootStack.Navigator
-    initialRouteName={DEFAULT_ROOT}
-    screenOptions={() => ({
-      headerTransparent: true,
-      animationEnabled: false,
-      header: () => <Header />,
-    })}>
-    <RootStack.Screen
-      name={Routes.HOME}
-      component={HomeScreen}
-      options={{
-        header: () => null,
-      }}
-    />
-    <RootStack.Screen name={Routes.LOGIN} component={LoginScreen} />
-    <RootStack.Screen
-      name={Routes.SHOP}
-      component={ShopScreen}
-      options={{
-        header: () => <ShopHeader />,
-      }}
-    />
-    <RootStack.Screen
-      name={Routes.PRODUCT_LIST}
-      component={ProductListScreen}
-      options={{
-        header: () => null,
-      }}
-    />
-    <RootStack.Screen
-      name={Routes.PRODUCT}
-      component={ProductScreen}
-      options={{
-        header: () => null,
-      }}
-    />
-    <RootStack.Screen name={Routes.CONTACT_US} component={ContactScreen} />
-    <RootStack.Screen name={Routes.HELP_INFO} component={InformationScreen} />
-    <RootStack.Screen name={Routes.SETTINGS} component={SettingsScreen} />
-    <RootStack.Screen name={Routes.HELP} component={HelpScreen} />
-    <RootStack.Screen name={Routes.REGISTER} component={RegisterScreen} />
-    <RootStack.Screen name={Routes.MENU} component={MenuScreen} />
-    <RootStack.Screen name={Routes.CHECKOUT} component={CheckoutScreen} />
-    <RootStack.Screen name={Routes.PAYMENT} component={PaymentScreen} />
-    <RootStack.Screen name={Routes.SHIPPING} component={ShippingSelection} />
-    <RootStack.Screen name={Routes.PROFILE} component={ProfileScreen} />
-    <RootStack.Screen
-      name={Routes.CHANGE_EMAIL}
-      component={ChangeEmailScreen}
-    />
-    <RootStack.Screen
-      name={Routes.CHANGE_PASSWORD}
-      component={ChangePasswordScreen}
-    />
-    <RootStack.Screen
-      name={Routes.SHIPPING_ADDRESSES}
-      component={ShippingAddressesScreen}
-    />
-    <RootStack.Screen name={Routes.EDIT_ADDRESS} component={EditAddress} />
-    <RootStack.Screen name={Routes.NEW_ADDRESS} component={NewAddress} />
-    <RootStack.Screen
-      name={Routes.PAYMENT_SELECTION}
-      component={PaymentSelection}
-    />
-    <RootStack.Screen
-      name={Routes.CART}
-      component={CartScreen}
-      options={{
-        header: () => <Header title="Cart" />,
-      }}
-    />
-    <RootStack.Screen
-      name={Routes.SECTIONS}
-      component={SectionScreen}
-      options={{
-        header: () => null,
-      }}
-    />
-    <RootStack.Screen
-      name={Routes.SUB_SECTIONS}
-      component={SubSectionsScreen}
-      options={{
-        header: () => <ShopHeader />,
-      }}
-    />
-  </RootStack.Navigator>
-);
+interface Props {
+  /**
+   * Current user
+   */
+  currentUserItem: ResourcesItem<User>;
+}
 
-export default QboxStack;
+const AppStack = ({currentUserItem}: Props) => {
+  const isLoggedIn = isSuccessfullyFetched(currentUserItem);
+
+  return (
+    <RootStack.Navigator
+      initialRouteName={DEFAULT_ROOT}
+      screenOptions={() => ({
+        headerTransparent: true,
+        animationEnabled: false,
+        header: () => <Header />,
+      })}>
+      <RootStack.Screen
+        name={Routes.HOME}
+        component={HomeScreen}
+        options={{
+          header: () => null,
+        }}
+      />
+      {!isLoggedIn && (
+        <>
+          <RootStack.Screen name={Routes.LOGIN} component={LoginScreen} />
+          <RootStack.Screen name={Routes.REGISTER} component={RegisterScreen} />
+        </>
+      )}
+
+      {isLoggedIn && (
+        <>
+          <RootStack.Screen name={Routes.SETTINGS} component={SettingsScreen} />
+          <RootStack.Screen name={Routes.PROFILE} component={ProfileScreen} />
+          <RootStack.Screen
+            name={Routes.CHANGE_EMAIL}
+            component={ChangeEmailScreen}
+          />
+          <RootStack.Screen
+            name={Routes.CHANGE_PASSWORD}
+            component={ChangePasswordScreen}
+          />
+          <RootStack.Screen
+            name={Routes.SHIPPING_ADDRESSES}
+            component={ShippingAddressesScreen}
+          />
+          <RootStack.Screen
+            name={Routes.EDIT_ADDRESS}
+            component={EditAddress}
+          />
+          <RootStack.Screen name={Routes.NEW_ADDRESS} component={NewAddress} />
+        </>
+      )}
+
+      <RootStack.Screen
+        name={Routes.SHOP}
+        component={ShopScreen}
+        options={{
+          header: () => <ShopHeader />,
+        }}
+      />
+      <RootStack.Screen
+        name={Routes.PRODUCT_LIST}
+        component={ProductListScreen}
+        options={{
+          header: () => null,
+        }}
+      />
+      <RootStack.Screen
+        name={Routes.PRODUCT}
+        component={ProductScreen}
+        options={{
+          header: () => null,
+        }}
+      />
+      <RootStack.Screen name={Routes.CONTACT_US} component={ContactScreen} />
+      <RootStack.Screen name={Routes.HELP_INFO} component={InformationScreen} />
+
+      <RootStack.Screen name={Routes.HELP} component={HelpScreen} />
+
+      <RootStack.Screen name={Routes.MENU} component={MenuScreen} />
+      <RootStack.Screen name={Routes.CHECKOUT} component={CheckoutScreen} />
+      <RootStack.Screen name={Routes.PAYMENT} component={PaymentScreen} />
+      <RootStack.Screen name={Routes.SHIPPING} component={ShippingSelection} />
+
+      <RootStack.Screen
+        name={Routes.PAYMENT_SELECTION}
+        component={PaymentSelection}
+      />
+      <RootStack.Screen
+        name={Routes.CART}
+        component={CartScreen}
+        options={{
+          header: () => <Header title="Cart" />,
+        }}
+      />
+      <RootStack.Screen
+        name={Routes.SECTIONS}
+        component={SectionScreen}
+        options={{
+          header: () => null,
+        }}
+      />
+      <RootStack.Screen
+        name={Routes.SUB_SECTIONS}
+        component={SubSectionsScreen}
+        options={{
+          header: () => <ShopHeader />,
+        }}
+      />
+    </RootStack.Navigator>
+  );
+};
+
+const mapStateToProps = ({users}: ApplicationState) => ({
+  currentUserItem: getUser(users),
+});
+
+export default connect(mapStateToProps)(AppStack);
