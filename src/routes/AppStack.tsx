@@ -7,7 +7,7 @@ import {NavigationParamList} from 'NavigationTypes';
 import Routes from './Routes';
 import HomeScreen from '../components/home/HomeScreen';
 import LoginScreen from '../components/login/LoginScreen';
-import RegisterScreen from '../components/onboarding/RegisterScreen';
+import RegisterScreen from '../components/register/RegisterScreen';
 import MenuScreen from '../components/menu/MenuScreen';
 import Header from '../components/headers/Header';
 import SectionScreen from '../components/sections/SectionScreen';

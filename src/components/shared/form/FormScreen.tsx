@@ -76,12 +76,13 @@ const FormScreen = ({
         <ScrollView style={SharedStyles.flexContainer}>
           <Text style={SharedStyles.headerText}>{header}</Text>
           <View>
-            {fields.map(({label, value, setValue}: FormItem) => (
+            {fields.map(({label, value, setValue, password}: FormItem) => (
               <TextField
                 label={label}
                 value={value}
                 setValue={setValue}
                 key={label}
+                secureTextEntry={password}
               />
             ))}
           </View>

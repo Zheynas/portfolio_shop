@@ -1,15 +1,21 @@
 import React from 'react';
+// Navigation
 import {useNavigation} from '@react-navigation/native';
+// Redux
 import {isSyncingWithRemote, ResourcesItem} from 'redux-and-the-rest';
 import {ThunkDispatch} from 'redux-thunk';
 import {AnyAction} from 'redux';
 import {connect} from 'react-redux';
 
+// Navigation
 import Routes from '../../routes/Routes';
+// Redux
 import {createUser, getUser} from '../../redux/resources/user';
-import FormItem from '../../util/enums/FormItem';
 import {ApplicationState} from '../../redux/types';
+// Util
+import FormItem from '../../util/enums/FormItem';
 import {User} from '../../models/user';
+// Components
 import FormScreen from '../shared/form/FormScreen';
 
 interface Props {
@@ -30,7 +36,7 @@ const LoginScreen = ({login, currentUserItem}: Props) => {
   /**
    * Navigation
    */
-  const {goBack, navigate} = useNavigation();
+  const {navigate} = useNavigation();
 
   /**
    * State
@@ -56,6 +62,7 @@ const LoginScreen = ({login, currentUserItem}: Props) => {
       label: 'Password',
       value: password,
       setValue: setPassword,
+      password: true,
     },
   ];
 
