@@ -14,7 +14,7 @@ import SectionScreen from '../components/sections/SectionScreen';
 import SubSectionsScreen from '../components/subSections/SubSectionsScreen';
 import ShopScreen from '../components/shop/ProductCategoryScreen';
 import ShopHeader from '../components/headers/ShopHeader';
-import ProductListScreen from '../components/shop/ProductListScreen';
+import ProductListScreen from '../components/productList/ProductListScreen';
 import ProductScreen from '../components/shop/ProductScreen';
 import CartScreen from '../components/cart/CartScreen';
 import CheckoutScreen from '../components/checkout/CheckoutScreen';

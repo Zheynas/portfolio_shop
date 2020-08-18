@@ -1,8 +1,8 @@
 import React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 
-import Styles from './ShopStyles';
-import { Fonts} from '../../styles/Themes';
+// Styling
+import SharedStyles from '../../../shared/styles/SharedStyles';
 
 interface Props {
   /**
@@ -21,24 +21,18 @@ interface Props {
 }
 
 /**
- * Small button
+ * Order type button
  */
-const OrderByButton = ({onPress, text, selected}: Props) => {
-  const fontFamily = selected ? Fonts.bold : Fonts.regular;
+const OrderButton = ({onPress, text, selected}: Props) => {
+  const textStyle = selected
+    ? SharedStyles.boldBodyText
+    : SharedStyles.bodyText;
 
   return (
     <TouchableOpacity onPress={onPress}>
-      <Text
-        style={[
-          Styles.orderText,
-          {
-            fontFamily,
-          },
-        ]}>
-        {text}
-      </Text>
+      <Text style={textStyle}>{text}</Text>
     </TouchableOpacity>
   );
 };
 
-export default OrderByButton;
+export default OrderButton;

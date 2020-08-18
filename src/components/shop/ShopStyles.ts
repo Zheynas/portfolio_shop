@@ -22,14 +22,9 @@ export interface ShopStyle {
   productInfoContainer: ViewStyle;
   priceText: TextStyle;
   productDescriptionText: TextStyle;
-  orderBar: ViewStyle;
-  orderIconWrapper: ViewStyle;
-  orderTextContainer: ViewStyle;
+
   orderText: TextStyle;
-  productScrollContainer: TextStyle;
   productLengthText: TextStyle;
-  productListHeader: ViewStyle;
-  productListHeaderText: TextStyle;
 }
 
 const ShopStyles: ShopStyle = {
@@ -117,30 +112,13 @@ const ShopStyles: ShopStyle = {
     fontFamily: Fonts.regular,
     fontSize: FontSize.footer,
   },
-  orderBar: {
-    height: moderateScale(50),
-    borderBottomWidth: 1,
-    borderColor: Colours.grey,
-    flexDirection: 'row',
-  },
-  orderIconWrapper: {
-    width: moderateScale(40),
-  },
-  orderTextContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: moderateScale(20),
-  },
+
+
+
   orderText: {
     color: Colours.black,
     fontFamily: Fonts.regular,
     fontSize: FontSize.footer,
-  },
-  productScrollContainer: {
-    paddingTop: moderateScale(20),
-    paddingHorizontal: moderateScale(20),
   },
   productLengthText: {
     color: Colours.black,
@@ -148,17 +126,7 @@ const ShopStyles: ShopStyle = {
     fontSize: FontSize.footer,
     marginBottom: moderateScale(20),
   },
-  productListHeader: {
-    height: Measurements.headerHeight,
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: moderateScale(10),
-  },
-  productListHeaderText: {
-    color: Colours.black,
-    fontFamily: Fonts.bold,
-    fontSize: FontSize.question,
-  },
+
 };
 
 export default ShopStyles;
