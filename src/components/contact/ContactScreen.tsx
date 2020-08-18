@@ -1,16 +1,19 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {Text} from 'react-native';
 
-import Styles from './ContactStyles';
+import ScreenWrapper from '../shared/ScreenWrapper';
 
-const ContactScreen = () => {
-  return (
-    <View style={Styles.flexColumn}>
-      <View style={Styles.avatarContainer}>
-        <Text style={Styles.nameText}>Contact us</Text>
-      </View>
-    </View>
-  );
-};
+/**
+ * Contact us screen
+ */
+const ContactScreen = () => (
+  <ScreenWrapper header="Contact Us" scroll>
+    <>
+      <Text>Email:</Text>
+      <Text>Phone:</Text>
+      <Text>Mail:</Text>
+    </>
+  </ScreenWrapper>
+);
 
 export default ContactScreen;
