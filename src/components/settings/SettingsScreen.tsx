@@ -4,7 +4,7 @@ import React from 'react';
 import Routes from '../../routes/Routes';
 //Components
 import MenuButton from '../shared/buttons/MenuButton';
-import ScreenWrapper from '../shared/ScreenWrapper';
+import ScreenWrapper from '../shared/wrappers/ScreenWrapper';
 
 /**
  * Settings selection screen

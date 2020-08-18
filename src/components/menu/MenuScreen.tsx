@@ -13,7 +13,7 @@ import {getUser, destroyUser} from '../../redux/resources/user';
 import {ThunkDispatch} from 'redux-thunk';
 import {AnyAction} from 'redux';
 import {ShippingAddress} from '../../models/shippingAddress';
-import ScreenWrapper from '../shared/ScreenWrapper';
+import ScreenWrapper from '../shared/wrappers/ScreenWrapper';
 
 interface Props {
   // Current user in state

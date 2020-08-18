@@ -1,7 +1,7 @@
 import React from 'react';
 import {Text} from 'react-native';
 
-import ScreenWrapper from '../shared/ScreenWrapper';
+import ScreenWrapper from '../shared/wrappers/ScreenWrapper';
 
 /**
  * Contact us screen

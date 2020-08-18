@@ -16,7 +16,7 @@ import {ShippingAddress} from '../../models/shippingAddress';
 // Styling
 import SharedStyles from '../shared/styles/SharedStyles';
 import AddressButton from './AddressButton';
-import ScreenWrapper from '../shared/ScreenWrapper';
+import ScreenWrapper from '../shared/wrappers/ScreenWrapper';
 
 interface Props {
   /**

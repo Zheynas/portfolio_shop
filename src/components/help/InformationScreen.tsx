@@ -7,7 +7,7 @@ import {RouteProp} from '@react-navigation/native';
 import {NavigationParamList} from 'NavigationTypes';
 import Routes from '../../routes/Routes';
 // Components
-import ScreenWrapper from '../shared/ScreenWrapper';
+import ScreenWrapper from '../shared/wrappers/ScreenWrapper';
 
 /**
  * Adds typing to route.params for the correct route
