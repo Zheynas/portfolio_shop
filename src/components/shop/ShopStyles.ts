@@ -1,4 +1,4 @@
-import {ViewStyle, TextStyle, StyleProp, ImageStyle} from 'react-native';
+import {ViewStyle, TextStyle} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 
 import {FontSize, Fonts, Colours, Measurements} from '../../styles/Themes';
@@ -8,21 +8,11 @@ export interface ShopStyle {
   headerText: TextStyle;
   categoryText: TextStyle;
   categoryScrollContainer: ViewStyle;
-  flexColumn: ViewStyle;
-  flexRow: ViewStyle;
-  spacerContainer: ViewStyle;
-  gridContainer: ViewStyle;
-  image: StyleProp<ImageStyle>;
-  smallTextWrapper: ViewStyle;
-  subheaderText: TextStyle;
-  largeTextWrapper: ViewStyle;
-  gridHeaderText: TextStyle;
   productHeaderText: TextStyle;
   priceContainer: ViewStyle;
   productInfoContainer: ViewStyle;
   priceText: TextStyle;
   productDescriptionText: TextStyle;
-
   orderText: TextStyle;
   productLengthText: TextStyle;
 }
@@ -47,44 +37,6 @@ const ShopStyles: ShopStyle = {
     flex: 1,
     alignItems: 'center',
     marginBottom: moderateScale(15),
-  },
-  image: {
-    width: '100%',
-    height: '100%',
-  },
-  flexColumn: {
-    flex: 1,
-    flexDirection: 'column',
-  },
-  flexRow: {
-    flexDirection: 'row',
-    marginBottom: moderateScale(20),
-  },
-  spacerContainer: {
-    width: moderateScale(10),
-  },
-  gridContainer: {
-    flexDirection: 'column',
-  },
-  smallTextWrapper: {
-    height: moderateScale(50),
-    flexDirection: 'column',
-    paddingLeft: moderateScale(10),
-  },
-  gridHeaderText: {
-    color: Colours.black,
-    fontFamily: Fonts.regular,
-    fontSize: FontSize.small,
-  },
-  subheaderText: {
-    color: Colours.black,
-    fontFamily: Fonts.semiBold,
-    fontSize: FontSize.small,
-  },
-  largeTextWrapper: {
-    height: moderateScale(50),
-    flexDirection: 'column',
-    alignItems: 'center',
   },
   productHeaderText: {
     color: Colours.black,

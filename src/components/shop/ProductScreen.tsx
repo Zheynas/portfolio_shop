@@ -74,7 +74,7 @@ const ProductScreen = ({
       <View style={Styles.productInfoContainer}>
         <Text style={Styles.productHeaderText}>{name.toUpperCase()}</Text>
         <View style={Styles.priceContainer}>
-          <Text style={Styles.priceText}>{`£${price}`}</Text>
+          <Text style={Styles.priceText}>{`£${price.toFixed(2)}`}</Text>
           <SmallButton text="ADD TO CART" />
         </View>
         <Text style={Styles.productDescriptionText}>{description}</Text>

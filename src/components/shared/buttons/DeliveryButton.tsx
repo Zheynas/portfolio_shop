@@ -51,7 +51,7 @@ function convertShippingMethodForButton({
 }: ShippingMethod) {
   const minDay = moment().add(minDays, 'days').format('Do MMM');
   const maxDay = moment().add(maxDays, 'days').format('Do MMM');
-  const text = [name, `${minDay} - ${maxDay}`, `Cost: £${cost}`];
+  const text = [name, `${minDay} - ${maxDay}`, `Cost: £${cost.toFixed(2)}`];
 
   return text;
 }

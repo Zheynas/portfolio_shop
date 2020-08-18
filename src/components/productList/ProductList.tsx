@@ -12,7 +12,7 @@ import {moderateScale} from 'react-native-size-matters';
 import {ApplicationState} from '../../redux/types';
 import {getOrFetchProducts} from '../../redux/resources/products';
 // Components
-import GridView from '../shop/grid/GridView';
+import GridView from './grid/GridView';
 // Util
 import OrderType from '../../util/enums/OrderType';
 import Order from '../../util/enums/Order';
@@ -68,7 +68,7 @@ const ProductList = ({productsCollection}: Props) => {
         data={items}
         keyExtractor={(item, index) => `row-${index}`}
         contentContainerStyle={{paddingBottom: moderateScale(150)}}
-        renderItem={({item}) => <GridView group={item} />}
+        renderItem={({item}) => <GridView products={item} />}
       />
     </>
   );
