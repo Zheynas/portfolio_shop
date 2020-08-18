@@ -1,22 +1,21 @@
 import React from 'react';
-import {View, Text} from 'react-native';
 
+// Navigation
 import Routes from '../../routes/Routes';
-import MenuButton from '../menu/MenuButton';
-import Styles from './SettingsStyle';
+//Components
+import MenuButton from '../shared/buttons/MenuButton';
+import ScreenWrapper from '../shared/ScreenWrapper';
 
-const SettingsScreen = () => {
-  return (
-    <View style={Styles.flexColumn}>
-      <View style={Styles.avatarContainer}>
-        <Text style={Styles.nameText}>Settings</Text>
-      </View>
-      <View style={Styles.buttonContainer}>
-        <MenuButton text="Notifications" route={Routes.SETTINGS} />
-        <MenuButton text="Contact Preferences" route={Routes.SETTINGS} />
-      </View>
-    </View>
-  );
-};
+/**
+ * Settings selection screen
+ */
+const SettingsScreen = () => (
+  <ScreenWrapper header="Settings" scroll>
+    <>
+      <MenuButton text="Notifications" route={Routes.SETTINGS} />
+      <MenuButton text="Contact Preferences" route={Routes.SETTINGS} />
+    </>
+  </ScreenWrapper>
+);
 
 export default SettingsScreen;
