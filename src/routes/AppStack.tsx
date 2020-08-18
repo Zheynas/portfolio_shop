@@ -24,7 +24,7 @@ import SubSectionsScreen from '../components/subSections/SubSectionsScreen';
 import ShopScreen from '../components/shop/ProductCategoryScreen';
 import ShopHeader from '../components/headers/ShopHeader';
 import ProductListScreen from '../components/productList/ProductListScreen';
-import ProductScreen from '../components/shop/ProductScreen';
+import ProductScreen from '../components/product/ProductScreen';
 import CartScreen from '../components/cart/CartScreen';
 import CheckoutScreen from '../components/checkout/CheckoutScreen';
 import PaymentScreen from '../components/payment/PaymentScreen';

@@ -9,10 +9,6 @@ export interface ShopStyle {
   categoryText: TextStyle;
   categoryScrollContainer: ViewStyle;
   productHeaderText: TextStyle;
-  priceContainer: ViewStyle;
-  productInfoContainer: ViewStyle;
-  priceText: TextStyle;
-  productDescriptionText: TextStyle;
   orderText: TextStyle;
   productLengthText: TextStyle;
 }
@@ -44,29 +40,6 @@ const ShopStyles: ShopStyle = {
     fontSize: FontSize.subheader,
     marginBottom: moderateScale(10),
   },
-  priceContainer: {
-    flexDirection: 'row',
-    marginBottom: moderateScale(10),
-    alignItems: 'center',
-  },
-  productInfoContainer: {
-    height: moderateScale(200),
-    padding: moderateScale(10),
-  },
-  priceText: {
-    color: Colours.black,
-    fontFamily: Fonts.semiBold,
-    fontSize: FontSize.label,
-    marginRight: moderateScale(20),
-  },
-  productDescriptionText: {
-    color: Colours.black,
-    fontFamily: Fonts.regular,
-    fontSize: FontSize.footer,
-  },
-
-
-
   orderText: {
     color: Colours.black,
     fontFamily: Fonts.regular,
