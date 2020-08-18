@@ -36,7 +36,9 @@ export type NavigationParamList = {
   };
   [Routes.CART]: undefined;
   [Routes.CHECKOUT]: undefined;
-  [Routes.PAYMENT]: undefined;
+  [Routes.PAYMENT]: {
+    shippingAddressId: string;
+  };
   [Routes.SHIPPING]: undefined;
   [Routes.PAYMENT_SELECTION]: undefined;
   [Routes.PROFILE]: undefined;

@@ -16,12 +16,16 @@ interface Props {
    * Address to display
    */
   address: ResourcesItem<ShippingAddress>;
+  /**
+   * On button press functionality to override navigation
+   */
+  onPress?: (id: string) => void;
 }
 
 /**
  * Address button
  */
-const AddressButton = ({address}: Props) => {
+const AddressButton = ({address, onPress}: Props) => {
   /**
    * Navigation
    */
@@ -35,14 +39,15 @@ const AddressButton = ({address}: Props) => {
   } = address;
   const text = convertAddressForButton(address);
 
-  return (
-    <DetailsButton
-      text={text}
-      onPress={() => {
-        navigate(Routes.EDIT_ADDRESS, {id});
-      }}
-    />
-  );
+  const onButtonPress = () => {
+    if (onPress) {
+      onPress(id);
+    } else {
+      navigate(Routes.EDIT_ADDRESS, {id});
+    }
+  };
+
+  return <DetailsButton text={text} onPress={onButtonPress} />;
 };
 
 /**

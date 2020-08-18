@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/EvilIcons';
 import {moderateScale} from 'react-native-size-matters';
 
 import Routes from '../../routes/Routes';
@@ -9,7 +9,7 @@ import Styles from './PaymentStyles';
 import BottomButton from '../shared/buttons/BottomButton';
 import TextField from '../shared/inputs/TextField';
 import {Colours, Fonts, FontSize} from '../../styles/Themes';
-import CheckoutNavBar from '../checkout/CheckoutNavBar';
+import CheckoutNavBar from '../checkout/nav/CheckoutNavBar';
 import Images from '../../../assets/images/images';
 import ImageRenderer from '../shared/images/ImageRenderer';
 
@@ -47,10 +47,10 @@ const PaymentButton = ({onPress, text, image}: Props) => {
         <Text>{text}</Text>
       </View>
       <Icon
-        name="chevron-forward-outline"
-        size={moderateScale(16)}
-        color={Colours.grey}
-      />
+          name="chevron-right"
+          size={moderateScale(40)}
+          color={Colours.grey}
+        />
     </TouchableOpacity>
   );
 };

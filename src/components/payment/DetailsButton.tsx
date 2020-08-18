@@ -9,7 +9,7 @@ import Styles from './PaymentStyles';
 import BottomButton from '../shared/buttons/BottomButton';
 import TextField from '../shared/inputs/TextField';
 import {Colours, Fonts, FontSize} from '../../styles/Themes';
-import CheckoutNavBar from '../checkout/CheckoutNavBar';
+import CheckoutNavBar from '../checkout/nav/CheckoutNavBar';
 
 interface Props {
   /**

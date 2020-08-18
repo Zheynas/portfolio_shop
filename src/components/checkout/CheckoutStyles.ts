@@ -1,33 +1,24 @@
-import {ViewStyle, ImageStyle, TextStyle} from 'react-native';
+import {ViewStyle} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 
-import {FontSize, Fonts, Colours} from '../../styles/Themes';
+import {Colours} from '../../styles/Themes';
 
 export interface CheckoutStyle {
-  container: ViewStyle;
-  flexContainer: ViewStyle;
-  loginHeader: TextStyle;
-  scrollContainer: ViewStyle;
+  centerContainer: ViewStyle;
+  navBarContainer: ViewStyle;
 }
 
 const CheckoutStyles: CheckoutStyle = {
-  container: {
-    flex: 1,
-    paddingTop: moderateScale(60),
+  centerContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  flexContainer: {
-    flex: 1,
-  },
-  loginHeader: {
-    color: Colours.black,
-    fontFamily: Fonts.bold,
-    fontSize: FontSize.header,
-    marginBottom: moderateScale(30),
-  },
-  scrollContainer: {
-    flex: 1,
-    padding: moderateScale(20),
-    paddingTop: moderateScale(40)
+  navBarContainer: {
+    height: moderateScale(50),
+    flexDirection: 'row',
+    justifyContent: 'center',
+    borderBottomWidth: 1,
+    borderColor: Colours.grey,
   },
 };
 

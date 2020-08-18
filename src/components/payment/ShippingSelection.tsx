@@ -11,9 +11,8 @@ import Styles from './PaymentStyles';
 import BottomButton from '../shared/buttons/BottomButton';
 import TextField from '../shared/inputs/TextField';
 import {Colours, Fonts, FontSize} from '../../styles/Themes';
-import CheckoutNavBar from '../checkout/CheckoutNavBar';
+import CheckoutNavBar from '../checkout/nav/CheckoutNavBar';
 import DetailsButton from './DetailsButton';
-import CheckoutNav from '../../util/enums/CheckoutNav';
 import {ApplicationState} from '../../redux/types';
 import {getOrFetchShippingMethods} from '../../redux/resources/shippingMethods';
 import {ShippingMethod} from '../../models/shippingMethod';
@@ -30,7 +29,7 @@ const ShippingSelection = ({shippingCollection: {items}}: Props) => {
 
   return (
     <View style={Styles.container}>
-      <CheckoutNavBar currentScreen={CheckoutNav.PAYMENT} />
+      <CheckoutNavBar currentScreen={Routes.PAYMENT} />
       <View style={{flex: 1, padding: moderateScale(20)}}>
         <ScrollView style={{flex: 1}}>
           <Text

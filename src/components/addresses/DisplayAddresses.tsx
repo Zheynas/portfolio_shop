@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import {View, Text, ScrollView, ActivityIndicator} from 'react-native';
 // Navigation
 import {useNavigation} from '@react-navigation/native';
@@ -23,12 +23,29 @@ interface Props {
    * Current user's shipping addresses
    */
   userAddressList: ResourcesList<ShippingAddress>;
+  /**
+   * Address button onPress
+   */
+  addressOnPress?: (id: string) => void;
+  /**
+   * Header title to display
+   */
+  headerText?: string;
+  /**
+   * Header component
+   */
+  header?: ReactElement;
 }
 
 /**
  * Screen with a list of shipping addresses
  */
-const ShippingAddressesScreen = ({userAddressList}: Props) => {
+const DisplayAddresses = ({
+  userAddressList,
+  addressOnPress,
+  headerText,
+  header,
+}: Props) => {
   /**
    * Navigation
    */
@@ -67,7 +84,11 @@ const ShippingAddressesScreen = ({userAddressList}: Props) => {
     return (
       <ScrollView style={SharedStyles.flexContainer}>
         {addresses.map((address) => (
-          <AddressButton key={address.values.id} address={address} />
+          <AddressButton
+            key={address.values.id}
+            address={address}
+            onPress={addressOnPress}
+          />
         ))}
       </ScrollView>
     );
@@ -75,7 +96,8 @@ const ShippingAddressesScreen = ({userAddressList}: Props) => {
 
   return (
     <ScreenWrapper
-      header="Address Book"
+      headerText={headerText}
+      header={header}
       topButtonOnPress={() => {
         navigate(Routes.NEW_ADDRESS);
       }}
@@ -89,4 +111,4 @@ const mapStoreDataToProps = ({shippingAddresses}: ApplicationState) => ({
   userAddressList: getOrFetchAddresses(shippingAddresses),
 });
 
-export default connect(mapStoreDataToProps)(ShippingAddressesScreen);
+export default connect(mapStoreDataToProps)(DisplayAddresses);

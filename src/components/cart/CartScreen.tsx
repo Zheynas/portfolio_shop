@@ -109,7 +109,7 @@ const CartScreen = ({productsCollection}: Props) => {
       {renderContent()}
       <View style={SharedStyles.standardBottomMargin}>
         <BottomButton
-          text="SHOPPING"
+          text="CHECKOUT"
           onPress={() => {
             navigate(Routes.CHECKOUT);
           }}

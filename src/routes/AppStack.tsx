@@ -24,7 +24,7 @@ import PaymentSelection from '../components/payment/PaymentSelection';
 import ProfileScreen from '../components/profile/ProfileScreen';
 import ChangeEmailScreen from '../components/credentials/ChangeEmailScreen';
 import ChangePasswordScreen from '../components/credentials/ChangePasswordScreen';
-import ShippingAddressesScreen from '../components/addresses/ShippingAddressesScreen';
+import ShippingAddressesScreen from '../components/addresses/AddressBook';
 import EditAddress from '../components/addresses/EditAddress';
 import NewAddress from '../components/addresses/NewAddress';
 import HelpScreen from '../components/help/HelpScreen';
