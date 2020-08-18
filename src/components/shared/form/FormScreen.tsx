@@ -1,12 +1,11 @@
 import React from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import {View} from 'react-native';
 
+// Components
 import TextField from '../TextField';
-import BottomButton from '../BottomButton';
-
-import Styles from './FormStyles';
-import SharedStyles from '../SharedStyles';
-import FormItem from 'src/util/enums/FormItem';
+import ScreenWrapper from '../ScreenWrapper';
+// Util
+import FormItem from '../../../util/enums/FormItem';
 
 interface Props {
   /**
@@ -50,49 +49,27 @@ const FormScreen = ({
   bottomButtonText,
   bottomButtonOnPress,
   loading,
-}: Props) => {
-  /**
-   * Optional bottom button renderer
-   */
-  const renderBottomButton = () => {
-    if (!bottomButtonText || loading) {
-      return null;
-    }
-
-    return (
-      <BottomButton
-        text={bottomButtonText}
-        onPress={bottomButtonOnPress}
-        style={Styles.bottomButton}
-        grey
-      />
-    );
-  };
-
-  return (
-    <View style={SharedStyles.container}>
-      <Text style={SharedStyles.headerText}>{header}</Text>
-      <ScrollView style={SharedStyles.flexContainer}>
-        <View>
-          {fields.map(({label, value, setValue, password}: FormItem) => (
-            <TextField
-              label={label}
-              value={value}
-              setValue={setValue}
-              key={label}
-              secureTextEntry={password}
-            />
-          ))}
-        </View>
-      </ScrollView>
-      <BottomButton
-        text={buttonText}
-        onPress={buttonOnPress}
-        loading={loading}
-      />
-      {renderBottomButton()}
+}: Props) => (
+  <ScreenWrapper
+    header={header}
+    scroll
+    loading={loading}
+    topButtonText={buttonText}
+    topButtonOnPress={buttonOnPress}
+    bottomButtonText={bottomButtonText}
+    bottomButtonOnPress={bottomButtonOnPress}>
+    <View>
+      {fields.map(({label, value, setValue, password}: FormItem) => (
+        <TextField
+          label={label}
+          value={value}
+          setValue={setValue}
+          key={label}
+          secureTextEntry={password}
+        />
+      ))}
     </View>
-  );
-};
+  </ScreenWrapper>
+);
 
 export default FormScreen;
