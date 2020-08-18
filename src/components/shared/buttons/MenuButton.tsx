@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/EvilIcons';
 import {moderateScale} from 'react-native-size-matters';
 
 import Styles from './styles/ConfirmButtonStyles';
-import {Colours, Fonts} from '../../styles/Themes';
+import {Colours, Fonts} from '../../../styles/Themes';
 import {useNavigation} from '@react-navigation/native';
 
 interface Props {
