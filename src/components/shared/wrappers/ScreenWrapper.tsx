@@ -81,7 +81,6 @@ const ScreenWrapper = ({
       <BottomButton
         text={bottomButtonText}
         onPress={bottomButtonOnPress}
-        style={Styles.bottomMargin}
         grey
       />
     );
@@ -100,6 +99,7 @@ const ScreenWrapper = ({
         text={topButtonText}
         onPress={topButtonOnPress}
         loading={loading}
+        style={Styles.bottomMargin}
       />
     );
   };

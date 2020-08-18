@@ -1,4 +1,4 @@
-export default interface FormItem {
+export interface FormItem {
   label: string;
   value: string;
   setValue?: (value: string) => void;

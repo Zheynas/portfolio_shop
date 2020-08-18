@@ -10,7 +10,7 @@ import {ApplicationState} from '../../redux/types';
 import {createUser, getUser} from '../../redux/resources/user';
 // Util
 import {User} from '../../models/user';
-import FormItem from '../../util/enums/FormItem';
+import FormItem from '../../models/formItem';
 // Components
 import FormScreen from '../shared/form/FormScreen';
 

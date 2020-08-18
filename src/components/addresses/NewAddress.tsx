@@ -9,7 +9,7 @@ import {connect} from 'react-redux';
 // Redux
 import {createAddress} from '../../redux/resources/shippingAddresses';
 // Util
-import FormItem from '../../util/enums/FormItem';
+import FormItem from '../../models/formItem';
 import {ShippingAddress} from '../../models/shippingAddress';
 // Components
 import FormScreen from '../shared/form/FormScreen';

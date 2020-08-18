@@ -11,7 +11,7 @@ import {connect} from 'react-redux';
 import {getUser, updateUser} from '../../redux/resources/user';
 import {ApplicationState} from '../../redux/types';
 // Util
-import FormItem from '../../util/enums/FormItem';
+import FormItem from '../../models/formItem';
 import {User} from '../../models/user';
 // Components
 import FormScreen from '../shared/form/FormScreen';
