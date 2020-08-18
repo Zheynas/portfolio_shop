@@ -11,13 +11,12 @@ import Routes from '../../routes/Routes';
 // Redux
 import {ApplicationState} from '../../redux/types';
 import {getOrFetchAddresses} from '../../redux/resources/shippingAddresses';
-// Components
-import DetailsButton from '../payment/DetailsButton';
-import BottomButton from '../shared/BottomButton';
 // Util
 import {ShippingAddress} from '../../models/shippingAddress';
 // Styling
 import SharedStyles from '../shared/SharedStyles';
+import AddressButton from './AddressButton';
+import ScreenWrapper from '../shared/ScreenWrapper';
 
 interface Props {
   /**
@@ -67,49 +66,25 @@ const ShippingAddressesScreen = ({userAddressList}: Props) => {
     // Addresses to render
     return (
       <ScrollView style={SharedStyles.flexContainer}>
-        {addresses.map(({values: address, values: {id}}) => (
-          <DetailsButton
-            key={id}
-            text={convertAddressForButton(address)}
-            onPress={() => {
-              navigate(Routes.EDIT_ADDRESS, {id});
-            }}
-          />
+        {addresses.map((address) => (
+          <AddressButton key={address.values.id} address={address} />
         ))}
       </ScrollView>
     );
   };
 
   return (
-    <View style={SharedStyles.container}>
-      <Text style={SharedStyles.headerText}>Address Book</Text>
-
+    <ScreenWrapper
+      header="Address Book"
+      scroll
+      topButtonOnPress={() => {
+        navigate(Routes.NEW_ADDRESS);
+      }}
+      topButtonText="Add Shipping Address">
       {renderAddresses()}
-
-      <BottomButton
-        text="Add Shipping Address"
-        grey
-        onPress={() => {
-          navigate(Routes.NEW_ADDRESS);
-        }}
-        style={SharedStyles.standardTopMargin}
-      />
-    </View>
+    </ScreenWrapper>
   );
 };
-
-/**
- * Helper function to convert ShippingAddress object into array of strings to display
- */
-function convertAddressForButton({
-  label,
-  houseNumber,
-  lineOne,
-  postCode,
-  phoneNumber,
-}: ShippingAddress) {
-  return [label, `${houseNumber} ${lineOne}`, postCode, phoneNumber];
-}
 
 const mapStoreDataToProps = ({shippingAddresses}: ApplicationState) => ({
   userAddressList: getOrFetchAddresses(shippingAddresses),
