@@ -21,7 +21,7 @@ import SharedStyles from '../shared/styles/SharedStyles';
 import {ShippingMethod} from 'src/models/shippingMethod';
 import DeliveryButton from '../shared/buttons/DeliveryButton';
 import InfoButton from '../shared/buttons/InfoButton';
-import Payments from '../../util/Payments';
+import Payments from '../../util/data/Payments';
 import MenuButton from '../shared/buttons/MenuButton';
 import ScreenWrapper from '../shared/wrappers/ScreenWrapper';
 import Address from './items/Address';

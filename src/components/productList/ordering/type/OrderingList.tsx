@@ -5,7 +5,7 @@ import {View} from 'react-native';
 import OrderButton from './OrderButton';
 // Util
 import OrderType from '../../../../util/enums/OrderType';
-import OrderTypes from '../../../../util/OrderTypes';
+import OrderTypes from '../../../../util/data/OrderTypes';
 // Styling
 import Styles from '../../styles/ProductListStyles';
 

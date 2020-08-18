@@ -7,7 +7,7 @@ import {useNavigation} from '@react-navigation/native';
 import MenuButton from '../../shared/buttons/MenuButton';
 import ScreenWrapper from '../../shared/wrappers/ScreenWrapper';
 // Util
-import Payments from '../../../util/Payments';
+import Payments from '../../../util/data/Payments';
 import {PaymentOption} from '../../../util/enums/PaymentOption';
 
 /**
