@@ -62,7 +62,7 @@ const MenuScreen = ({logout, currentUserItem: {values: user}}: Props) => {
         <MenuButton
           text="Order Histories"
           icon="credit-card"
-          route={Routes.HOME}
+          route={Routes.ORDER_HISTORY}
           hide={!loggedIn}
         />
         <MenuButton text="Help" icon="question" route={Routes.HELP} />

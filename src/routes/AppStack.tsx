@@ -34,6 +34,7 @@ import ContactScreen from '../components/contact/ContactScreen';
 import {getUser} from '../redux/resources/user';
 import {ApplicationState} from '../redux/types';
 import {User} from '../models/user';
+import OrderHistory from '../components/history/OrderHistory';
 
 const RootStack = createStackNavigator<NavigationParamList>();
 const DEFAULT_ROOT = Routes.HOME;
@@ -91,6 +92,7 @@ const AppStack = ({currentUserItem}: Props) => {
             component={EditAddress}
           />
           <RootStack.Screen name={Routes.NEW_ADDRESS} component={NewAddress} />
+          <RootStack.Screen name={Routes.ORDER_HISTORY} component={OrderHistory} />
         </>
       )}
 

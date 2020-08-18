@@ -25,7 +25,8 @@ enum Routes {
   HELP = 'HELP',
   HELP_INFO = 'HELP_INFO',
   SETTINGS = 'SETTINGS',
-  CONTACT_US = 'CONTACT_US'
+  CONTACT_US = 'CONTACT_US',
+  ORDER_HISTORY = 'ORDER_HISTORY',
 }
 
 export default Routes;
