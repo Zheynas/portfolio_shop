@@ -13,7 +13,7 @@ import Routes from '../../routes/Routes';
 import {createUser, getUser} from '../../redux/resources/user';
 import {ApplicationState} from '../../redux/types';
 // Util
-import FormItem from '../../models/formItem';
+import {FormItem} from '../../util/models/FormItem';
 import {User} from '../../models/user';
 // Components
 import FormScreen from '../shared/form/FormScreen';

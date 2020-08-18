@@ -22,7 +22,7 @@ import {
 } from '../../redux/resources/shippingAddresses';
 import {ApplicationState} from '../../redux/types';
 // Util
-import FormItem from '../../models/formItem';
+import {FormItem} from '../../util/models/FormItem';
 import {ShippingAddress} from '../../models/shippingAddress';
 // Components
 import FormScreen from '../shared/form/FormScreen';

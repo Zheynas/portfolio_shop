@@ -5,7 +5,7 @@ import {View} from 'react-native';
 import TextField from '../inputs/TextField';
 import ScreenWrapper from '../wrappers/ScreenWrapper';
 // Util
-import FormItem from '../../../models/formItem';
+import {FormItem} from '../../../util/models/FormItem';
 
 interface Props {
   /**
