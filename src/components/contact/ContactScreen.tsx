@@ -7,7 +7,7 @@ import ScreenWrapper from '../shared/wrappers/ScreenWrapper';
  * Contact us screen
  */
 const ContactScreen = () => (
-  <ScreenWrapper header="Contact Us" scroll>
+  <ScreenWrapper headerText="Contact Us" scroll>
     <>
       <Text>Email:</Text>
       <Text>Phone:</Text>

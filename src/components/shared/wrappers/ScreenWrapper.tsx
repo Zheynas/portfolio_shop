@@ -9,7 +9,7 @@ interface Props {
   /**
    * Header title to display
    */
-  header: string;
+  headerText?: string;
   /**
    * Loading state
    */
@@ -46,13 +46,17 @@ interface Props {
    * Bottom button hide override
    */
   bottomButtonHide?: boolean;
+  /**
+   * Header component
+   */
+  header?: ReactElement;
 }
 
 /**
  * Standard screen wrapper
  */
 const ScreenWrapper = ({
-  header,
+  headerText,
   loading,
   topButtonText,
   topButtonOnPress,
@@ -62,6 +66,7 @@ const ScreenWrapper = ({
   scroll,
   topButtonHide,
   bottomButtonHide,
+  header,
 }: Props) => {
   /**
    * Optional bottom button renderer
@@ -105,9 +110,20 @@ const ScreenWrapper = ({
 
     return <>{children}</>;
   };
+
+  const renderHeader = () => {
+    if (headerText) {
+      return <Text style={Styles.headerText}>{headerText}</Text>;
+    } else if (header) {
+      return header;
+    }
+
+    return null;
+  };
+
   return (
     <View style={Styles.container}>
-      <Text style={Styles.headerText}>{header}</Text>
+      {renderHeader()}
       {renderContent()}
       {renderTopButton()}
       {renderBottomButton()}

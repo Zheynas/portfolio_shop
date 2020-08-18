@@ -7,7 +7,7 @@ import MenuButton from '../shared/buttons/MenuButton';
 import ScreenWrapper from '../shared/wrappers/ScreenWrapper';
 
 const HelpScreen = () => (
-  <ScreenWrapper header="Help" scroll>
+  <ScreenWrapper headerText="Help" scroll>
     <>
       <MenuButton
         text="Buy Guide"

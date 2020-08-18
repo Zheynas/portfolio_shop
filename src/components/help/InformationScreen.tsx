@@ -26,7 +26,7 @@ const InformationScreen = ({
     params: {header},
   },
 }: Props) => (
-  <ScreenWrapper header={header} scroll>
+  <ScreenWrapper headerText={header} scroll>
     <>
       <Text>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum

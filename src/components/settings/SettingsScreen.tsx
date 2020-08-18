@@ -10,7 +10,7 @@ import ScreenWrapper from '../shared/wrappers/ScreenWrapper';
  * Settings selection screen
  */
 const SettingsScreen = () => (
-  <ScreenWrapper header="Settings" scroll>
+  <ScreenWrapper headerText="Settings" scroll>
     <>
       <MenuButton text="Notifications" route={Routes.SETTINGS} />
       <MenuButton text="Contact Preferences" route={Routes.SETTINGS} />

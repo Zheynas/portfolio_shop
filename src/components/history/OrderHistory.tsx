@@ -10,7 +10,7 @@ import SharedStyles from '../shared/styles/SharedStyles';
  * Order history
  */
 const OrderHistory = () => (
-  <ScreenWrapper header="Order History" scroll>
+  <ScreenWrapper headerText="Order History" scroll>
     <View style={SharedStyles.centeredContainer}>
       <Text style={SharedStyles.mediumText}>Coming Soon...</Text>
     </View>

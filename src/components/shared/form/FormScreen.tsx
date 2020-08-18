@@ -51,7 +51,7 @@ const FormScreen = ({
   loading,
 }: Props) => (
   <ScreenWrapper
-    header={header}
+    headerText={header}
     scroll
     loading={loading}
     topButtonText={buttonText}
