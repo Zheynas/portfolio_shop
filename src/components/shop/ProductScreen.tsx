@@ -14,7 +14,7 @@ import BOOTSTRAPPED from '../../redux/custom/statuses';
 import {ApplicationState} from '../../redux/types';
 import {getProduct} from '../../redux/resources/products';
 import {Product} from '../../models/product';
-import SmallButton from '../shared/SmallButton';
+import SmallButton from '../shared/buttons/SmallButton';
 import {Measurements, Colours} from '../../styles/Themes';
 
 /**
