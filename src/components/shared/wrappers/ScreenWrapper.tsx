@@ -127,7 +127,7 @@ const ScreenWrapper = ({
     }
 
     const extraStyles = header ? {marginTop: 20, marginBottom: 10} : {};
-    return <Text style={[Styles.headerText, extraStyles]}>{headerText}</Text>;
+    return <Text style={[Styles.header, extraStyles]}>{headerText}</Text>;
   };
 
   return (

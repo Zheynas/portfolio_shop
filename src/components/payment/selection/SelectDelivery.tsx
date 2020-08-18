@@ -37,6 +37,7 @@ const SelectDelivery = ({shippingCollection}: Props) => {
    * Shipping method values
    */
   const {items: methods} = shippingCollection;
+  // TODO: Error handling
   const isLoading = isSyncingWithRemote(shippingCollection);
 
   /**

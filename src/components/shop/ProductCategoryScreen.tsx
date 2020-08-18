@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 
 import Routes from '../../routes/Routes';
 import Styles from './ShopStyles';
-import CategoryButton from '../sections/SectionButton';
+import SectionButton from '../sections/SectionButton';
 import {NavigationParamList} from 'NavigationTypes';
 import {ApplicationState} from '../../redux/types';
 import {getOrFetchCategory} from '../../redux/resources/categorys';
@@ -39,11 +39,11 @@ const ShopScreen = ({
 
   return (
     <View style={Styles.container}>
-      <CategoryButton imagePath={imagePath} disabled />
+      <SectionButton imagePath={imagePath} disabled />
       <ScrollView style={SharedStyles.flexContainer}>
         {subcategories.map(({header, categories, id: subcategoryId}) => (
           <View style={Styles.categoryScrollContainer}>
-            <Text style={Styles.headerText}>{header}</Text>
+            <Text style={SharedStyles.header}>{header}</Text>
             {categories.map(({id, title}) => (
               <TouchableOpacity
                 style={SharedStyles.centeredContainer}

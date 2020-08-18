@@ -28,6 +28,8 @@ export interface SharedStyle {
   centered: ViewStyle;
   smallSpacedText: TextStyle;
   rightMargin: ViewStyle;
+  categoryText: TextStyle;
+  header: TextStyle;
 }
 
 const headerText: TextStyle = {
@@ -46,6 +48,12 @@ const mediumText: TextStyle = {
   color: Colours.black,
   fontFamily: Fonts.semiBold,
   fontSize: FontSize.subheader,
+};
+
+const categoryText: TextStyle = {
+  color: Colours.black,
+  fontFamily: Fonts.regular,
+  fontSize: FontSize.label,
 };
 
 const bodyText: TextStyle = {
@@ -110,9 +118,12 @@ const SharedStyles: SharedStyle = {
   rightMargin: {
     marginRight: Measurements.padding,
   },
-  headerText: {
+  header: {
     ...headerText,
     marginBottom: moderateScale(30),
+  },
+  headerText: {
+    ...headerText,
   },
   shopHeaderContainer: {
     height: Measurements.shopHeaderHeight,
@@ -132,7 +143,6 @@ const SharedStyles: SharedStyle = {
   icon: {
     marginTop: -5,
   },
-
   centeredContainer: {
     flex: 1,
     ...centered,
@@ -170,6 +180,9 @@ const SharedStyles: SharedStyle = {
   },
   centered: {
     ...centered,
+  },
+  categoryText: {
+    ...categoryText,
   },
 };
 

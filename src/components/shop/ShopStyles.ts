@@ -29,7 +29,6 @@ export interface ShopStyle {
   productScrollContainer: TextStyle;
   productLengthText: TextStyle;
   productListHeader: ViewStyle;
-  centerFlex: ViewStyle;
   productListHeaderText: TextStyle;
 }
 
@@ -154,11 +153,6 @@ const ShopStyles: ShopStyle = {
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: moderateScale(10),
-  },
-  centerFlex: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   productListHeaderText: {
     color: Colours.black,

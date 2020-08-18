@@ -31,6 +31,7 @@ import Order from '../../util/enums/Order';
 import {Product} from '../../models/product';
 import {Measurements, Colours} from '../../styles/Themes';
 import {getOrFetchProducts} from '../../redux/resources/products';
+import SharedStyles from '../shared/styles/SharedStyles';
 
 /**
  * Adds typing to route.params for the correct route
@@ -71,7 +72,7 @@ const ProductListScreen = ({
 
   if (isLoading) {
     return (
-      <View style={Styles.centerFlex}>
+      <View style={SharedStyles.centeredContainer}>
         <ActivityIndicator size="large" />
       </View>
     );
@@ -101,7 +102,7 @@ const ProductListScreen = ({
             color={Colours.grey}
           />
         </TouchableOpacity>
-        <View style={Styles.centerFlex}>
+        <View style={SharedStyles.centeredContainer}>
           <Text style={Styles.productListHeaderText}>{title}</Text>
         </View>
         <TouchableOpacity>

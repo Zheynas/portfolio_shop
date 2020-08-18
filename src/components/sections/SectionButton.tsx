@@ -12,7 +12,7 @@ interface Props {
   /**
    * Button text
    */
-  text: string;
+  text?: string;
   /**
    * Image path
    */
@@ -24,7 +24,7 @@ interface Props {
   /**
    * Id of section
    */
-  id: string;
+  id?: string;
   /**
    * Light mode
    */
@@ -44,17 +44,20 @@ const SectionButton = ({text, image, disabled, id, light}: Props) => {
    * Display logic
    */
   // TODO: fall back image
-  const bannerImage = image ? {uri: image} : null;
   const backgroundColor = light ? 'transparent' : 'rgba(0,0,0,.3)';
+
+  const onPress = () => {
+    if (id) {
+      navigate(Routes.SUB_SECTIONS, {sectionId: id});
+    }
+  };
 
   return (
     <TouchableOpacity
       disabled={disabled}
       style={Styles.sectionButton}
-      onPress={() => {
-        navigate(Routes.SUB_SECTIONS, {sectionId: id});
-      }}>
-      <Image source={bannerImage} style={Styles.sectionImage} />
+      onPress={onPress}>
+      <Image source={{uri: image}} style={Styles.sectionImage} />
       <View
         style={[Styles.sectionTextWrapper, {backgroundColor: backgroundColor}]}>
         <Text style={Styles.sectionText}>{text}</Text>

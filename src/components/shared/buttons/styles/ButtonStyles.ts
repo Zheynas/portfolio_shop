@@ -63,7 +63,7 @@ const ButtonStyles: ButtonStyle = {
     paddingHorizontal: moderateScale(10),
     paddingVertical: moderateScale(5),
     backgroundColor: Colours.coral,
-    ...centered,
+    ...SharedStyles.centered,
   },
   smallButtonText: {
     color: Colours.white,

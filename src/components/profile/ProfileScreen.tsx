@@ -91,7 +91,7 @@ const ProfileScreen = ({
 
   return (
     <View style={SharedStyles.container}>
-      <Text style={SharedStyles.headerText}>Personal Information</Text>
+      <Text style={SharedStyles.header}>Personal Information</Text>
       <Text
         style={[
           SharedStyles.mediumText,
