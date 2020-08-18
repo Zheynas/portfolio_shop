@@ -99,7 +99,7 @@ const ProfileScreen = ({
         ]}>{`${firstName} ${lastName}`}</Text>
       <Text style={SharedStyles.bodyText}>{email}</Text>
 
-      <View style={[SharedStyles.flexColumn, SharedStyles.standardTopMargin]}>
+      <View style={[SharedStyles.flexColumn, SharedStyles.topMargin]}>
         {renderAddresses()}
       </View>
 
@@ -114,7 +114,7 @@ const ProfileScreen = ({
         <BottomButton
           text="Change Password"
           grey
-          style={SharedStyles.standardTopMargin}
+          style={SharedStyles.topMargin}
           onPress={() => {
             navigate(Routes.CHANGE_PASSWORD);
           }}
@@ -122,7 +122,7 @@ const ProfileScreen = ({
         <BottomButton
           text="Change Email"
           grey
-          style={SharedStyles.standardTopMargin}
+          style={SharedStyles.topMargin}
           onPress={() => {
             navigate(Routes.CHANGE_EMAIL);
           }}

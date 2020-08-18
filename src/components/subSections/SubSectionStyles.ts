@@ -7,9 +7,7 @@ export interface SubSectionStyle {
   container: ViewStyle;
   headerText: TextStyle;
   categoryText: TextStyle;
-  flexContainer: ViewStyle;
   categoryScrollContainer: ViewStyle;
-  centerContainer: ViewStyle;
   centerFlex: ViewStyle;
 }
 
@@ -29,17 +27,10 @@ const SubSectionStyles: SubSectionStyle = {
     fontSize: FontSize.label,
     marginTop: moderateScale(15),
   },
-  flexContainer: {
-    flex: 1,
-  },
   categoryScrollContainer: {
     flex: 1,
     alignItems: 'center',
     marginBottom: moderateScale(15),
-  },
-  centerContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   centerFlex: {
     flex: 1,

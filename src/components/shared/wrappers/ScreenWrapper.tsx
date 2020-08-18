@@ -4,6 +4,7 @@ import {View, Text, ScrollView} from 'react-native';
 import BottomButton from '../buttons/BottomButton';
 
 import Styles from '../styles/SharedStyles';
+import SharedStyles from '../styles/SharedStyles';
 
 interface Props {
   /**
@@ -80,7 +81,7 @@ const ScreenWrapper = ({
       <BottomButton
         text={bottomButtonText}
         onPress={bottomButtonOnPress}
-        style={Styles.bottomButtonMargin}
+        style={Styles.bottomMargin}
         grey
       />
     );
@@ -105,7 +106,9 @@ const ScreenWrapper = ({
 
   const renderContent = () => {
     if (scroll) {
-      return <ScrollView style={Styles.flexContainer}>{children}</ScrollView>;
+      return (
+        <ScrollView style={SharedStyles.flexContainer}>{children}</ScrollView>
+      );
     }
 
     return <>{children}</>;

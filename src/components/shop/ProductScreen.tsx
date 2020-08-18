@@ -16,6 +16,7 @@ import {getProduct} from '../../redux/resources/products';
 import {Product} from '../../models/product';
 import SmallButton from '../shared/buttons/SmallButton';
 import {Measurements, Colours} from '../../styles/Themes';
+import SharedStyles from '../shared/styles/SharedStyles';
 
 /**
  * Adds typing to route.params for the correct route
@@ -40,7 +41,7 @@ const ProductScreen = ({
 }: Props) => {
   const {goBack, navigate} = useNavigation();
   return (
-    <View style={Styles.columnContainer}>
+    <View style={SharedStyles.flexColumn}>
       <TouchableOpacity
         style={{
           position: 'absolute',
@@ -67,7 +68,7 @@ const ProductScreen = ({
         }}>
         <EvilIcon name="cart" size={moderateScale(35)} color={Colours.grey} />
       </TouchableOpacity>
-      <View style={Styles.flexContainer}>
+      <View style={SharedStyles.flexContainer}>
         <Image source={{uri: largePictureUrl}} style={Styles.image} />
       </View>
       <View style={Styles.productInfoContainer}>

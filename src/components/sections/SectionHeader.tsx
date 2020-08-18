@@ -9,7 +9,7 @@ import Icon from 'react-native-vector-icons/EvilIcons';
 import Routes from '../../routes/Routes';
 // Styling
 import {Colours, Measurements} from '../../styles/Themes';
-import Styles from './SectionStyles';
+import Styles from './styles/SectionStyles';
 import SharedStyles from '../shared/styles/SharedStyles';
 
 /**

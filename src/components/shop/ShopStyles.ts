@@ -7,10 +7,7 @@ export interface ShopStyle {
   container: ViewStyle;
   headerText: TextStyle;
   categoryText: TextStyle;
-  flexContainer: ViewStyle;
   categoryScrollContainer: ViewStyle;
-  centerContainer: ViewStyle;
-  columnContainer: ViewStyle;
   flexColumn: ViewStyle;
   flexRow: ViewStyle;
   spacerContainer: ViewStyle;
@@ -52,21 +49,10 @@ const ShopStyles: ShopStyle = {
     fontSize: FontSize.label,
     marginTop: moderateScale(15),
   },
-  flexContainer: {
-    flex: 1,
-  },
   categoryScrollContainer: {
     flex: 1,
     alignItems: 'center',
     marginBottom: moderateScale(15),
-  },
-  centerContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  columnContainer: {
-    flex: 1,
-    flexDirection: 'column',
   },
   image: {
     width: '100%',

@@ -7,6 +7,7 @@ import {useNavigation} from '@react-navigation/native';
 import {Product} from '../../../models/product';
 import Routes from '../../../routes/Routes';
 import getImage from '../../../../assets/images';
+import SharedStyles from '../../shared/styles/SharedStyles';
 
 interface Props {
   item: ResourcesItem<Product>;
@@ -27,11 +28,11 @@ const GridContainer = ({
 
   return (
     <TouchableOpacity
-      style={Styles.flexContainer}
+      style={SharedStyles.flexContainer}
       onPress={() => {
         navigate(Routes.PRODUCT, {productId: id});
       }}>
-      <View style={Styles.flexContainer}>
+      <View style={SharedStyles.flexContainer}>
         <Image source={bannerImage} style={Styles.image} />
       </View>
       <View style={textWrapperStyle}>

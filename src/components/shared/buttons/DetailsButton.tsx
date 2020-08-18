@@ -1,15 +1,14 @@
 import React from 'react';
-import {View, Text, SafeAreaView, TouchableOpacity} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {View, Text, TouchableOpacity} from 'react-native';
+// Components
 import Icon from 'react-native-vector-icons/EvilIcons';
+// Styling
 import {moderateScale} from 'react-native-size-matters';
 
-import Routes from '../../../routes/Routes';
-import Styles from '../../payment/PaymentStyles';
-import BottomButton from './BottomButton';
-import TextField from '../inputs/TextField';
-import {Colours, Fonts, FontSize} from '../../../styles/Themes';
-import CheckoutNavBar from '../../checkout/nav/CheckoutNavBar';
+// Styling
+import Styles from './styles/ButtonStyles';
+import {Colours} from '../../../styles/Themes';
+import SharedStyles from '../styles/SharedStyles';
 
 interface Props {
   /**
@@ -21,18 +20,15 @@ interface Props {
    */
   text: string[];
 }
+
+/**
+ * Button that displays an array of text
+ */
 const DetailsButton = ({onPress, text}: Props) => {
   return (
-    <TouchableOpacity
-      onPress={onPress}
-      style={{
-        borderBottomWidth: 1,
-        borderColor: Colours.grey,
-        paddingVertical: moderateScale(20),
-        flexDirection: 'row',
-      }}>
-      <View style={{flex: 1, flexDirection: 'column'}}>{renderText(text)}</View>
-      <View style={{alignItems: 'center', justifyContent: 'center'}}>
+    <TouchableOpacity onPress={onPress} style={Styles.detailsButtonContainer}>
+      <View style={SharedStyles.flexColumn}>{renderText(text)}</View>
+      <View style={SharedStyles.centered}>
         <Icon
           name="chevron-right"
           size={moderateScale(40)}
@@ -43,41 +39,25 @@ const DetailsButton = ({onPress, text}: Props) => {
   );
 };
 
+/**
+ * Helper function to determine how to render the text
+ */
 function renderText(textToDisplay: string[]) {
-  const extraText = textToDisplay.slice(1);
+  const numberOfTexts = textToDisplay.length;
+  if (numberOfTexts === 0) {
+    return null;
+  }
 
   if (textToDisplay.length === 1) {
-    return (
-      <Text
-        style={{
-          color: Colours.black,
-          fontFamily: Fonts.regular,
-          fontSize: FontSize.small,
-          lineHeight: FontSize.question,
-        }}>
-        {textToDisplay[0]}
-      </Text>
-    );
+    return <Text style={SharedStyles.bodyText}>{textToDisplay[0]}</Text>;
   }
+
+  const extraText = textToDisplay.slice(1);
   return (
     <>
-      <Text
-        style={{
-          color: Colours.black,
-          fontFamily: Fonts.bold,
-          fontSize: FontSize.footer,
-        }}>
-        {textToDisplay[0]}
-      </Text>
+      <Text style={SharedStyles.boldBodyText}>{textToDisplay[0]}</Text>
       {extraText.map((text, index) => (
-        <Text
-          key={index}
-          style={{
-            color: Colours.black,
-            fontFamily: Fonts.regular,
-            fontSize: FontSize.small,
-            lineHeight: FontSize.question,
-          }}>
+        <Text key={index} style={SharedStyles.smallSpacedText}>
           {text}
         </Text>
       ))}

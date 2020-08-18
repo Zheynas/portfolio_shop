@@ -57,8 +57,7 @@ const CartStyles: CartStyle = {
   },
   selector: {
     width: moderateScale(40),
-    justifyContent: 'center',
-    alignItems: 'center',
+    ...SharedStyles.centered,
   },
 };
 

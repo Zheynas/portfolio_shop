@@ -6,6 +6,9 @@ import Routes from '../../routes/Routes';
 import MenuButton from '../shared/buttons/MenuButton';
 import ScreenWrapper from '../shared/wrappers/ScreenWrapper';
 
+/**
+ * Help menu screen
+ */
 const HelpScreen = () => (
   <ScreenWrapper headerText="Help" scroll>
     <>

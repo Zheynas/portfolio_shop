@@ -11,26 +11,23 @@ export interface SharedStyle {
   flexContainer: ViewStyle;
   shopHeaderTextContainer: ViewStyle;
   icon: TextStyle;
-  smallButtonContainer: ViewStyle;
-  smallButtonText: TextStyle;
-  bottomButton: ViewStyle;
-  bottomButtonText: TextStyle;
-  bottomButtonContainer: ViewStyle;
   headerText: TextStyle;
   container: ViewStyle;
-  standardTopMargin: ViewStyle;
+  topMargin: ViewStyle;
   centeredContainer: ViewStyle;
   mediumText: TextStyle;
   bodyText: TextStyle;
   subheaderText: TextStyle;
   row: ViewStyle;
   containerNoHeader: ViewStyle;
-  standardBottomMargin: ViewStyle;
+  bottomMargin: ViewStyle;
   regularText: TextStyle;
   boldBodyText: TextStyle;
-  bottomButtonMargin: ViewStyle;
   navText: TextStyle;
   boldNavText: TextStyle;
+  centered: ViewStyle;
+  smallSpacedText: TextStyle;
+  rightMargin: ViewStyle;
 }
 
 const headerText: TextStyle = {
@@ -69,9 +66,20 @@ const navText: TextStyle = {
   fontSize: FontSize.nav,
 };
 
+const smallText: TextStyle = {
+  color: Colours.black,
+  fontFamily: Fonts.regular,
+  fontSize: FontSize.small,
+};
+
 const standardContainer: ViewStyle = {
   flex: 1,
   padding: Measurements.padding,
+};
+
+const centered: ViewStyle = {
+  justifyContent: 'center',
+  alignItems: 'center',
 };
 
 const SharedStyles: SharedStyle = {
@@ -93,11 +101,14 @@ const SharedStyles: SharedStyle = {
   containerNoHeader: {
     ...standardContainer,
   },
-  standardTopMargin: {
+  topMargin: {
     marginTop: Measurements.padding,
   },
-  standardBottomMargin: {
+  bottomMargin: {
     marginBottom: Measurements.padding,
+  },
+  rightMargin: {
+    marginRight: Measurements.padding,
   },
   headerText: {
     ...headerText,
@@ -121,38 +132,10 @@ const SharedStyles: SharedStyle = {
   icon: {
     marginTop: -5,
   },
-  smallButtonContainer: {
-    paddingHorizontal: moderateScale(10),
-    paddingVertical: moderateScale(5),
-    backgroundColor: Colours.coral,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  smallButtonText: {
-    color: Colours.white,
-    fontFamily: Fonts.bold,
-    fontSize: FontSize.small,
-  },
-  bottomButtonContainer: {
-    height: moderateScale(50),
-  },
-  bottomButton: {
-    height: moderateScale(50),
-    width: '100%',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  bottomButtonText: {
-    color: Colours.white,
-    fontFamily: Fonts.semiBold,
-  },
-  bottomButtonMargin: {
-    marginTop: Measurements.padding,
-  },
+
   centeredContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    ...centered,
   },
   subheaderText: {
     ...subheaderText,
@@ -170,6 +153,10 @@ const SharedStyles: SharedStyle = {
     ...bodyText,
     fontFamily: Fonts.bold,
   },
+  smallSpacedText: {
+    ...smallText,
+    lineHeight: FontSize.question,
+  },
   row: {
     flex: 1,
     flexDirection: 'row',
@@ -180,6 +167,9 @@ const SharedStyles: SharedStyle = {
   },
   navText: {
     ...navText,
+  },
+  centered: {
+    ...centered,
   },
 };
 

@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import {ResourcesList} from 'redux-and-the-rest';
 
 import Routes from '../../routes/Routes';
-import Styles from './PaymentStyles';
+import Styles from './styles/PaymentStyles';
 import BottomButton from '../shared/buttons/BottomButton';
 import TextField from '../shared/inputs/TextField';
 import {Colours, Fonts, FontSize} from '../../styles/Themes';
@@ -52,7 +52,7 @@ const PaymentScreen = ({
    * Current order's values
    */
   // TODO: use values from order resource
-  const selectedAddress = addresses[0];
+  const selectedAddress = null //addresses[0];
   const selectedPayment = Payments[0];
   const selectedDelivery = delivery[0];
 

@@ -110,7 +110,7 @@ const CartScreen = ({productsCollection}: Props) => {
       />
 
       {renderContent()}
-      <View style={SharedStyles.standardBottomMargin}>
+      <View style={SharedStyles.bottomMargin}>
         <BottomButton
           text="CHECKOUT"
           onPress={() => {

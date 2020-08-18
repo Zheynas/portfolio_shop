@@ -23,7 +23,8 @@ import {ApplicationState} from '../../redux/types';
 import {getOrFetchSubSections} from '../../redux/resources/subSections';
 import {getItem} from '../../redux/resources/sections';
 import {SubSection} from '../../models/subSection';
-import {Section} from 'src/models/section';
+import {Section} from '../../models/section';
+import SharedStyles from '../shared/styles/SharedStyles';
 
 /**
  * Adds typing to route.params for the correct route
@@ -63,7 +64,7 @@ const SubSectionsScreen = ({
 
   if (isLoading) {
     return (
-      <View style={Styles.centerFlex}>
+      <View style={SharedStyles.centeredContainer}>
         <ActivityIndicator size="large" />
       </View>
     );
@@ -72,7 +73,7 @@ const SubSectionsScreen = ({
   return (
     <View style={Styles.container}>
       <CategoryButton image={bannerUrl} disabled light />
-      <ScrollView style={Styles.flexContainer}>
+      <ScrollView style={SharedStyles.flexContainer}>
         {subSections.map(({values: {title, categories, id: subSectionId}}) => (
           <View
             style={Styles.categoryScrollContainer}
@@ -81,7 +82,7 @@ const SubSectionsScreen = ({
             {categories.map(({id, title: catTitle}) => (
               <TouchableOpacity
                 key={`cat-${id}`}
-                style={Styles.centerContainer}
+                style={SharedStyles.centeredContainer}
                 onPress={() => {
                   navigate(Routes.PRODUCT_LIST, {id: id, title: catTitle});
                 }}>

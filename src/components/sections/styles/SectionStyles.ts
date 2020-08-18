@@ -1,7 +1,8 @@
 import {ViewStyle, TextStyle, StyleProp, ImageStyle} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
 
-import {FontSize, Fonts, Colours, Measurements} from '../../styles/Themes';
+import {FontSize, Fonts, Colours, Measurements} from '../../../styles/Themes';
+import SharedStyles from '../../shared/styles/SharedStyles';
 
 export interface SectionStyle {
   sectionButton: ViewStyle;
@@ -22,8 +23,7 @@ const SectionStyles: SectionStyle = {
   sectionButton: {
     height: moderateScale(150),
     marginBottom: moderateScale(10),
-    justifyContent: 'center',
-    alignItems: 'center',
+    ...SharedStyles.centered,
   },
   sectionImage: {
     width: '101%',
@@ -38,8 +38,7 @@ const SectionStyles: SectionStyle = {
     bottom: 0,
     left: 0,
     right: 0,
-    justifyContent: 'center',
-    alignItems: 'center',
+    ...SharedStyles.centered,
   },
   sectionText: {
     color: Colours.white,

@@ -12,6 +12,7 @@ import {ApplicationState} from '../../redux/types';
 import {getOrFetchCategory} from '../../redux/resources/categorys';
 import BOOTSTRAPPED from '../../redux/custom/statuses';
 import {Category} from '../../models/category';
+import SharedStyles from '../shared/styles/SharedStyles';
 
 /**
  * Adds typing to route.params for the correct route
@@ -39,13 +40,13 @@ const ShopScreen = ({
   return (
     <View style={Styles.container}>
       <CategoryButton imagePath={imagePath} disabled />
-      <ScrollView style={Styles.flexContainer}>
+      <ScrollView style={SharedStyles.flexContainer}>
         {subcategories.map(({header, categories, id: subcategoryId}) => (
           <View style={Styles.categoryScrollContainer}>
             <Text style={Styles.headerText}>{header}</Text>
             {categories.map(({id, title}) => (
               <TouchableOpacity
-                style={Styles.centerContainer}
+                style={SharedStyles.centeredContainer}
                 onPress={() => {
                   navigate(Routes.PRODUCT_LIST, {categoryId: id});
                 }}>

@@ -6,7 +6,7 @@ import {useNavigation} from '@react-navigation/native';
 // Navigation
 import Routes from '../../routes/Routes';
 // Styling
-import Styles from './SectionStyles';
+import Styles from './styles/SectionStyles';
 
 interface Props {
   /**

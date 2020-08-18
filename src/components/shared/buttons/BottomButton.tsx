@@ -7,7 +7,7 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import Styles from '../styles/SharedStyles';
+import Styles from './styles/ButtonStyles';
 import {Colours} from '../../../styles/Themes';
 
 interface Props {
@@ -49,16 +49,12 @@ const BottomButton = ({
   grey,
   style = {},
 }: Props) => {
-  const extraStyles = grey
-    ? {
-        borderColor: Colours.grey,
-        borderWidth: 1,
-        backgroundColor: 'transparent',
-      }
-    : {backgroundColor: Colours.coral};
-
+  /**
+   * Display logic
+   */
   const indicatorColor = grey ? Colours.grey : Colours.white;
   const textColor = grey ? Colours.black : Colours.white;
+  const extraStyles = grey ? Styles.greyButton : Styles.coralFill;
 
   return (
     <View style={[Styles.bottomButtonContainer, style]}>

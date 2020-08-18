@@ -41,6 +41,7 @@ const LoginScreen = ({login, currentUserItem}: Props) => {
   /**
    * State
    */
+  // TODO: Remove temp details
   const [email, setEmail] = React.useState('sasdf@adsfs.com');
   const [password, setPassword] = React.useState('Passw1');
 

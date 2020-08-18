@@ -1,13 +1,18 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, ActivityIndicator} from 'react-native';
-import Icon from 'react-native-vector-icons/EvilIcons';
-import {moderateScale} from 'react-native-size-matters';
+import {View, Text, TouchableOpacity} from 'react-native';
+// Navigation
 import {useNavigation} from '@react-navigation/native';
+// Components
+import Icon from 'react-native-vector-icons/EvilIcons';
+// Styling
+import {moderateScale} from 'react-native-size-matters';
 
-import Styles from './styles/ConfirmButtonStyles';
-import {Colours, Fonts} from '../../../styles/Themes';
-
+// Components
 import ImageRenderer from '../images/ImageRenderer';
+//Styling
+import {Colours, Measurements} from '../../../styles/Themes';
+import SharedStyles from '../styles/SharedStyles';
+import Styles from './styles/ButtonStyles';
 
 interface Props {
   /**
@@ -52,12 +57,18 @@ const MenuButton = ({
   onPress,
   params = {},
 }: Props) => {
+  /**
+   * Navigation
+   */
   const {navigate} = useNavigation();
 
   if (hide) {
     return null;
   }
 
+  /**
+   * Render icon if present
+   */
   const renderIcon = () => {
     if (!icon) {
       return null;
@@ -68,11 +79,14 @@ const MenuButton = ({
         name={icon}
         size={moderateScale(35)}
         color={Colours.grey}
-        style={{marginRight: moderateScale(10)}}
+        style={SharedStyles.rightMargin}
       />
     );
   };
 
+  /**
+   * Render image if present
+   */
   const renderImage = () => {
     if (!image) {
       return null;
@@ -80,41 +94,38 @@ const MenuButton = ({
 
     return (
       <ImageRenderer
-        width={moderateScale(40)}
-        height={moderateScale(30)}
+        width={Measurements.largeIcon}
+        height={Measurements.smallIcon}
         image={image}
-        style={{marginRight: 20}}
+        style={SharedStyles.rightMargin}
       />
     );
   };
 
+  /**
+   * On menu button press
+   */
   const onButtonPress = () => {
+    // Try and use onPress param
     if (onPress) {
       onPress();
+      // if not, try and navigate using route param
     } else if (route) {
       navigate(route, params);
     }
   };
 
   return (
-    <TouchableOpacity
-      style={{
-        height: 50,
-        borderBottomWidth: 1,
-        borderColor: Colours.grey,
-        flexDirection: 'row',
-        alignItems: 'center',
-      }}
-      onPress={onButtonPress}>
+    <TouchableOpacity style={Styles.menuButton} onPress={onButtonPress}>
       {renderIcon()}
       {renderImage()}
-      <View style={{flex: 1}}>
-        <Text style={{fontFamily: Fonts.regular}}>{text}</Text>
+      <View style={SharedStyles.flexContainer}>
+        <Text style={SharedStyles.bodyText}>{text}</Text>
       </View>
 
       <Icon
         name="chevron-right"
-        size={moderateScale(35)}
+        size={Measurements.mediumIcon}
         color={Colours.grey}
       />
     </TouchableOpacity>

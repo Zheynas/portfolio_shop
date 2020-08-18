@@ -1,7 +1,8 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, ActivityIndicator} from 'react-native';
+import {Text, TouchableOpacity, ActivityIndicator} from 'react-native';
 
-import Styles from '../styles/SharedStyles';
+// Styling
+import Styles from './styles/ButtonStyles';
 import {Colours} from '../../../styles/Themes';
 
 interface Props {
