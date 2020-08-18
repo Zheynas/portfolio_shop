@@ -9,7 +9,7 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 import {store, persistor} from './src/redux/store';
 import AppStack from './src/routes/AppStack';
-import SharedStyles from './src/components/shared/SharedStyles';
+import SharedStyles from './src/components/shared/styles/SharedStyles';
 
 console.disableYellowBox = true;
 

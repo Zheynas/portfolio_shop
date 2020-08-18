@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/EvilIcons';
 import {useNavigation} from '@react-navigation/native';
 import {Colours} from '../../styles/Themes';
 import {moderateScale} from 'react-native-size-matters';
-import Styles from '../shared/SharedStyles';
+import Styles from '../shared/styles/SharedStyles';
 import Routes from '../../routes/Routes';
 /**
  * Shop header

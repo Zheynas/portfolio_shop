@@ -14,7 +14,7 @@ import {getOrFetchAddresses} from '../../redux/resources/shippingAddresses';
 // Util
 import {ShippingAddress} from '../../models/shippingAddress';
 // Styling
-import SharedStyles from '../shared/SharedStyles';
+import SharedStyles from '../shared/styles/SharedStyles';
 import AddressButton from './AddressButton';
 import ScreenWrapper from '../shared/ScreenWrapper';
 

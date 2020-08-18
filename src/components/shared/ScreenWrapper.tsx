@@ -3,7 +3,7 @@ import {View, Text, ScrollView} from 'react-native';
 
 import BottomButton from './buttons/BottomButton';
 
-import Styles from './SharedStyles';
+import Styles from './styles/SharedStyles';
 
 interface Props {
   /**
