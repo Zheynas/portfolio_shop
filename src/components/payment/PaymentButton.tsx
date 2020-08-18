@@ -11,7 +11,7 @@ import TextField from '../shared/TextField';
 import {Colours, Fonts, FontSize} from '../../styles/Themes';
 import CheckoutNavBar from '../checkout/CheckoutNavBar';
 import Images from '../../../assets/images/images';
-import ImageRenderer from '../shared/ImageRenderer';
+import ImageRenderer from '../shared/images/ImageRenderer';
 
 interface Props {
   /**

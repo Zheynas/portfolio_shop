@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleProp, ViewStyle} from 'react-native';
 
-import Image from '../../../assets/images/Images';
-import {ApplePay, GooglePay, Mastercard, Visa} from '../../../assets/images';
+import Image from '../../../../assets/images/Images';
+import {ApplePay, GooglePay, Mastercard, Visa} from '../../../../assets/images';
 
 interface Props {
   // Image to render
