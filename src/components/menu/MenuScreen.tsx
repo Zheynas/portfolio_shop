@@ -5,7 +5,7 @@ import {ResourcesItem, ResourcesList} from 'redux-and-the-rest';
 import {connect} from 'react-redux';
 
 import Routes from '../../routes/Routes';
-import MenuButton from './MenuButton';
+import MenuButton from '../shared/buttons/MenuButton';
 import Styles from './MenuStyle';
 import {User} from '../../models/user';
 import {ApplicationState} from '../../redux/types';
@@ -13,6 +13,7 @@ import {getUser, destroyUser} from '../../redux/resources/user';
 import {ThunkDispatch} from 'redux-thunk';
 import {AnyAction} from 'redux';
 import {ShippingAddress} from '../../models/shippingAddress';
+import ScreenWrapper from '../shared/ScreenWrapper';
 
 interface Props {
   // Current user in state
@@ -21,19 +22,19 @@ interface Props {
 }
 
 const MenuScreen = ({logout, currentUserItem: {values: user}}: Props) => {
-  const {navigate} = useNavigation();
-
   const loggedIn = Boolean(user && user.authenticationToken);
   const headerName = loggedIn
     ? `${user.firstName} ${user.lastName}`
     : 'Welcome!';
 
   return (
-    <View style={Styles.flexColumn}>
-      <View style={Styles.avatarContainer}>
-        <Text style={Styles.nameText}>{headerName}</Text>
-      </View>
-      <View style={Styles.buttonContainer}>
+    <ScreenWrapper
+      header={headerName}
+      scroll
+      topButtonText="LOGOUT"
+      topButtonOnPress={logout}
+      topButtonHide={!loggedIn}>
+      <>
         <MenuButton
           text="Login / Register"
           icon="user"
@@ -53,26 +54,19 @@ const MenuScreen = ({logout, currentUserItem: {values: user}}: Props) => {
           hide={!loggedIn}
         />
         <MenuButton text="Help" icon="question" route={Routes.HELP} />
-        <MenuButton text="Contact us" icon="envelope" route={Routes.CONTACT_US} />
+        <MenuButton
+          text="Contact us"
+          icon="envelope"
+          route={Routes.CONTACT_US}
+        />
         <MenuButton
           text="Settings"
           icon="gear"
           route={Routes.SETTINGS}
           hide={!loggedIn}
         />
-      </View>
-      {loggedIn && (
-        <View style={Styles.logoutContainer}>
-          <TouchableOpacity
-            style={Styles.logoutButton}
-            onPress={() => {
-              logout();
-            }}>
-            <Text style={Styles.logoutText}>LOGOUT</Text>
-          </TouchableOpacity>
-        </View>
-      )}
-    </View>
+      </>
+    </ScreenWrapper>
   );
 };
 
