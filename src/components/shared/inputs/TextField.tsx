@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, TextInput, Platform} from 'react-native';
 
-import {Colours, Fonts, FontSize} from '../../styles/Themes';
+import {Colours, Fonts, FontSize} from '../../../styles/Themes';
 import {moderateScale} from 'react-native-size-matters';
 
 interface Props {

@@ -7,7 +7,7 @@ import {moderateScale} from 'react-native-size-matters';
 import Routes from '../../routes/Routes';
 import Styles from './PaymentStyles';
 import BottomButton from '../shared/buttons/BottomButton';
-import TextField from '../shared/TextField';
+import TextField from '../shared/inputs/TextField';
 import {Colours, Fonts, FontSize} from '../../styles/Themes';
 import CheckoutNavBar from '../checkout/CheckoutNavBar';
 import Images from '../../../assets/images/images';

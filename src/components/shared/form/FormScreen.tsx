@@ -2,7 +2,7 @@ import React from 'react';
 import {View} from 'react-native';
 
 // Components
-import TextField from '../TextField';
+import TextField from '../inputs/TextField';
 import ScreenWrapper from '../ScreenWrapper';
 // Util
 import FormItem from '../../../util/enums/FormItem';

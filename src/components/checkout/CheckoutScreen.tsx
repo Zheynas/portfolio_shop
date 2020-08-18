@@ -6,7 +6,7 @@ import {moderateScale} from 'react-native-size-matters';
 import Routes from '../../routes/Routes';
 import Styles from './CheckoutStyles';
 import BottomButton from '../shared/buttons/BottomButton';
-import TextField from '../shared/TextField';
+import TextField from '../shared/inputs/TextField';
 import {Colours} from '../../styles/Themes';
 import CheckoutNavBar from './CheckoutNavBar';
 import CheckoutNav from '../../util/enums/CheckoutNav';
