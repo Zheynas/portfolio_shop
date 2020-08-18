@@ -26,6 +26,7 @@ import {ShippingAddress} from '../../models/shippingAddress';
 // Styles
 import Styles from './ProfileStyle';
 import SharedStyles from '../shared/styles/SharedStyles';
+import {Colours} from '../../styles/Themes';
 
 interface Props {
   /**
@@ -91,7 +92,11 @@ const ProfileScreen = ({
   return (
     <View style={SharedStyles.container}>
       <Text style={SharedStyles.headerText}>Personal Information</Text>
-      <Text style={SharedStyles.mediumText}>{`${firstName} ${lastName}`}</Text>
+      <Text
+        style={[
+          SharedStyles.mediumText,
+          {color: Colours.coral},
+        ]}>{`${firstName} ${lastName}`}</Text>
       <Text style={SharedStyles.bodyText}>{email}</Text>
 
       <View style={[SharedStyles.flexColumn, SharedStyles.standardTopMargin]}>

@@ -29,7 +29,7 @@ const SectionHeader = () => {
         onPress={() => {
           navigate(Routes.MENU);
         }}>
-        <Icon name="user" size={Measurements.mediumIcon} color={Colours.grey} />
+        <Icon name="user" size={Measurements.largeIcon} color={Colours.grey} />
       </TouchableOpacity>
     </View>
   );

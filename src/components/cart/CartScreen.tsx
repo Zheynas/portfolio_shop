@@ -18,7 +18,7 @@ import CartMenu from './CartMenu';
 // Util
 import {Product} from '../../models/product';
 // Styling
-import Styles from './CartStyles';
+import Styles from './styles/CartStyles';
 import SharedStyles from '../shared/styles/SharedStyles';
 
 interface Props {
@@ -28,6 +28,9 @@ interface Props {
   productsCollection: ResourcesList<Product>;
 }
 
+/**
+ * Screen to display current cart
+ */
 const CartScreen = ({productsCollection}: Props) => {
   /**
    * Navigation

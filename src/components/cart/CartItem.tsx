@@ -9,7 +9,7 @@ import Selector from './Selector';
 import {Product} from '../../models/product';
 // Styling
 import SharedStyles from '../shared/styles/SharedStyles';
-import Styles from './CartStyles';
+import Styles from './styles/CartStyles';
 
 interface Props {
   /**

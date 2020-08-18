@@ -7,7 +7,7 @@ import Routes from '../../../routes/Routes';
 import NavSeparator from './NavSeparator';
 import NavButton from './NavButton';
 // Styling
-import Styles from '../CheckoutStyles';
+import Styles from '../styles/CheckoutStyles';
 
 interface Props {
   /**

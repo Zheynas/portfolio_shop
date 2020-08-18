@@ -43,9 +43,9 @@ const MenuScreen = ({logout, currentUserItem: {values: user}}: Props) => {
     <ScreenWrapper
       headerText={headerName}
       scroll
-      topButtonText="LOGOUT"
-      topButtonOnPress={logout}
-      topButtonHide={!loggedIn}>
+      bottomButtonText="LOGOUT"
+      bottomButtonOnPress={logout}
+      bottomButtonHide={!loggedIn}>
       <>
         <MenuButton
           text="Login / Register"

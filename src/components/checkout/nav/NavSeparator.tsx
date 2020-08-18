@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/EvilIcons';
 
 // Styling
 import {Colours, Measurements} from '../../../styles/Themes';
-import Styles from '../CheckoutStyles';
+import Styles from '../styles/CheckoutStyles';
 
 /**
  * Chevron nav menu separator
@@ -15,7 +15,7 @@ const NavSeparator = () => {
     <View style={Styles.centerContainer}>
       <Icon
         name="chevron-right"
-        size={Measurements.mediumIcon}
+        size={Measurements.navChevrons}
         color={Colours.grey}
       />
     </View>

@@ -29,6 +29,8 @@ export interface SharedStyle {
   regularText: TextStyle;
   boldBodyText: TextStyle;
   bottomButtonMargin: ViewStyle;
+  navText: TextStyle;
+  boldNavText: TextStyle;
 }
 
 const headerText: TextStyle = {
@@ -61,6 +63,12 @@ const regularText: TextStyle = {
   fontSize: FontSize.small,
 };
 
+const navText: TextStyle = {
+  color: Colours.black,
+  fontFamily: Fonts.regular,
+  fontSize: FontSize.nav,
+};
+
 const standardContainer: ViewStyle = {
   flex: 1,
   padding: Measurements.padding,
@@ -80,7 +88,7 @@ const SharedStyles: SharedStyle = {
   },
   container: {
     ...standardContainer,
-    paddingTop: moderateScale(80),
+    paddingTop: moderateScale(70),
   },
   containerNoHeader: {
     ...standardContainer,
@@ -138,8 +146,8 @@ const SharedStyles: SharedStyle = {
     color: Colours.white,
     fontFamily: Fonts.semiBold,
   },
-  bottomButtonMargin:{
-    marginTop: Measurements.padding
+  bottomButtonMargin: {
+    marginTop: Measurements.padding,
   },
   centeredContainer: {
     flex: 1,
@@ -165,6 +173,13 @@ const SharedStyles: SharedStyle = {
   row: {
     flex: 1,
     flexDirection: 'row',
+  },
+  boldNavText: {
+    ...navText,
+    fontFamily: Fonts.bold,
+  },
+  navText: {
+    ...navText,
   },
 };
 

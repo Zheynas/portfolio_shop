@@ -46,8 +46,8 @@ const NavButton = ({currentScreen, destination}: Props) => {
  */
 function getTextStyle(currentScreen: Routes, buttonName: Routes) {
   return currentScreen === buttonName
-    ? SharedStyles.boldBodyText
-    : SharedStyles.bodyText;
+    ? SharedStyles.boldNavText
+    : SharedStyles.navText;
 }
 
 export default NavButton;

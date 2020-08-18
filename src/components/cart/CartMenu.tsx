@@ -4,7 +4,7 @@ import {Text, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/EvilIcons';
 
 // Styling
-import Styles from './CartStyles';
+import Styles from './styles/CartStyles';
 import {Colours, Measurements} from '../../styles/Themes';
 import SharedStyles from '../shared/styles/SharedStyles';
 

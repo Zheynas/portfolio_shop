@@ -27,6 +27,7 @@ const FontSize = {
   biggerLabel: moderateScale(18),
   label: moderateScale(17),
   footer: moderateScale(15),
+  nav: moderateScale(13),
   small: moderateScale(12),
 };
 
@@ -101,11 +102,16 @@ const Gradients = {
  * Common measurements for project
  */
 const Measurements = {
-  headerHeight: moderateScale(40),
   shopHeaderHeight: moderateScale(60),
+  headerHeight: moderateScale(40),
   padding: moderateScale(20),
-  mediumIcon: moderateScale(50),
-  smallIcon: moderateScale(30)
+  /**
+   * Icons
+   */
+  largeIcon: moderateScale(50),
+  navChevrons: moderateScale(40),
+  mediumIcon: moderateScale(35),
+  smallIcon: moderateScale(30),
 };
 
 export {Colours, Fonts, Zindex, Measurements, FontSize, Gradients};
