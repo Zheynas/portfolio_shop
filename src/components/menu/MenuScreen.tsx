@@ -1,27 +1,39 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, Image} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import {ResourcesItem, ResourcesList} from 'redux-and-the-rest';
+// Redux
+import {ResourcesItem} from 'redux-and-the-rest';
 import {connect} from 'react-redux';
-
-import Routes from '../../routes/Routes';
-import MenuButton from '../shared/buttons/MenuButton';
-import Styles from './MenuStyle';
-import {User} from '../../models/user';
-import {ApplicationState} from '../../redux/types';
-import {getUser, destroyUser} from '../../redux/resources/user';
 import {ThunkDispatch} from 'redux-thunk';
 import {AnyAction} from 'redux';
-import {ShippingAddress} from '../../models/shippingAddress';
+
+// Navigation
+import Routes from '../../routes/Routes';
+// Redux
+import {ApplicationState} from '../../redux/types';
+import {getUser, destroyUser} from '../../redux/resources/user';
 import ScreenWrapper from '../shared/wrappers/ScreenWrapper';
+// Components
+import MenuButton from '../shared/buttons/MenuButton';
+// Util
+import {User} from '../../models/user';
 
 interface Props {
-  // Current user in state
+  /**
+   * Current user
+   */
   currentUserItem: ResourcesItem<User>;
+  /**
+   * Logout API call
+   */
   logout: () => void;
 }
 
+/**
+ * User and company info menu screen
+ */
 const MenuScreen = ({logout, currentUserItem: {values: user}}: Props) => {
+  /**
+   * Render logic
+   */
   const loggedIn = Boolean(user && user.authenticationToken);
   const headerName = loggedIn
     ? `${user.firstName} ${user.lastName}`
