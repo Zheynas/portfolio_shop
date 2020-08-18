@@ -1,10 +1,12 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, ImageBackground} from 'react-native';
+import {View, Text, TouchableOpacity} from 'react-native';
+// Navigation
 import {useNavigation} from '@react-navigation/native';
 
+// Navigation
 import Routes from '../../routes/Routes';
-
-import Styles from './HomeScreenStyles';
+// Styling
+import SharedStyles from '../shared/styles/SharedStyles';
 
 /**
  * Home screen
@@ -13,19 +15,13 @@ const HomeScreen = () => {
   const {navigate} = useNavigation();
 
   return (
-    <View style={Styles.container}>
-      <ImageBackground
-        source={require('../../../assets/images/sunshine.jpg')}
-        style={Styles.background}>
-        <View style={Styles.centerFlex}>
-          <TouchableOpacity
-            onPress={() => {
-              navigate(Routes.SECTIONS);
-            }}>
-            <Text style={Styles.middleText}>ENTER SHOP</Text>
-          </TouchableOpacity>
-        </View>
-      </ImageBackground>
+    <View style={SharedStyles.centeredContainer}>
+      <TouchableOpacity
+        onPress={() => {
+          navigate(Routes.SECTIONS);
+        }}>
+        <Text style={SharedStyles.headerText}>LET'S GO!</Text>
+      </TouchableOpacity>
     </View>
   );
 };
