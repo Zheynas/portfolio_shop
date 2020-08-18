@@ -76,7 +76,6 @@ const ShippingAddressesScreen = ({userAddressList}: Props) => {
   return (
     <ScreenWrapper
       header="Address Book"
-      scroll
       topButtonOnPress={() => {
         navigate(Routes.NEW_ADDRESS);
       }}

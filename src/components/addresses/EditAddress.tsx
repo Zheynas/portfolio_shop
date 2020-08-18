@@ -202,17 +202,21 @@ const mapDispatchToProps = (
   },
 });
 
+// We use mergeProps to avoid passing route param into component just to pass it back out for a dispatch func
 const mergeProps = (
   stateProps: StateProps,
   dispatchProps: DispatchProps,
   ownProps: Props,
 ) => ({
   ...ownProps,
+  // Get the address item from redux using route param
   addressItem: getAddress(stateProps.shippingAddresses, {
     id: ownProps.route.params.id,
   }),
+  // Save address API call
   saveAddress: (address: ShippingAddress) =>
     dispatchProps.saveShippingAddress(address),
+  // Delete address API call
   deleteAddress: (id: string) => dispatchProps.deleteShippingAddress(id),
 });
 
