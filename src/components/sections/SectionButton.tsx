@@ -1,16 +1,18 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, Image} from 'react-native';
+// Navigation
 import {useNavigation} from '@react-navigation/native';
 
-import Styles from './SectionStyles';
+// Navigation
 import Routes from '../../routes/Routes';
-import getImage from '../../../assets/images';
+// Styling
+import Styles from './SectionStyles';
 
 interface Props {
   /**
    * Button text
    */
-  text?: string;
+  text: string;
   /**
    * Image path
    */
@@ -22,7 +24,7 @@ interface Props {
   /**
    * Id of section
    */
-  id?: string;
+  id: string;
   /**
    * Light mode
    */
@@ -30,10 +32,18 @@ interface Props {
 }
 
 /**
- * Section button
+ * Section display button
  */
 const SectionButton = ({text, image, disabled, id, light}: Props) => {
+  /**
+   * Navigation
+   */
   const {navigate} = useNavigation();
+
+  /**
+   * Display logic
+   */
+  // TODO: fall back image
   const bannerImage = image ? {uri: image} : null;
   const backgroundColor = light ? 'transparent' : 'rgba(0,0,0,.3)';
 
