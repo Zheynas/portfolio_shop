@@ -7,8 +7,8 @@ import {
   ViewStyle,
 } from 'react-native';
 
-import Styles from './SharedStyles';
-import {Colours} from '../../styles/Themes';
+import Styles from '../SharedStyles';
+import {Colours} from '../../../styles/Themes';
 
 interface Props {
   /**

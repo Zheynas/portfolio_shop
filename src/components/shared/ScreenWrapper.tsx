@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
 import {View, Text, ScrollView} from 'react-native';
 
-import BottomButton from './BottomButton';
+import BottomButton from './buttons/BottomButton';
 
 import Styles from './SharedStyles';
 

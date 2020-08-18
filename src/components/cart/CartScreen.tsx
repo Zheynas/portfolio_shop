@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/EvilIcons';
 
 import Routes from '../../routes/Routes';
 import Styles from './CartStyles';
-import BottomButton from '../shared/BottomButton';
+import BottomButton from '../shared/buttons/BottomButton';
 import {getOrFetchProducts} from '../../redux/resources/products';
 import {ApplicationState} from '../../redux/types';
 import {Product} from '../../models/product';

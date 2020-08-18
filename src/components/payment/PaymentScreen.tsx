@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 
 import Routes from '../../routes/Routes';
 import Styles from './PaymentStyles';
-import BottomButton from '../shared/BottomButton';
+import BottomButton from '../shared/buttons/BottomButton';
 import TextField from '../shared/TextField';
 import {Colours, Fonts, FontSize} from '../../styles/Themes';
 import CheckoutNavBar from '../checkout/CheckoutNavBar';

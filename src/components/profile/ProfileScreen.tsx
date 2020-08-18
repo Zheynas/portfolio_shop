@@ -13,7 +13,7 @@ import {getUser, destroyUser} from '../../redux/resources/user';
 import {ThunkDispatch} from 'redux-thunk';
 import {AnyAction} from 'redux';
 import DetailsButton from '../payment/DetailsButton';
-import BottomButton from '../shared/BottomButton';
+import BottomButton from '../shared/buttons/BottomButton';
 import {Colours} from '../../styles/Themes';
 import {getOrFetchAddresses} from '../../redux/resources/shippingAddresses';
 import {ShippingAddress} from '../../models/shippingAddress';
