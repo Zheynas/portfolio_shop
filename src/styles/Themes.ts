@@ -104,7 +104,8 @@ const Measurements = {
   headerHeight: moderateScale(40),
   shopHeaderHeight: moderateScale(60),
   padding: moderateScale(20),
-  mediumIcon: moderateScale(50)
+  mediumIcon: moderateScale(50),
+  smallIcon: moderateScale(30)
 };
 
 export {Colours, Fonts, Zindex, Measurements, FontSize, Gradients};

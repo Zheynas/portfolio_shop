@@ -23,6 +23,11 @@ export interface SharedStyle {
   mediumText: TextStyle;
   bodyText: TextStyle;
   subheaderText: TextStyle;
+  row: ViewStyle;
+  containerNoHeader: ViewStyle;
+  standardBottomMargin: ViewStyle;
+  regularText: TextStyle;
+  boldBodyText: TextStyle;
 }
 
 const headerText: TextStyle = {
@@ -49,6 +54,17 @@ const bodyText: TextStyle = {
   fontSize: FontSize.footer,
 };
 
+const regularText: TextStyle = {
+  color: Colours.black,
+  fontFamily: Fonts.regular,
+  fontSize: FontSize.small,
+};
+
+const standardContainer: ViewStyle = {
+  flex: 1,
+  padding: Measurements.padding,
+};
+
 const SharedStyles: SharedStyle = {
   appContainer: {
     flex: 1,
@@ -62,12 +78,17 @@ const SharedStyles: SharedStyle = {
     flex: 1,
   },
   container: {
-    flex: 1,
-    padding: Measurements.padding,
+    ...standardContainer,
     paddingTop: moderateScale(80),
+  },
+  containerNoHeader: {
+    ...standardContainer,
   },
   standardTopMargin: {
     marginTop: Measurements.padding,
+  },
+  standardBottomMargin: {
+    marginBottom: Measurements.padding,
   },
   headerText: {
     ...headerText,
@@ -130,6 +151,17 @@ const SharedStyles: SharedStyle = {
   },
   bodyText: {
     ...bodyText,
+  },
+  regularText: {
+    ...regularText,
+  },
+  boldBodyText: {
+    ...bodyText,
+    fontFamily: Fonts.bold,
+  },
+  row: {
+    flex: 1,
+    flexDirection: 'row',
   },
 };
 

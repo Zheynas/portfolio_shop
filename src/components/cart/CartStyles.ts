@@ -1,54 +1,25 @@
-import {
-  ViewStyle,
-  TextStyle,
-  ImageProps,
-  ImageStyle,
-  StyleProp,
-} from 'react-native';
+import {ViewStyle, TextStyle, ImageStyle, StyleProp} from 'react-native';
 import {moderateScale} from 'react-native-size-matters';
-import {Colours, Fonts, FontSize} from '../../styles/Themes';
+
+import {Colours} from '../../styles/Themes';
+import SharedStyles from '../shared/styles/SharedStyles';
 
 export interface CartStyle {
-  container: ViewStyle;
-  flexContainer: ViewStyle;
-  centerFlex: ViewStyle;
-  noItems: TextStyle;
   image: StyleProp<ImageStyle>;
   totalContainer: ViewStyle;
-  totalText: TextStyle;
-  costText: TextStyle;
   productContainer: ViewStyle;
   editIconContainer: ViewStyle;
   cartItemContainer: ViewStyle;
   cartItemContentWrapper: ViewStyle;
-  cartItemName: TextStyle;
   cartItemDetails: TextStyle;
-  cartItemPrice: TextStyle;
-  okText: TextStyle;
+  selector: ViewStyle;
 }
 
 const CartStyles: CartStyle = {
-  container: {
-    flex: 1,
-    padding: moderateScale(20),
-  },
   productContainer: {
     flex: 1,
     paddingTop: moderateScale(60),
     paddingBottom: moderateScale(20),
-  },
-  flexContainer: {
-    flex: 1,
-  },
-  centerFlex: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  noItems: {
-    color: Colours.black,
-    fontFamily: Fonts.regular,
-    fontSize: FontSize.footer,
   },
   image: {
     width: '30%',
@@ -62,20 +33,10 @@ const CartStyles: CartStyle = {
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  totalText: {
-    color: Colours.black,
-    fontFamily: Fonts.semiBold,
-    fontSize: FontSize.footer,
-  },
-  costText: {
-    color: Colours.black,
-    fontFamily: Fonts.bold,
-    fontSize: FontSize.subheader,
-  },
   editIconContainer: {
     position: 'absolute',
-    top: moderateScale(10),
-    right: moderateScale(10),
+    top: moderateScale(20),
+    right: moderateScale(15),
   },
   cartItemContainer: {
     height: moderateScale(200),
@@ -90,26 +51,14 @@ const CartStyles: CartStyle = {
     paddingLeft: moderateScale(20),
     justifyContent: 'space-between',
   },
-  cartItemName: {
-    color: Colours.black,
-    fontFamily: Fonts.semiBold,
-    fontSize: FontSize.footer,
-  },
   cartItemDetails: {
-    color: Colours.black,
-    fontFamily: Fonts.regular,
-    fontSize: FontSize.small,
+    ...SharedStyles.regularText,
     marginTop: moderateScale(10),
   },
-  cartItemPrice: {
-    color: Colours.black,
-    fontFamily: Fonts.bold,
-    fontSize: FontSize.label,
-  },
-  okText: {
-    color: Colours.black,
-    fontFamily: Fonts.semiBold,
-    fontSize: FontSize.label,
+  selector: {
+    width: moderateScale(40),
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 };
 
