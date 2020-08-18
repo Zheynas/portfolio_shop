@@ -20,12 +20,33 @@ export interface SharedStyle {
   container: ViewStyle;
   standardTopMargin: ViewStyle;
   centeredContainer: ViewStyle;
+  mediumText: TextStyle;
+  bodyText: TextStyle;
+  subheaderText: TextStyle;
 }
 
 const headerText: TextStyle = {
   color: Colours.black,
   fontFamily: Fonts.bold,
   fontSize: FontSize.header,
+};
+
+const subheaderText: TextStyle = {
+  color: Colours.black,
+  fontFamily: Fonts.bold,
+  fontSize: FontSize.subheader,
+};
+
+const mediumText: TextStyle = {
+  color: Colours.black,
+  fontFamily: Fonts.semiBold,
+  fontSize: FontSize.subheader,
+};
+
+const bodyText: TextStyle = {
+  color: Colours.black,
+  fontFamily: Fonts.regular,
+  fontSize: FontSize.footer,
 };
 
 const SharedStyles: SharedStyle = {
@@ -100,6 +121,15 @@ const SharedStyles: SharedStyle = {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  subheaderText: {
+    ...subheaderText,
+  },
+  mediumText: {
+    ...mediumText,
+  },
+  bodyText: {
+    ...bodyText,
   },
 };
 
