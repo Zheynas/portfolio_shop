@@ -44,14 +44,14 @@ const SharedStyles: SharedStyle = {
   container: {
     flex: 1,
     padding: Measurements.padding,
-    paddingTop: moderateScale(100),
+    paddingTop: moderateScale(80),
   },
   standardTopMargin: {
     marginTop: Measurements.padding,
   },
   headerText: {
     ...headerText,
-    marginBottom: Measurements.padding,
+    marginBottom: moderateScale(30),
   },
   shopHeaderContainer: {
     height: Measurements.shopHeaderHeight,
@@ -94,7 +94,6 @@ const SharedStyles: SharedStyle = {
     height: moderateScale(50),
   },
   bottomButton: {
-    flex: 1,
     height: moderateScale(50),
     justifyContent: 'center',
     alignItems: 'center',
