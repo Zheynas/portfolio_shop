@@ -7,16 +7,16 @@ import {ResourcesList, isSyncingWithRemote} from 'redux-and-the-rest';
 import {connect} from 'react-redux';
 
 // Navigation
-import Routes from '../../routes/Routes';
+import Routes from '../../../routes/Routes';
 // Redux
-import {ApplicationState} from '../../redux/types';
-import {getOrFetchAddresses} from '../../redux/resources/shippingAddresses';
+import {ApplicationState} from '../../../redux/types';
+import {getOrFetchAddresses} from '../../../redux/resources/shippingAddresses';
 // Util
-import {ShippingAddress} from '../../models/shippingAddress';
+import {ShippingAddress} from '../../../models/shippingAddress';
 // Styling
-import SharedStyles from '../shared/styles/SharedStyles';
-import AddressButton from './AddressButton';
-import ScreenWrapper from '../shared/wrappers/ScreenWrapper';
+import SharedStyles from '../styles/SharedStyles';
+import AddressButton from '../buttons/AddressButton';
+import ScreenWrapper from '../wrappers/ScreenWrapper';
 
 interface Props {
   /**
@@ -75,7 +75,7 @@ const DisplayAddresses = ({
     if (addresses.length === 0) {
       return (
         <View style={SharedStyles.centeredContainer}>
-          <Text>No Addresses found...</Text>
+          <Text style={SharedStyles.bodyText}>No Addresses found...</Text>
         </View>
       );
     }

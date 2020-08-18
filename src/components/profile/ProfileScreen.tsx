@@ -18,8 +18,8 @@ import {getUser} from '../../redux/resources/user';
 import {getOrFetchAddresses} from '../../redux/resources/shippingAddresses';
 // Components
 import BottomButton from '../shared/buttons/BottomButton';
-import AddressButton from '../addresses/AddressButton';
-import DetailsButton from '../payment/DetailsButton';
+import AddressButton from '../shared/buttons/AddressButton';
+import DetailsButton from '../shared/buttons/DetailsButton';
 // Util
 import {User} from '../../models/user';
 import {ShippingAddress} from '../../models/shippingAddress';

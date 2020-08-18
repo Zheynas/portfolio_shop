@@ -6,8 +6,7 @@ import {useNavigation} from '@react-navigation/native';
 import Routes from '../../routes/Routes';
 // Components
 import CheckoutNavBar from './nav/CheckoutNavBar';
-// Styling
-import DisplayAddresses from '../addresses/DisplayAddresses';
+import DisplayAddresses from '../shared/addresses/DisplayAddresses';
 
 /**
  * Checkout shipping address screen
@@ -20,9 +19,11 @@ const CheckoutScreen = () => {
 
   return (
     <DisplayAddresses
+      headerText="Select Address"
       header={<CheckoutNavBar currentScreen={Routes.CHECKOUT} />}
       addressOnPress={(id: string) => {
-        navigate(Routes.PAYMENT, {shippingAddressId: id});
+        // TODO: Save id on current order resource
+        navigate(Routes.PAYMENT);
       }}
     />
   );

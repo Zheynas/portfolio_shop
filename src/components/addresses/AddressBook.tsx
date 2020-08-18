@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Component
-import DisplayAddresses from './DisplayAddresses';
+import DisplayAddresses from '../shared/addresses/DisplayAddresses';
 
 /**
  * Screen with a list of shipping addresses

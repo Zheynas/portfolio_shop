@@ -4,12 +4,12 @@ import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import {moderateScale} from 'react-native-size-matters';
 
-import Routes from '../../routes/Routes';
-import Styles from './PaymentStyles';
-import BottomButton from '../shared/buttons/BottomButton';
-import TextField from '../shared/inputs/TextField';
-import {Colours, Fonts, FontSize} from '../../styles/Themes';
-import CheckoutNavBar from '../checkout/nav/CheckoutNavBar';
+import Routes from '../../../routes/Routes';
+import Styles from '../../payment/PaymentStyles';
+import BottomButton from './BottomButton';
+import TextField from '../inputs/TextField';
+import {Colours, Fonts, FontSize} from '../../../styles/Themes';
+import CheckoutNavBar from '../../checkout/nav/CheckoutNavBar';
 
 interface Props {
   /**

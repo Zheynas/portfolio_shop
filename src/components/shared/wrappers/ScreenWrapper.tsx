@@ -80,7 +80,7 @@ const ScreenWrapper = ({
       <BottomButton
         text={bottomButtonText}
         onPress={bottomButtonOnPress}
-        style={Styles.bottomButton}
+        style={Styles.bottomButtonMargin}
         grey
       />
     );
@@ -112,18 +112,25 @@ const ScreenWrapper = ({
   };
 
   const renderHeader = () => {
-    if (headerText) {
-      return <Text style={Styles.headerText}>{headerText}</Text>;
-    } else if (header) {
-      return header;
+    if (!header) {
+      return null;
+    }
+    return header;
+  };
+
+  const renderHeaderText = () => {
+    if (!headerText) {
+      return null;
     }
 
-    return null;
+    const extraStyles = header ? {marginTop: 20, marginBottom: 10} : {};
+    return <Text style={[Styles.headerText, extraStyles]}>{headerText}</Text>;
   };
 
   return (
     <View style={Styles.container}>
       {renderHeader()}
+      {renderHeaderText()}
       {renderContent()}
       {renderTopButton()}
       {renderBottomButton()}

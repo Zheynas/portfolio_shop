@@ -2,10 +2,12 @@ import React from 'react';
 import {View, Text, TouchableOpacity, ActivityIndicator} from 'react-native';
 import Icon from 'react-native-vector-icons/EvilIcons';
 import {moderateScale} from 'react-native-size-matters';
+import {useNavigation} from '@react-navigation/native';
 
 import Styles from './styles/ConfirmButtonStyles';
 import {Colours, Fonts} from '../../../styles/Themes';
-import {useNavigation} from '@react-navigation/native';
+
+import ImageRenderer from '../images/ImageRenderer';
 
 interface Props {
   /**
@@ -19,7 +21,7 @@ interface Props {
   /**
    * Route to navigate to
    */
-  route: string;
+  route?: string;
   /**
    * hide state
    */
@@ -28,12 +30,28 @@ interface Props {
    * params
    */
   params?: {[key: string]: string | number};
+  /**
+   * Image
+   */
+  image?: string;
+  /**
+   * On button press override
+   */
+  onPress?: () => void;
 }
 
 /**
  * Menu button
  */
-const MenuButton = ({text, icon, route, hide, params = {}}: Props) => {
+const MenuButton = ({
+  text,
+  icon,
+  route,
+  hide,
+  image,
+  onPress,
+  params = {},
+}: Props) => {
   const {navigate} = useNavigation();
 
   if (hide) {
@@ -55,6 +73,29 @@ const MenuButton = ({text, icon, route, hide, params = {}}: Props) => {
     );
   };
 
+  const renderImage = () => {
+    if (!image) {
+      return null;
+    }
+
+    return (
+      <ImageRenderer
+        width={moderateScale(40)}
+        height={moderateScale(30)}
+        image={image}
+        style={{marginRight: 20}}
+      />
+    );
+  };
+
+  const onButtonPress = () => {
+    if (onPress) {
+      onPress();
+    } else if (route) {
+      navigate(route, params);
+    }
+  };
+
   return (
     <TouchableOpacity
       style={{
@@ -64,10 +105,9 @@ const MenuButton = ({text, icon, route, hide, params = {}}: Props) => {
         flexDirection: 'row',
         alignItems: 'center',
       }}
-      onPress={() => {
-        navigate(route, params);
-      }}>
+      onPress={onButtonPress}>
       {renderIcon()}
+      {renderImage()}
       <View style={{flex: 1}}>
         <Text style={{fontFamily: Fonts.regular}}>{text}</Text>
       </View>

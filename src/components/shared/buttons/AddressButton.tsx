@@ -5,11 +5,11 @@ import {useNavigation} from '@react-navigation/native';
 import {ResourcesItem} from 'redux-and-the-rest';
 
 // Navigation
-import Routes from '../../routes/Routes';
+import Routes from '../../../routes/Routes';
 // Components
-import DetailsButton from '../payment/DetailsButton';
+import DetailsButton from './DetailsButton';
 // Util
-import {ShippingAddress} from '../../models/shippingAddress';
+import {ShippingAddress} from '../../../models/shippingAddress';
 
 interface Props {
   /**

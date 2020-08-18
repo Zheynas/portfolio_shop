@@ -28,6 +28,7 @@ export interface SharedStyle {
   standardBottomMargin: ViewStyle;
   regularText: TextStyle;
   boldBodyText: TextStyle;
+  bottomButtonMargin: ViewStyle;
 }
 
 const headerText: TextStyle = {
@@ -132,11 +133,13 @@ const SharedStyles: SharedStyle = {
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: Measurements.padding,
   },
   bottomButtonText: {
     color: Colours.white,
     fontFamily: Fonts.semiBold,
+  },
+  bottomButtonMargin:{
+    marginTop: Measurements.padding
   },
   centeredContainer: {
     flex: 1,

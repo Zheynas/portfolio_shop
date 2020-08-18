@@ -56,4 +56,5 @@ export type NavigationParamList = {
   [Routes.SETTINGS]: undefined;
   [Routes.CONTACT_US]: undefined;
   [Routes.ORDER_HISTORY]: undefined;
+  [Routes.CHANGE_ADDRESS]: undefined;
 };

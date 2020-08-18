@@ -19,8 +19,8 @@ import ProductScreen from '../components/shop/ProductScreen';
 import CartScreen from '../components/cart/CartScreen';
 import CheckoutScreen from '../components/checkout/CheckoutScreen';
 import PaymentScreen from '../components/payment/PaymentScreen';
-import ShippingSelection from '../components/payment/ShippingSelection';
-import PaymentSelection from '../components/payment/PaymentSelection';
+import ShippingSelection from '../components/payment/selection/SelectDelivery';
+import PaymentSelection from '../components/payment/selection/SelectPayment';
 import ProfileScreen from '../components/profile/ProfileScreen';
 import ChangeEmailScreen from '../components/credentials/ChangeEmailScreen';
 import ChangePasswordScreen from '../components/credentials/ChangePasswordScreen';
@@ -35,6 +35,8 @@ import {getUser} from '../redux/resources/user';
 import {ApplicationState} from '../redux/types';
 import {User} from '../models/user';
 import OrderHistory from '../components/history/OrderHistory';
+import SelectAddress from '../components/payment/selection/SelectAddress';
+import SelectDelivery from '../components/payment/selection/SelectDelivery';
 
 const RootStack = createStackNavigator<NavigationParamList>();
 const DEFAULT_ROOT = Routes.HOME;
@@ -92,7 +94,14 @@ const AppStack = ({currentUserItem}: Props) => {
             component={EditAddress}
           />
           <RootStack.Screen name={Routes.NEW_ADDRESS} component={NewAddress} />
-          <RootStack.Screen name={Routes.ORDER_HISTORY} component={OrderHistory} />
+          <RootStack.Screen
+            name={Routes.ORDER_HISTORY}
+            component={OrderHistory}
+          />
+          <RootStack.Screen
+            name={Routes.CHANGE_ADDRESS}
+            component={SelectAddress}
+          />
         </>
       )}
 
@@ -125,7 +134,7 @@ const AppStack = ({currentUserItem}: Props) => {
       <RootStack.Screen name={Routes.MENU} component={MenuScreen} />
       <RootStack.Screen name={Routes.CHECKOUT} component={CheckoutScreen} />
       <RootStack.Screen name={Routes.PAYMENT} component={PaymentScreen} />
-      <RootStack.Screen name={Routes.SHIPPING} component={ShippingSelection} />
+      <RootStack.Screen name={Routes.SHIPPING} component={SelectDelivery} />
 
       <RootStack.Screen
         name={Routes.PAYMENT_SELECTION}
