@@ -1,54 +1,104 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text, ActivityIndicator} from 'react-native';
+// Navigation
 import {useNavigation} from '@react-navigation/native';
-import {ResourcesItem, ResourcesList} from 'redux-and-the-rest';
+// Redux
+import {
+  ResourcesItem,
+  ResourcesList,
+  isSyncingWithRemote,
+} from 'redux-and-the-rest';
 import {connect} from 'react-redux';
-import {moderateScale} from 'react-native-size-matters';
 
+// Navigation
 import Routes from '../../routes/Routes';
-import Styles from './ProfileStyle';
-import {User} from '../../models/user';
+// Redux
 import {ApplicationState} from '../../redux/types';
-import {getUser, destroyUser} from '../../redux/resources/user';
-import {ThunkDispatch} from 'redux-thunk';
-import {AnyAction} from 'redux';
-import DetailsButton from '../payment/DetailsButton';
-import BottomButton from '../shared/buttons/BottomButton';
-import {Colours} from '../../styles/Themes';
+import {getUser} from '../../redux/resources/user';
 import {getOrFetchAddresses} from '../../redux/resources/shippingAddresses';
+// Components
+import BottomButton from '../shared/buttons/BottomButton';
+import AddressButton from '../addresses/AddressButton';
+import DetailsButton from '../payment/DetailsButton';
+// Util
+import {User} from '../../models/user';
 import {ShippingAddress} from '../../models/shippingAddress';
+// Styles
+import Styles from './ProfileStyle';
+import SharedStyles from '../shared/styles/SharedStyles';
 
 interface Props {
-  // Current user in state
+  /**
+   * Current user
+   */
   currentUserItem: ResourcesItem<User>;
-  addresses: ResourcesList<ShippingAddress>;
+  /**
+   * User's shipping addresses
+   */
+  shippingAddresses: ResourcesList<ShippingAddress>;
 }
 
-const ProfileScreen = ({addresses, currentUserItem: {values: user}}: Props) => {
+/**
+ * User profile screen
+ */
+const ProfileScreen = ({
+  shippingAddresses,
+  currentUserItem: {
+    values: {lastName, firstName, email},
+  },
+}: Props) => {
+  /**
+   * Navigation
+   */
   const {navigate} = useNavigation();
-  console.log('addresses', addresses);
-  const loggedIn = Boolean(user && user.authenticationToken);
-  const headerName = loggedIn
-    ? `${user.firstName} ${user.lastName}`
-    : 'Welcome!';
+
+  /**
+   * Shipping address values
+   */
+  const {items: addresses} = shippingAddresses;
+  // TODO: Handle errors
+  const addressIsLoading = isSyncingWithRemote(shippingAddresses);
+
+  /**
+   * Favourite address renderer
+   */
+  const renderAddresses = () => {
+    // Loading
+    if (addressIsLoading) {
+      return (
+        <View style={SharedStyles.centeredContainer}>
+          <ActivityIndicator size="large" />
+        </View>
+      );
+    }
+
+    // No addresses found
+    if (addresses.length === 0) {
+      return (
+        <DetailsButton
+          text={['No addresses found', 'Add Shipping Address']}
+          onPress={() => {
+            navigate(Routes.EDIT_ADDRESS);
+          }}
+        />
+      );
+    }
+
+    // TODO: Implement favourite address to display instead of first
+    return <AddressButton address={addresses[0]} />;
+  };
 
   return (
-    <View style={Styles.container}>
-      <Text style={Styles.loginHeader}>Personal Information</Text>
-      <Text>{headerName}</Text>
-      <Text>Preferred shipping address</Text>
-      <DetailsButton
-        text={['Robert smith', '23 Nene close', 'LS83DS', '2348383472']}
-        onPress={() => {
-          navigate(Routes.SHIPPING_ADDRESSES);
-        }}
-      />
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'column',
-          justifyContent: 'flex-end',
-        }}>
+    <View style={SharedStyles.container}>
+      <Text style={SharedStyles.headerText}>Personal Information</Text>
+      <Text style={SharedStyles.mediumText}>{`${firstName} ${lastName}`}</Text>
+      <Text style={SharedStyles.bodyText}>{email}</Text>
+
+      <View style={[SharedStyles.flexColumn, SharedStyles.standardTopMargin]}>
+        {renderAddresses()}
+      </View>
+
+      <View style={Styles.buttonContainer}>
         <BottomButton
           text="Shipping Addresses"
           grey
@@ -59,7 +109,7 @@ const ProfileScreen = ({addresses, currentUserItem: {values: user}}: Props) => {
         <BottomButton
           text="Change Password"
           grey
-          style={{marginTop: moderateScale(20)}}
+          style={SharedStyles.standardTopMargin}
           onPress={() => {
             navigate(Routes.CHANGE_PASSWORD);
           }}
@@ -67,7 +117,7 @@ const ProfileScreen = ({addresses, currentUserItem: {values: user}}: Props) => {
         <BottomButton
           text="Change Email"
           grey
-          style={{marginTop: moderateScale(20)}}
+          style={SharedStyles.standardTopMargin}
           onPress={() => {
             navigate(Routes.CHANGE_EMAIL);
           }}
@@ -79,7 +129,7 @@ const ProfileScreen = ({addresses, currentUserItem: {values: user}}: Props) => {
 
 const mapStoreDataToProps = ({users, shippingAddresses}: ApplicationState) => ({
   currentUserItem: getUser(users),
-  addresses: getOrFetchAddresses(shippingAddresses),
+  shippingAddresses: getOrFetchAddresses(shippingAddresses),
 });
 
 export default connect(mapStoreDataToProps)(ProfileScreen);
