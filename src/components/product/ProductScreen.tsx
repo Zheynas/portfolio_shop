@@ -4,7 +4,7 @@ import {View, Image, Text, TouchableOpacity} from 'react-native';
 import {RouteProp, useNavigation} from '@react-navigation/native';
 // Redux
 import {connect} from 'react-redux';
-import { ResourcesItem} from 'redux-and-the-rest';
+import {ResourcesItem} from 'redux-and-the-rest';
 // Components
 import Icon from 'react-native-vector-icons/Ionicons';
 import EvilIcon from 'react-native-vector-icons/EvilIcons';

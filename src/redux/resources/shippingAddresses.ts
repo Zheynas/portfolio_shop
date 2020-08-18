@@ -15,7 +15,7 @@ const {
   {
     url: 'http://localhost:3000/api/v1/shipping_addresses',
     name: 'shippingAddresses',
-    keyBy:['id']
+    keyBy: ['id'],
   },
   {
     createItem: true,

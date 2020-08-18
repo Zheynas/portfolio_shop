@@ -21,7 +21,7 @@ const TextField = ({label, value, setValue, secureTextEntry}: Props) => {
           color: Colours.black,
           fontFamily: Fonts.regular,
           fontSize: FontSize.small,
-          marginBottom: moderateScale(5)
+          marginBottom: moderateScale(5),
         }}>
         {label}
       </Text>
@@ -33,7 +33,7 @@ const TextField = ({label, value, setValue, secureTextEntry}: Props) => {
           borderColor: Colours.grey,
           fontFamily: Fonts.regular,
           color: 'black',
-          padding:0
+          padding: 0,
         }}
         secureTextEntry={secureTextEntry}
       />

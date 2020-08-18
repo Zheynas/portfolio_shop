@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, {ReactElement} from 'react';
 import {View, Text, ScrollView, ActivityIndicator} from 'react-native';
 // Navigation
 import {useNavigation} from '@react-navigation/native';

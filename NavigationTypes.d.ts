@@ -50,7 +50,7 @@ export type NavigationParamList = {
   };
   [Routes.NEW_ADDRESS]: undefined;
   [Routes.HELP]: undefined;
-  [Routes.HELP_INFO]:{
+  [Routes.HELP_INFO]: {
     header: string;
   };
   [Routes.SETTINGS]: undefined;

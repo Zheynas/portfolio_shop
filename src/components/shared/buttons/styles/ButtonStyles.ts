@@ -52,7 +52,7 @@ const ButtonStyles: ButtonStyle = {
     borderWidth: 1,
     backgroundColor: 'transparent',
   },
-  menuButton:{
+  menuButton: {
     height: 50,
     borderBottomWidth: 1,
     borderColor: Colours.grey,

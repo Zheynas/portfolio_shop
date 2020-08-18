@@ -51,7 +51,6 @@ const ShopStyles: ShopStyle = {
     fontSize: FontSize.footer,
     marginBottom: moderateScale(20),
   },
-
 };
 
 export default ShopStyles;

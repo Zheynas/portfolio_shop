@@ -7,7 +7,7 @@ import {Section} from '../../models/section';
 import {SubSection} from '../../models/subSection';
 import {ShippingMethod} from '../../models/shippingMethod';
 import {User} from '../../models/user';
-import { ShippingAddress } from '../../models/shippingAddress';
+import {ShippingAddress} from '../../models/shippingAddress';
 
 export type ApplicationState = {
   products: ResourcesReduxState<Product>;

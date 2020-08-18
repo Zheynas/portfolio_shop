@@ -10,7 +10,7 @@ export interface ProductStyle {
 }
 
 const ProductStyles: ProductStyle = {
-  infoContainer:{
+  infoContainer: {
     height: moderateScale(200),
     padding: moderateScale(10),
   },

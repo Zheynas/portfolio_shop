@@ -52,7 +52,7 @@ const PaymentScreen = ({
    * Current order's values
    */
   // TODO: use values from order resource
-  const selectedAddress = null //addresses[0];
+  const selectedAddress = addresses[0];
   const selectedPayment = Payments[0];
   const selectedDelivery = delivery[0];
 
