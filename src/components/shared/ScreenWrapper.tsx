@@ -93,7 +93,6 @@ const ScreenWrapper = ({
       <BottomButton
         text={topButtonText}
         onPress={topButtonOnPress}
-        style={Styles.bottomButton}
         loading={loading}
       />
     );
