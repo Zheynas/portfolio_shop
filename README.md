@@ -21,6 +21,12 @@ Install all dependencies using Yarn:
 yarn install
 ```
 
+Install Cocoapods
+
+```bash
+cd ios && pod install
+```
+
 ### IOS Emulation
 
 Test your installation by starting the ios emulator:
