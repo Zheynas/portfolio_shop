@@ -1,78 +1,97 @@
 import React from 'react';
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+import {View, Text} from 'react-native';
+// Navigation
 import {useNavigation} from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/Entypo';
-import {moderateScale} from 'react-native-size-matters';
-import { connect } from 'react-redux';
+// Redux
+import {connect} from 'react-redux';
+import {ResourcesList} from 'redux-and-the-rest';
 
+// Navigation
 import Routes from '../../routes/Routes';
-import Styles from './PaymentStyles';
-import BottomButton from '../shared/BottomButton';
-import TextField from '../shared/TextField';
-import {Colours, Fonts, FontSize} from '../../styles/Themes';
-import CheckoutNavBar from '../checkout/CheckoutNavBar';
-import DetailsButton from './DetailsButton';
-import CheckoutNav from '../../util/enums/CheckoutNav';
-import { ApplicationState } from '../../redux/types';
-import {getOrFetchShippingMethods} from '../../redux/resources/shippingMethods'
+// Redux
+import {ApplicationState} from '../../redux/types';
+import {getOrFetchShippingMethods} from '../../redux/resources/shippingMethods';
+import {getOrFetchAddresses} from '../../redux/resources/shippingAddresses';
+// Components
+import CheckoutNavBar from '../checkout/nav/CheckoutNavBar';
+import ScreenWrapper from '../shared/wrappers/ScreenWrapper';
+import Address from './items/Address';
+import Payment from './items/Payment';
+import Shipping from './items/Shipping';
+// Util
+import {ShippingAddress} from '../../models/shippingAddress';
+import {ShippingMethod} from '../../models/shippingMethod';
+import Payments from '../../util/data/Payments';
+// Styling
+import Styles from './styles/PaymentStyles';
+import SharedStyles from '../shared/styles/SharedStyles';
 
-const PaymentScreen = () => {
+interface Props {
+  /**
+   * User's shipping addresses
+   */
+  shippingAddresses: ResourcesList<ShippingAddress>;
+  /**
+   * Avaliable shipping methods
+   */
+  shippingMethods: ResourcesList<ShippingMethod>;
+}
+
+/**
+ * Payment details for order screen
+ */
+const PaymentScreen = ({
+  shippingAddresses: {items: addresses},
+  shippingMethods: {items: delivery},
+}: Props) => {
+  /**
+   * Navigation
+   */
   const {navigate} = useNavigation();
-  const [name, setName] = React.useState('');
-  const [number, setNumber] = React.useState('');
-  const [address, setAddress] = React.useState('');
-  const [postcode, setPostcode] = React.useState('');
+
+  /**
+   * Current order's values
+   */
+  // TODO: use values from order resource
+  const selectedAddress = addresses[0];
+  const selectedPayment = Payments[0];
+  const selectedDelivery = delivery[0];
+
+  /**
+   * Buy button onPress
+   */
+  const onPress = () => {
+    // TODO: submit order
+    navigate(Routes.HOME);
+  };
 
   return (
-    <SafeAreaView style={Styles.flexContainer}>
-      <View style={Styles.container}>
-        <CheckoutNavBar currentScreen={CheckoutNav.PAYMENT}/>
-        <View style={{flex: 1, padding: moderateScale(20)}}>
-          <ScrollView style={{flex: 1}}>
-            <Text
-              style={{
-                color: Colours.black,
-                fontFamily: Fonts.bold,
-                fontSize: FontSize.question,
-              }}>
-              Complete your order
-            </Text>
-            <DetailsButton text={["Robert smith", "23 Nene close", "LS83DS", "2348383472"]}/>
-            <DetailsButton text={["Standard Delivery", "Saturday 27 - Tuesday 30", "Cost: $10"]} onPress={()=>{navigate(Routes.SHIPPING)}}/> 
-            <Text
-              style={{
-                color: Colours.black,
-                fontFamily: Fonts.bold,
-                fontSize: FontSize.question,
-                marginTop: moderateScale(20),
-              }}>
-              Payment Method
-            </Text>
-            <DetailsButton text={["Select a payment method"]} onPress={()=>{navigate(Routes.PAYMENT_SELECTION)}}/> 
-          </ScrollView>
-          <View
-            style={{
-              height: moderateScale(60),
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <Text>Free shipping for orders over £250</Text>
-          </View>
-          <BottomButton
-            text="BUY"
-            positionIsNotAbsolute
-            onPress={() => {
-              navigate(Routes.HOME);
-            }}
-          />
+    <ScreenWrapper
+      headerText="Complete your order"
+      header={<CheckoutNavBar currentScreen={Routes.PAYMENT} />}
+      topButtonOnPress={onPress}
+      scroll
+      topButtonText="BUY">
+      <>
+        <Address address={selectedAddress} />
+        <Shipping shipping={selectedDelivery} />
+        <Payment payment={selectedPayment} />
+        <View style={Styles.freeShippingContainer}>
+          <Text style={SharedStyles.bodyText}>
+            Free shipping for orders over £250
+          </Text>
         </View>
-      </View>
-    </SafeAreaView>
+      </>
+    </ScreenWrapper>
   );
 };
 
-const mapStateToProps = ({shippingMethods}: ApplicationState) => ({
-  sectionsCollection: getOrFetchShippingMethods(shippingMethods, {}),
+const mapStateToProps = ({
+  shippingAddresses,
+  shippingMethods,
+}: ApplicationState) => ({
+  shippingAddresses: getOrFetchAddresses(shippingAddresses),
+  shippingMethods: getOrFetchShippingMethods(shippingMethods, {}),
 });
 
 export default connect(mapStateToProps)(PaymentScreen);

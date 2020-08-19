@@ -1,58 +1,31 @@
 import React from 'react';
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+// Navigation
 import {useNavigation} from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/Entypo';
-import {moderateScale} from 'react-native-size-matters';
 
+// Navigation
 import Routes from '../../routes/Routes';
-import Styles from './CheckoutStyles';
-import BottomButton from '../shared/BottomButton';
-import TextField from '../shared/TextField';
-import {Colours} from '../../styles/Themes';
-import CheckoutNavBar from './CheckoutNavBar';
-import CheckoutNav from '../../util/enums/CheckoutNav';
+// Components
+import CheckoutNavBar from './nav/CheckoutNavBar';
+import DisplayAddresses from '../shared/addresses/DisplayAddresses';
 
+/**
+ * Checkout shipping address screen
+ */
 const CheckoutScreen = () => {
+  /**
+   * Navigation
+   */
   const {navigate} = useNavigation();
-  const [name, setName] = React.useState('');
-  const [number, setNumber] = React.useState('');
-  const [address, setAddress] = React.useState('');
-  const [postcode, setPostcode] = React.useState('');
 
   return (
-    <SafeAreaView style={Styles.flexContainer}>
-      <View style={Styles.container}>
-        <CheckoutNavBar currentScreen={CheckoutNav.CHECKOUT}/>
-        <View style={Styles.scrollContainer}>
-          <ScrollView style={Styles.flexContainer}>
-            <View>
-              <TextField label="Name" value={name} setValue={setName} />
-              <TextField
-                label="Phone Number"
-                value={number}
-                setValue={setNumber}
-              />
-              <TextField
-                label="Address"
-                value={address}
-                setValue={setAddress}
-              />
-              <TextField
-                label="Postcode"
-                value={postcode}
-                setValue={setPostcode}
-              />
-            </View>
-          </ScrollView>
-        </View>
-        <BottomButton
-          text="PAYMENT"
-          onPress={() => {
-            navigate(Routes.PAYMENT);
-          }}
-        />
-      </View>
-    </SafeAreaView>
+    <DisplayAddresses
+      headerText="Select Address"
+      header={<CheckoutNavBar currentScreen={Routes.CHECKOUT} />}
+      addressOnPress={(id: string) => {
+        // TODO: Save id on current order resource
+        navigate(Routes.PAYMENT);
+      }}
+    />
   );
 };
 

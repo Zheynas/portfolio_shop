@@ -1,25 +1,19 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  ScrollView,
-  SafeAreaView,
-  ActivityIndicator,
-} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/EvilIcons';
-import {moderateScale} from 'react-native-size-matters';
-import {ResourcesList, FETCHING} from 'redux-and-the-rest';
+import {View, ScrollView, ActivityIndicator} from 'react-native';
+// Redux
+import {ResourcesList, isSyncingWithRemote} from 'redux-and-the-rest';
 import {connect} from 'react-redux';
 
-import Routes from '../../routes/Routes';
-import {Colours} from '../../styles/Themes';
-import SectionButton from './SectionButton';
-import Styles from './SectionStyles';
+// Redux
 import {ApplicationState} from '../../redux/types';
 import {getOrFetchSections} from '../../redux/resources/sections';
+// Util
 import {Section} from '../../models/section';
+// Components
+import SectionButton from './SectionButton';
+import SectionHeader from './SectionHeader';
+// Styling
+import SharedStyles from '../shared/styles/SharedStyles';
 
 interface Props {
   /**
@@ -31,46 +25,45 @@ interface Props {
 /**
  * Section screen
  */
-const SectionScreen = ({
-  sectionsCollection: {
-    items: sections,
-    status: {type},
-  },
-}: Props) => {
-  const {navigate} = useNavigation();
-  const isLoading = type === FETCHING;
+const SectionScreen = ({sectionsCollection}: Props) => {
+  /**
+   * Sections state
+   */
+  const {items: sections} = sectionsCollection;
+  // TODO: Handle errors
+  const isLoading = isSyncingWithRemote(sectionsCollection);
 
-  if (isLoading) {
+  /**
+   * Content renderer
+   */
+  const renderSections = () => {
+    // Loading
+    if (isLoading) {
+      return (
+        <View style={SharedStyles.centeredContainer}>
+          <ActivityIndicator size="large" />
+        </View>
+      );
+    }
+
     return (
-      <View style={Styles.centerFlex}>
-        <ActivityIndicator size="large" />
-      </View>
+      <ScrollView style={SharedStyles.flexColumn}>
+        {sections.map(({values: {id, bannerUrl, title}}) => (
+          <SectionButton text={title} key={id} id={id} image={bannerUrl} />
+        ))}
+      </ScrollView>
     );
-  }
+  };
 
   return (
-    <View style={Styles.flexColumn}>
-      <SafeAreaView style={Styles.flexColumn}>
-        <View style={Styles.sectionHeader}>
-          <Text style={Styles.sectionHeaderText}>FASHION</Text>
-          <TouchableOpacity
-            style={Styles.profileButton}
-            onPress={() => {
-              navigate(Routes.MENU);
-            }}>
-            <Icon name="user" size={moderateScale(50)} color={Colours.grey} />
-          </TouchableOpacity>
-        </View>
-        <ScrollView style={Styles.flexColumn}>
-          {sections.map(({values: {id, bannerUrl, title}}) => (
-            <SectionButton text={title} key={id} id={id} image={bannerUrl} />
-          ))}
-        </ScrollView>
-      </SafeAreaView>
+    <View style={SharedStyles.flexColumn}>
+      <SectionHeader />
+      {renderSections()}
     </View>
   );
 };
 
+// TODO: Move initial fetch to app launch as we will always hit this page
 const mapStateToProps = ({sections}: ApplicationState) => ({
   sectionsCollection: getOrFetchSections(sections, {}),
 });

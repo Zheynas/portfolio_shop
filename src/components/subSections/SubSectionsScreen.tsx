@@ -1,30 +1,31 @@
 import React from 'react';
+import {View, ScrollView, ActivityIndicator} from 'react-native';
+// Navigation
+import {RouteProp} from '@react-navigation/native';
+// Redux
 import {
-  View,
-  ScrollView,
-  Text,
-  TouchableOpacity,
-  SafeAreaView,
-  ActivityIndicator,
-} from 'react-native';
-import {useNavigation, RouteProp} from '@react-navigation/native';
-import {
-  GenericItemOrCollection,
   ResourcesItem,
   ResourcesList,
-  FETCHING,
+  isSyncingWithRemote,
 } from 'redux-and-the-rest';
 import {connect} from 'react-redux';
 
-import Routes from '../../routes/Routes';
-import Styles from './SubSectionStyles';
-import CategoryButton from '../sections/SectionButton';
+// Navigation
 import {NavigationParamList} from 'NavigationTypes';
+import Routes from '../../routes/Routes';
+// Redux
 import {ApplicationState} from '../../redux/types';
 import {getOrFetchSubSections} from '../../redux/resources/subSections';
 import {getItem} from '../../redux/resources/sections';
-import {SubSection} from '../../models/subSection';
-import {Section} from 'src/models/section';
+// Components
+import SectionButton from '../sections/SectionButton';
+import SubSection from './SubSection';
+// Util
+import {Section} from '../../models/section';
+import {SubSection as SubsectionModel} from '../../models/subSection';
+// Styling
+import Styles from './styles/SubSectionStyles';
+import SharedStyles from '../shared/styles/SharedStyles';
 
 /**
  * Adds typing to route.params for the correct route
@@ -42,7 +43,7 @@ interface Props {
   /**
    * Collection of sub sections
    */
-  subSectionsCollection: ResourcesList<SubSection>;
+  subSectionsCollection: ResourcesList<SubsectionModel>;
   /**
    * Current section
    */
@@ -50,57 +51,49 @@ interface Props {
 }
 
 const SubSectionsScreen = ({
+  subSectionsCollection,
   currentSection: {
     values: {bannerUrl},
   },
-  subSectionsCollection: {
-    items: subSections,
-    status: {type},
-  },
 }: Props) => {
-  const {navigate} = useNavigation();
+  /**
+   * Subsection values
+   */
+  const {items: subSections} = subSectionsCollection;
+  // TODO: Error handling
+  const isLoading = isSyncingWithRemote(subSectionsCollection);
 
-  const isLoading = type === FETCHING;
+  /**
+   * Content renderer
+   */
+  const renderContent = () => {
+    // Loading
+    if (isLoading) {
+      return (
+        <View style={SharedStyles.centeredContainer}>
+          <ActivityIndicator size="large" />
+        </View>
+      );
+    }
 
-  if (isLoading) {
     return (
-      <View style={Styles.centerFlex}>
-        <ActivityIndicator size="large" />
-      </View>
+      <ScrollView style={SharedStyles.flexContainer}>
+        {subSections.map(({values: {title, categories, id}}) => (
+          <SubSection
+            key={`subSection-${id}`}
+            title={title}
+            categories={categories}
+          />
+        ))}
+      </ScrollView>
     );
-  }
+  };
 
   return (
-    <SafeAreaView style={Styles.flexContainer}>
-      <View style={Styles.container}>
-        <CategoryButton image={bannerUrl} disabled light />
-        <ScrollView style={Styles.flexContainer}>
-          {subSections.map(
-            ({values: {title, categories, id: subSectionId}}) => (
-              <View
-                style={Styles.categoryScrollContainer}
-                key={`sect-${subSectionId}`}>
-                <Text style={Styles.headerText}>{title}</Text>
-                {categories.map(({id, title: catTitle}) => (
-                  <TouchableOpacity
-                    key={`cat-${id}`}
-                    style={Styles.centerContainer}
-                    onPress={() => {
-                      navigate(Routes.PRODUCT_LIST, {id: id, title: catTitle});
-                    }}>
-                    <Text
-                      style={Styles.categoryText}
-                      key={`${subSectionId}-${id}`}>
-                      {catTitle}
-                    </Text>
-                  </TouchableOpacity>
-                ))}
-              </View>
-            ),
-          )}
-        </ScrollView>
-      </View>
-    </SafeAreaView>
+    <View style={Styles.container}>
+      <SectionButton image={bannerUrl} disabled light />
+      {renderContent()}
+    </View>
   );
 };
 

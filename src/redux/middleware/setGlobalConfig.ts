@@ -10,7 +10,7 @@ import configureRequestAuthToken from '../utils/configureRequestAuthToken';
 const setGlobalConfig: Middleware = () => (next) => (action) => {
   const {type, status} = action;
 
-  if (type === userActions.fetchItem && status === SUCCESS) {
+  if (type === userActions.createItem && status === SUCCESS) {
     const {
       item: {
         values: {authenticationToken},

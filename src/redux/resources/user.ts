@@ -8,6 +8,7 @@ const {
     createItem: createUser,
     destroyItem: destroyUser,
     fetchItem: fetchUser,
+    updateItem: updateUser,
   },
   actions: userActions,
   getItem: getUser,
@@ -21,7 +22,16 @@ const {
     fetchItem: true,
     fetch: true,
     destroyItem: true,
+    updateItem: true,
   },
 );
 
-export {userReducer, createUser, fetchUser, userActions, getUser, destroyUser};
+export {
+  userReducer,
+  createUser,
+  fetchUser,
+  userActions,
+  getUser,
+  destroyUser,
+  updateUser,
+};

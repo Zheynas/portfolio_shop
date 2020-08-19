@@ -1,25 +1,25 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  SafeAreaView,
-  FlatList,
-  TouchableOpacity,
-} from 'react-native';
+import {View, Text, FlatList, ActivityIndicator} from 'react-native';
+// Navigation
 import {useNavigation} from '@react-navigation/native';
+// Redux
 import {connect} from 'react-redux';
-import {ResourcesList} from 'redux-and-the-rest';
-import {moderateScale} from 'react-native-size-matters';
-import Icon from 'react-native-vector-icons/EvilIcons';
+import {ResourcesList, isSyncingWithRemote} from 'redux-and-the-rest';
 
+// Navigation
 import Routes from '../../routes/Routes';
-import Styles from './CartStyles';
-import BottomButton from '../shared/BottomButton';
+// Redux
 import {getOrFetchProducts} from '../../redux/resources/products';
 import {ApplicationState} from '../../redux/types';
-import {Product} from '../../models/product';
-import {Colours} from '../../styles/Themes';
+// Components
+import BottomButton from '../shared/buttons/BottomButton';
 import CartItem from './CartItem';
+import CartMenu from './CartMenu';
+// Util
+import {Product} from '../../models/product';
+// Styling
+import Styles from './styles/CartStyles';
+import SharedStyles from '../shared/styles/SharedStyles';
 
 interface Props {
   /**
@@ -28,33 +28,63 @@ interface Props {
   productsCollection: ResourcesList<Product>;
 }
 
-const CartScreen = ({
-  productsCollection: {
-    items: products,
-    status: {type},
-  },
-}: Props) => {
+/**
+ * Screen to display current cart
+ */
+const CartScreen = ({productsCollection}: Props) => {
+  /**
+   * Navigation
+   */
   const {navigate} = useNavigation();
-  const [edit, setEdit] = React.useState(false);
-  console.log('productsCollection', products);
 
+  /**
+   * State
+   */
+  const [edit, setEdit] = React.useState(false);
+
+  /**
+   * Fetching state
+   */
+  const {items: products} = productsCollection;
+  // TODO: handle errors
+  const productsAreLoading = isSyncingWithRemote(productsCollection);
+
+  /**
+   * Display logic
+   */
+  const showMenuButton = products.length !== 0;
+
+  /**
+   * Cart content renderer
+   */
   const renderContent = () => {
-    if (products.length === 0) {
+    // Loading
+    if (productsAreLoading) {
       return (
-        <View style={Styles.centerFlex}>
-          <Text style={Styles.noItems}>Nothing here</Text>
+        <View style={SharedStyles.centeredContainer}>
+          <ActivityIndicator size="large" />
         </View>
       );
     }
 
+    // No items found
+    if (products.length === 0) {
+      return (
+        <View style={SharedStyles.centeredContainer}>
+          <Text style={SharedStyles.bodyText}>Nothing here</Text>
+        </View>
+      );
+    }
+
+    // TODO: Calculate total from items
     return (
-      <View style={Styles.flexContainer}>
+      <View style={SharedStyles.flexContainer}>
         <View style={Styles.productContainer}>
           <FlatList
             data={products}
             renderItem={({item, index}) => (
               <CartItem
-                item={item}
+                cartItem={item}
                 lastItem={index === products.length - 1}
                 edit={edit}
               />
@@ -62,57 +92,37 @@ const CartScreen = ({
           />
         </View>
         <View style={Styles.totalContainer}>
-          <Text style={Styles.totalText}>Total</Text>
-          <Text style={Styles.costText}>$204.50</Text>
+          <Text style={SharedStyles.subheaderText}>Total</Text>
+          <Text style={SharedStyles.subheaderText}>$204.50</Text>
         </View>
       </View>
     );
   };
 
-  const renderIcon = () => {
-    if (products.length === 0) {
-      return null;
-    }
-
-    if (edit) {
-      return (
-        <TouchableOpacity
-          style={Styles.editIconContainer}
-          onPress={() => {
-            setEdit(!edit);
-          }}>
-          <Text style={Styles.okText}>OK</Text>
-        </TouchableOpacity>
-      );
-    }
-    return (
-      <TouchableOpacity
-        style={Styles.editIconContainer}
+  return (
+    <View style={SharedStyles.containerNoHeader}>
+      <CartMenu
+        show={showMenuButton}
         onPress={() => {
           setEdit(!edit);
-        }}>
-        <Icon name="pencil" size={moderateScale(35)} color={Colours.grey} />
-      </TouchableOpacity>
-    );
-  };
+        }}
+        edit={edit}
+      />
 
-  return (
-    <SafeAreaView style={Styles.flexContainer}>
-      {renderIcon()}
-      <View style={Styles.container}>
-        {renderContent()}
+      {renderContent()}
+      <View style={SharedStyles.bottomMargin}>
         <BottomButton
-          text="SHOPPING"
+          text="CHECKOUT"
           onPress={() => {
             navigate(Routes.CHECKOUT);
           }}
-          positionIsNotAbsolute
         />
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 
+// TODO: get products from cart endpoint when made instead of spoofing with a category's products
 const mapStateToProps = ({products}: ApplicationState) => ({
   productsCollection: getOrFetchProducts(products, {
     id: 1,

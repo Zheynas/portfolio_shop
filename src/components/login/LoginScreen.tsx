@@ -1,49 +1,92 @@
 import React from 'react';
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+// Navigation
 import {useNavigation} from '@react-navigation/native';
+// Redux
+import {isSyncingWithRemote, ResourcesItem} from 'redux-and-the-rest';
 import {ThunkDispatch} from 'redux-thunk';
 import {AnyAction} from 'redux';
 import {connect} from 'react-redux';
 
+// Navigation
 import Routes from '../../routes/Routes';
-import Styles from './LoginStyle';
-import TextField from '../shared/TextField';
-import BottomButton from '../shared/BottomButton';
-import {createUser} from '../../redux/resources/user';
+// Redux
+import {createUser, getUser} from '../../redux/resources/user';
+import {ApplicationState} from '../../redux/types';
+// Util
+import {FormItem} from '../../util/models/FormItem';
+import {User} from '../../models/user';
+// Components
+import FormScreen from '../shared/form/FormScreen';
 
 interface Props {
+  /**
+   * Login API call
+   */
   login: (email: string, password: string) => void;
+  /**
+   * Current user
+   */
+  currentUserItem: ResourcesItem<User>;
 }
 
-const LoginScreen = ({login}: Props) => {
-  const {goBack} = useNavigation();
+/**
+ * Login screen
+ */
+const LoginScreen = ({login, currentUserItem}: Props) => {
+  /**
+   * Navigation
+   */
+  const {navigate} = useNavigation();
+
+  /**
+   * State
+   */
+  // TODO: Remove temp details
   const [email, setEmail] = React.useState('sasdf@adsfs.com');
   const [password, setPassword] = React.useState('Passw1');
 
-  const onPress = () => {
-    login(email, password);
-    goBack();
-  };
+  /**
+   * Fetching state
+   */
+  const userIsLoading = isSyncingWithRemote(currentUserItem);
+
+  /**
+   * Fields for form screen
+   */
+  const formFields: FormItem[] = [
+    {
+      label: 'Email',
+      value: email,
+      setValue: setEmail,
+    },
+    {
+      label: 'Password',
+      value: password,
+      setValue: setPassword,
+      password: true,
+    },
+  ];
 
   return (
-    <SafeAreaView style={Styles.flexContainer}>
-      <View style={Styles.container}>
-        <ScrollView style={Styles.flexContainer}>
-          <Text style={Styles.loginHeader}>Login</Text>
-          <View>
-            <TextField label="Email" value={email} setValue={setEmail} />
-            <TextField
-              label="Password"
-              value={password}
-              setValue={setPassword}
-            />
-          </View>
-        </ScrollView>
-        <BottomButton text="LOGIN" onPress={onPress} />
-      </View>
-    </SafeAreaView>
+    <FormScreen
+      header="Login"
+      fields={formFields}
+      buttonText="LOGIN"
+      buttonOnPress={() => {
+        login(email, password);
+      }}
+      bottomButtonText="REGISTER"
+      bottomButtonOnPress={() => {
+        navigate(Routes.REGISTER);
+      }}
+      loading={userIsLoading}
+    />
   );
 };
+
+const mapStateToProps = ({users}: ApplicationState) => ({
+  currentUserItem: getUser(users),
+});
 
 const mapDispatchToProps = (
   dispatch: ThunkDispatch<void, unknown, AnyAction>,
@@ -59,4 +102,4 @@ const mapDispatchToProps = (
   },
 });
 
-export default connect(null, mapDispatchToProps)(LoginScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);

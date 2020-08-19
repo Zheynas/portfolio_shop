@@ -1,5 +1,5 @@
 import {StackNavigationProp} from '@react-navigation/stack';
-import { ImageSourcePropType } from 'react-native';
+import {ImageSourcePropType} from 'react-native';
 
 import Routes from './src/routes/Routes';
 
@@ -19,9 +19,6 @@ export type NavigationParamList = {
   [Routes.HOME]: undefined;
   [Routes.LOGIN]: undefined;
   [Routes.REGISTER]: undefined;
-  [Routes.SHOP]: {
-    categoryId: string;
-  };
   [Routes.SECTIONS]: undefined;
   [Routes.MENU]: undefined;
   [Routes.PRODUCT_LIST]: {
@@ -36,10 +33,25 @@ export type NavigationParamList = {
   };
   [Routes.CART]: undefined;
   [Routes.CHECKOUT]: undefined;
-  [Routes.PAYMENT]: undefined;
+  [Routes.PAYMENT]: {
+    shippingAddressId: string;
+  };
   [Routes.SHIPPING]: undefined;
   [Routes.PAYMENT_SELECTION]: undefined;
   [Routes.PROFILE]: undefined;
   [Routes.CHANGE_EMAIL]: undefined;
   [Routes.CHANGE_PASSWORD]: undefined;
+  [Routes.SHIPPING_ADDRESSES]: undefined;
+  [Routes.EDIT_ADDRESS]: {
+    id: string;
+  };
+  [Routes.NEW_ADDRESS]: undefined;
+  [Routes.HELP]: undefined;
+  [Routes.HELP_INFO]: {
+    header: string;
+  };
+  [Routes.SETTINGS]: undefined;
+  [Routes.CONTACT_US]: undefined;
+  [Routes.ORDER_HISTORY]: undefined;
+  [Routes.CHANGE_ADDRESS]: undefined;
 };

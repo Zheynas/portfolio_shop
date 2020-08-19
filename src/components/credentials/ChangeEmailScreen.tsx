@@ -1,63 +1,105 @@
 import React from 'react';
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+// Navigation
 import {useNavigation} from '@react-navigation/native';
+// Redux
+import {isSyncingWithRemote, ResourcesItem} from 'redux-and-the-rest';
 import {ThunkDispatch} from 'redux-thunk';
 import {AnyAction} from 'redux';
 import {connect} from 'react-redux';
 
-import Routes from '../../routes/Routes';
-import Styles from './CredentialsStyle';
-import TextField from '../shared/TextField';
-import BottomButton from '../shared/BottomButton';
-import {createUser} from '../../redux/resources/user';
+// Redux
+import {getUser, updateUser} from '../../redux/resources/user';
+import {ApplicationState} from '../../redux/types';
+// Util
+import {FormItem} from '../../util/models/FormItem';
+import {User} from '../../models/user';
+// Components
+import FormScreen from '../shared/form/FormScreen';
 
 interface Props {
-  login: (email: string, password: string) => void;
+  /**
+   * Update user API call
+   */
+  updateDetails: (email: string) => void;
+  /**
+   * Current user
+   */
+  currentUserItem: ResourcesItem<User>;
 }
 
-const ChangeEmailScreen = ({login}: Props) => {
+/**
+ * Change email screen
+ */
+const ChangeEmailScreen = ({updateDetails, currentUserItem}: Props) => {
+  /**
+   * Navigation
+   */
   const {goBack} = useNavigation();
-  const [email, setEmail] = React.useState('sasdf@adsfs.com');
-  const [password, setPassword] = React.useState('Passw1');
 
+  /**
+   * State
+   */
+  const [newEmail, setNewEmail] = React.useState('');
+
+  /**
+   * User values
+   */
+  const {
+    values: {email},
+  } = currentUserItem;
+  const userIsLoading = isSyncingWithRemote(currentUserItem);
+
+  /**
+   * Fields for form screen
+   */
+  const formFields: FormItem[] = [
+    {
+      label: 'Current Email',
+      value: email,
+    },
+    {
+      label: 'New Email',
+      value: newEmail,
+      setValue: setNewEmail,
+    },
+  ];
+
+  /**
+   * Save change button onPress
+   */
   const onPress = () => {
-    login(email, password);
+    updateDetails(email);
+    // TODO: handle errors
     goBack();
   };
 
   return (
-    <SafeAreaView style={Styles.flexContainer}>
-      <View style={Styles.container}>
-        <ScrollView style={Styles.flexContainer}>
-          <Text style={Styles.loginHeader}>Change Email</Text>
-          <View>
-            <TextField label="Current Email" value={email} />
-            <TextField label="New Email" value={email} setValue={setEmail} />
-            <TextField
-              label="Password"
-              value={password}
-              setValue={setPassword}
-            />
-          </View>
-        </ScrollView>
-        <BottomButton text="SAVE CHANGE" onPress={onPress} />
-      </View>
-    </SafeAreaView>
+    <FormScreen
+      header="Change Email"
+      fields={formFields}
+      buttonText="SAVE CHANGE"
+      buttonOnPress={onPress}
+      loading={userIsLoading}
+    />
   );
 };
+
+const mapStateToProps = ({users}: ApplicationState) => ({
+  currentUserItem: getUser(users),
+});
 
 const mapDispatchToProps = (
   dispatch: ThunkDispatch<void, unknown, AnyAction>,
 ) => ({
-  login: (email: string, password: string) => {
+  updateDetails: (email: string) => {
     dispatch(
-      createUser({
+      updateUser({
         email,
-        password,
+        password: '',
         type: 'user',
       }),
     );
   },
 });
 
-export default connect(null, mapDispatchToProps)(ChangeEmailScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(ChangeEmailScreen);

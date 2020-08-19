@@ -1,7 +1,10 @@
+/**
+ * Enum to transform into API friendly order types
+ */
 enum OrderType {
-  LATEST = 'LATEST',
-  BEST_SELLER = 'BEST_SELLER',
-  PRICE = 'PRICE',
+  LATEST = 'latest',
+  BEST_SELLER = 'bestSeller',
+  PRICE = 'cost',
 }
 
 export default OrderType;

@@ -1,84 +1,84 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, Image} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+// Redux
 import {ResourcesItem} from 'redux-and-the-rest';
 import {connect} from 'react-redux';
-
-import Routes from '../../routes/Routes';
-import MenuButton from './MenuButton';
-import Styles from './MenuStyle';
-import {User} from '../../models/user';
-import {ApplicationState} from '../../redux/types';
-import {getUser, destroyUser} from '../../redux/resources/user';
 import {ThunkDispatch} from 'redux-thunk';
 import {AnyAction} from 'redux';
 
+// Navigation
+import Routes from '../../routes/Routes';
+// Redux
+import {ApplicationState} from '../../redux/types';
+import {getUser, destroyUser} from '../../redux/resources/user';
+import ScreenWrapper from '../shared/wrappers/ScreenWrapper';
+// Components
+import MenuButton from '../shared/buttons/MenuButton';
+// Util
+import {User} from '../../models/user';
+
 interface Props {
-  // Current user in state
+  /**
+   * Current user
+   */
   currentUserItem: ResourcesItem<User>;
+  /**
+   * Logout API call
+   */
   logout: () => void;
 }
 
+/**
+ * User and company info menu screen
+ */
 const MenuScreen = ({logout, currentUserItem: {values: user}}: Props) => {
-  const {navigate} = useNavigation();
-
+  /**
+   * Render logic
+   */
   const loggedIn = Boolean(user && user.authenticationToken);
   const headerName = loggedIn
     ? `${user.firstName} ${user.lastName}`
     : 'Welcome!';
 
   return (
-    <View style={Styles.flexColumn}>
-      <View style={Styles.avatarContainer}>
-        <Text style={Styles.nameText}>{headerName}</Text>
-      </View>
-      <View style={Styles.buttonContainer}>
+    <ScreenWrapper
+      headerText={headerName}
+      scroll
+      bottomButtonText="LOGOUT"
+      bottomButtonOnPress={logout}
+      bottomButtonHide={!loggedIn}>
+      <>
         <MenuButton
-          text="Login"
+          text="Login / Register"
           icon="user"
           route={Routes.LOGIN}
-          show={!loggedIn}
-        />
-        <MenuButton
-          text="Register"
-          icon="user"
-          route={Routes.REGISTER}
-          show={!loggedIn}
+          hide={loggedIn}
         />
         <MenuButton
           text="My Profile"
           icon="user"
           route={Routes.PROFILE}
-          show={loggedIn}
+          hide={!loggedIn}
         />
-        <MenuButton text="Cart" icon="cart" route={Routes.CART} show />
         <MenuButton
           text="Order Histories"
           icon="credit-card"
-          route={Routes.HOME}
-          show={loggedIn}
+          route={Routes.ORDER_HISTORY}
+          hide={!loggedIn}
         />
-        <MenuButton text="Help" icon="question" route={Routes.HOME} show />
+        <MenuButton text="Help" icon="question" route={Routes.HELP} />
         <MenuButton
           text="Contact us"
           icon="envelope"
-          route={Routes.HOME}
-          show
+          route={Routes.CONTACT_US}
         />
-        <MenuButton text="Settings" icon="gear" route={Routes.HOME} show />
-      </View>
-      {loggedIn && (
-        <View style={Styles.logoutContainer}>
-          <TouchableOpacity
-            style={Styles.logoutButton}
-            onPress={() => {
-              logout();
-            }}>
-            <Text style={Styles.logoutText}>LOGOUT</Text>
-          </TouchableOpacity>
-        </View>
-      )}
-    </View>
+        <MenuButton
+          text="Settings"
+          icon="gear"
+          route={Routes.SETTINGS}
+          hide={!loggedIn}
+        />
+      </>
+    </ScreenWrapper>
   );
 };
 

@@ -1,71 +1,114 @@
 import React from 'react';
-import {View, Text, SafeAreaView, ScrollView} from 'react-native';
+// Navigation
 import {useNavigation} from '@react-navigation/native';
+// Redux
+import {isSyncingWithRemote, ResourcesItem} from 'redux-and-the-rest';
 import {ThunkDispatch} from 'redux-thunk';
 import {AnyAction} from 'redux';
 import {connect} from 'react-redux';
 
-import Routes from '../../routes/Routes';
-import Styles from './CredentialsStyle';
-import TextField from '../shared/TextField';
-import BottomButton from '../shared/BottomButton';
-import {createUser} from '../../redux/resources/user';
+// Redux
+import {getUser, updateUser} from '../../redux/resources/user';
+import {ApplicationState} from '../../redux/types';
+// Util
+import {FormItem} from '../../util/models/FormItem';
+import {User} from '../../models/user';
+// Components
+import FormScreen from '../shared/form/FormScreen';
 
 interface Props {
-  login: (email: string, password: string) => void;
+  /**
+   * Update user API call
+   */
+  updateDetails: (newPassword: string) => void;
+  /**
+   * Current user
+   */
+  currentUserItem: ResourcesItem<User>;
 }
 
-const ChangePasswordScreen = ({login}: Props) => {
+const ChangePasswordScreen = ({updateDetails, currentUserItem}: Props) => {
+  /**
+   * Navigation
+   */
   const {goBack} = useNavigation();
-  const [email, setEmail] = React.useState('sasdf@adsfs.com');
-  const [password, setPassword] = React.useState('Passw1');
 
+  /**
+   * State
+   */
+  const [currentPassword, setCurrentPassword] = React.useState('');
+  const [newPassword, setNewPassword] = React.useState('');
+  // TODO: Validation for password
+  const [confirmPassword, setConfirmPassword] = React.useState('');
+
+  /**
+   * User values
+   */
+  const userIsLoading = isSyncingWithRemote(currentUserItem);
+
+  /**
+   * Fields for form screen
+   */
+  const formFields: FormItem[] = [
+    {
+      label: 'Current Password',
+      value: currentPassword,
+      setValue: setCurrentPassword,
+      password: true,
+    },
+    {
+      label: 'New Password',
+      value: newPassword,
+      setValue: setNewPassword,
+      password: true,
+    },
+    {
+      label: 'Confirm New Password',
+      value: confirmPassword,
+      setValue: setConfirmPassword,
+      password: true,
+    },
+  ];
+
+  /**
+   * Save change button onPress
+   */
   const onPress = () => {
-    login(email, password);
+    updateDetails(newPassword);
+    // TODO: handle errors
     goBack();
   };
 
   return (
-    <SafeAreaView style={Styles.flexContainer}>
-      <View style={Styles.container}>
-        <ScrollView style={Styles.flexContainer}>
-          <Text style={Styles.loginHeader}>Change Password</Text>
-          <View>
-            <TextField
-              label="Current Password"
-              value={password}
-              setValue={setPassword}
-            />
-            <TextField
-              label="New Password"
-              value={password}
-              setValue={setPassword}
-            />
-            <TextField
-              label="Confirm Password"
-              value={password}
-              setValue={setPassword}
-            />
-          </View>
-        </ScrollView>
-        <BottomButton text="SAVE CHANGE" onPress={onPress} />
-      </View>
-    </SafeAreaView>
+    <FormScreen
+      header="Change Password"
+      fields={formFields}
+      buttonText="SAVE CHANGE"
+      buttonOnPress={onPress}
+      loading={userIsLoading}
+    />
   );
 };
+
+const mapStateToProps = ({users}: ApplicationState) => ({
+  currentUserItem: getUser(users),
+});
 
 const mapDispatchToProps = (
   dispatch: ThunkDispatch<void, unknown, AnyAction>,
 ) => ({
-  login: (email: string, password: string) => {
+  updateDetails: (password: string) => {
     dispatch(
-      createUser({
-        email,
+      updateUser({
         password,
+        email: '',
         type: 'user',
       }),
     );
   },
 });
 
-export default connect(null, mapDispatchToProps)(ChangePasswordScreen);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ChangePasswordScreen);

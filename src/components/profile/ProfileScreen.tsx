@@ -1,79 +1,140 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, SafeAreaView} from 'react-native';
+import {View, Text, ActivityIndicator} from 'react-native';
+// Navigation
 import {useNavigation} from '@react-navigation/native';
-import {ResourcesItem} from 'redux-and-the-rest';
+// Redux
+import {
+  ResourcesItem,
+  ResourcesList,
+  isSyncingWithRemote,
+} from 'redux-and-the-rest';
 import {connect} from 'react-redux';
 
+// Navigation
 import Routes from '../../routes/Routes';
-
-import Styles from './ProfileStyle';
-import {User} from '../../models/user';
+// Redux
 import {ApplicationState} from '../../redux/types';
-import {getUser, destroyUser} from '../../redux/resources/user';
-import {ThunkDispatch} from 'redux-thunk';
-import {AnyAction} from 'redux';
-import DetailsButton from '../payment/DetailsButton';
-import BottomButton from '../shared/BottomButton';
+import {getUser} from '../../redux/resources/user';
+import {getOrFetchAddresses} from '../../redux/resources/shippingAddresses';
+// Components
+import BottomButton from '../shared/buttons/BottomButton';
+import AddressButton from '../shared/buttons/AddressButton';
+import DetailsButton from '../shared/buttons/DetailsButton';
+// Util
+import {User} from '../../models/user';
+import {ShippingAddress} from '../../models/shippingAddress';
+// Styles
+import Styles from './ProfileStyle';
+import SharedStyles from '../shared/styles/SharedStyles';
 import {Colours} from '../../styles/Themes';
-import {moderateScale} from 'react-native-size-matters';
 
 interface Props {
-  // Current user in state
+  /**
+   * Current user
+   */
   currentUserItem: ResourcesItem<User>;
+  /**
+   * User's shipping addresses
+   */
+  shippingAddresses: ResourcesList<ShippingAddress>;
 }
 
-const ProfileScreen = ({currentUserItem: {values: user}}: Props) => {
+/**
+ * User profile screen
+ */
+const ProfileScreen = ({
+  shippingAddresses,
+  currentUserItem: {
+    values: {lastName, firstName, email},
+  },
+}: Props) => {
+  /**
+   * Navigation
+   */
   const {navigate} = useNavigation();
 
-  const loggedIn = Boolean(user && user.authenticationToken);
-  const headerName = loggedIn
-    ? `${user.firstName} ${user.lastName}`
-    : 'Welcome!';
+  /**
+   * Shipping address values
+   */
+  const {items: addresses} = shippingAddresses;
+  // TODO: Handle errors
+  const addressIsLoading = isSyncingWithRemote(shippingAddresses);
+
+  /**
+   * Favourite address renderer
+   */
+  const renderAddresses = () => {
+    // Loading
+    if (addressIsLoading) {
+      return (
+        <View style={SharedStyles.centeredContainer}>
+          <ActivityIndicator size="large" />
+        </View>
+      );
+    }
+
+    // No addresses found
+    if (addresses.length === 0) {
+      return (
+        <DetailsButton
+          text={['No addresses found', 'Add Shipping Address']}
+          onPress={() => {
+            navigate(Routes.EDIT_ADDRESS);
+          }}
+        />
+      );
+    }
+
+    // TODO: Implement favourite address to display instead of first
+    return <AddressButton address={addresses[0]} />;
+  };
 
   return (
-    <SafeAreaView style={Styles.flexContainer}>
-      <View style={Styles.container}>
-        <Text style={Styles.loginHeader}>Personal Information</Text>
-        <DetailsButton
-          text={['Robert smith', '23 Nene close', 'LS83DS', '2348383472']}
-        />
-        <View
-          style={{
-            flex: 1,
-            flexDirection: 'column',
-            justifyContent: 'flex-end',
-          }}>
-          <BottomButton
-            text="Change Password"
-            positionIsNotAbsolute
-            grey
-            onPress={() => {
-              navigate(Routes.CHANGE_PASSWORD);
-            }}
-          />
-          <BottomButton
-            text="Change Email"
-            positionIsNotAbsolute
-            grey
-            style={{marginTop: moderateScale(20)}}
-            onPress={() => {
-              navigate(Routes.CHANGE_EMAIL);
-            }}
-          />
-          <BottomButton
-            text="Add Shipping Address"
-            positionIsNotAbsolute
-            grey
-            style={{marginTop: moderateScale(20)}}
-          />
-        </View>
+    <View style={SharedStyles.container}>
+      <Text style={SharedStyles.header}>Personal Information</Text>
+      <Text
+        style={[
+          SharedStyles.mediumText,
+          {color: Colours.coral},
+        ]}>{`${firstName} ${lastName}`}</Text>
+      <Text style={SharedStyles.bodyText}>{email}</Text>
+
+      <View style={[SharedStyles.flexColumn, SharedStyles.topMargin]}>
+        {renderAddresses()}
       </View>
-    </SafeAreaView>
+
+      <View style={Styles.buttonContainer}>
+        <BottomButton
+          text="Shipping Addresses"
+          grey
+          onPress={() => {
+            navigate(Routes.SHIPPING_ADDRESSES);
+          }}
+        />
+        <BottomButton
+          text="Change Password"
+          grey
+          style={SharedStyles.topMargin}
+          onPress={() => {
+            navigate(Routes.CHANGE_PASSWORD);
+          }}
+        />
+        <BottomButton
+          text="Change Email"
+          grey
+          style={SharedStyles.topMargin}
+          onPress={() => {
+            navigate(Routes.CHANGE_EMAIL);
+          }}
+        />
+      </View>
+    </View>
   );
 };
 
-const mapStoreDataToProps = ({users}: ApplicationState) => ({
+const mapStoreDataToProps = ({users, shippingAddresses}: ApplicationState) => ({
   currentUserItem: getUser(users),
+  shippingAddresses: getOrFetchAddresses(shippingAddresses),
 });
 
 export default connect(mapStoreDataToProps)(ProfileScreen);
