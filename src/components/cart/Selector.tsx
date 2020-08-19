@@ -23,7 +23,7 @@ interface Props {
 }
 
 /**
- * Cart selector
+ * Cart item selector
  */
 const Selector = ({show, selected, onPress}: Props) => {
   if (!show) {

@@ -142,6 +142,8 @@ const EditAddress = ({saveAddress, deleteAddress, addressItem}: Props) => {
     },
   ];
 
+  // TODO: See if we can refactor so this and NewAddress doesnt repeat as much code
+
   return (
     <FormScreen
       header="Edit Shipping Address"

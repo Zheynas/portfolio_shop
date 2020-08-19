@@ -46,6 +46,8 @@ function renderContent(edit: boolean) {
     return <Text style={SharedStyles.boldBodyText}>OK</Text>;
   }
 
+  // TODO: delete button and functionality
+
   return (
     <Icon name="pencil" size={Measurements.smallIcon} color={Colours.grey} />
   );

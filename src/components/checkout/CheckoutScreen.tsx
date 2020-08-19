@@ -17,6 +17,7 @@ const CheckoutScreen = () => {
    */
   const {navigate} = useNavigation();
 
+  // TODO: Stop users that are not logged in from progressing
   return (
     <DisplayAddresses
       headerText="Select Address"

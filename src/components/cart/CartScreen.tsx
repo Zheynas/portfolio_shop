@@ -99,6 +99,9 @@ const CartScreen = ({productsCollection}: Props) => {
     );
   };
 
+  // TODO: delete items from cart
+  // TODO: ability to increase quantity of item in cart
+  // TODO: pressing on item should take you to that item
   return (
     <View style={SharedStyles.containerNoHeader}>
       <CartMenu

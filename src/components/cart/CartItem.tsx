@@ -67,6 +67,7 @@ const CartItem = ({
             <Text style={Styles.cartItemDetails}>{`COLOUR: ${'BLUE'}`}</Text>
             <Text style={Styles.cartItemDetails}>{`SIZE: ${'XL'}`}</Text>
           </View>
+
           <View>
             <Text style={Styles.cartItemDetails}>{`${'2'} x $${price}`}</Text>
             <Text style={SharedStyles.boldBodyText}>{'$150'}</Text>
