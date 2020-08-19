@@ -62,3 +62,5 @@ Press `cmd+m` to enable hot reloading, live reload and remote debugging.
 - [ ] Order submission and history
 - [ ] Contact us screen
 - [ ] Settings
+- [ ] Add environment variables
+- [ ] Host and finish server
