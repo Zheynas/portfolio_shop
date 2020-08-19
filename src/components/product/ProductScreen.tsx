@@ -62,6 +62,7 @@ const ProductScreen = ({
           color={Colours.grey}
         />
       </TouchableOpacity>
+
       <TouchableOpacity
         style={Styles.cartButton}
         onPress={() => {
@@ -73,11 +74,14 @@ const ProductScreen = ({
           color={Colours.grey}
         />
       </TouchableOpacity>
+
       <View style={SharedStyles.flexContainer}>
         <Image source={{uri: largePictureUrl}} style={Styles.image} />
       </View>
+
       <View style={Styles.infoContainer}>
         <Text style={SharedStyles.mediumText}>{name.toUpperCase()}</Text>
+
         <View style={Styles.priceContainer}>
           <Text
             style={[
@@ -86,6 +90,7 @@ const ProductScreen = ({
             ]}>{`£${price.toFixed(2)}`}</Text>
           <SmallButton text="ADD TO CART" />
         </View>
+
         <Text style={SharedStyles.bodyText}>{description}</Text>
       </View>
     </View>

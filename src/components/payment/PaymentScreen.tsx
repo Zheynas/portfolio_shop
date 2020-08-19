@@ -1,32 +1,30 @@
 import React from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import {View, Text} from 'react-native';
+// Navigation
 import {useNavigation} from '@react-navigation/native';
-import {moderateScale} from 'react-native-size-matters';
+// Redux
 import {connect} from 'react-redux';
 import {ResourcesList} from 'redux-and-the-rest';
 
+// Navigation
 import Routes from '../../routes/Routes';
-import Styles from './styles/PaymentStyles';
-import BottomButton from '../shared/buttons/BottomButton';
-import TextField from '../shared/inputs/TextField';
-import {Colours, Fonts, FontSize} from '../../styles/Themes';
-import CheckoutNavBar from '../checkout/nav/CheckoutNavBar';
-import DetailsButton from '../shared/buttons/DetailsButton';
+// Redux
 import {ApplicationState} from '../../redux/types';
 import {getOrFetchShippingMethods} from '../../redux/resources/shippingMethods';
 import {getOrFetchAddresses} from '../../redux/resources/shippingAddresses';
-import AddressButton from '../shared/buttons/AddressButton';
-import {ShippingAddress} from '../../models/shippingAddress';
-import SharedStyles from '../shared/styles/SharedStyles';
-import {ShippingMethod} from 'src/models/shippingMethod';
-import DeliveryButton from '../shared/buttons/DeliveryButton';
-import InfoButton from '../shared/buttons/InfoButton';
-import Payments from '../../util/data/Payments';
-import MenuButton from '../shared/buttons/MenuButton';
+// Components
+import CheckoutNavBar from '../checkout/nav/CheckoutNavBar';
 import ScreenWrapper from '../shared/wrappers/ScreenWrapper';
 import Address from './items/Address';
 import Payment from './items/Payment';
 import Shipping from './items/Shipping';
+// Util
+import {ShippingAddress} from '../../models/shippingAddress';
+import {ShippingMethod} from '../../models/shippingMethod';
+import Payments from '../../util/data/Payments';
+// Styling
+import Styles from './styles/PaymentStyles';
+import SharedStyles from '../shared/styles/SharedStyles';
 
 interface Props {
   /**
@@ -39,6 +37,9 @@ interface Props {
   shippingMethods: ResourcesList<ShippingMethod>;
 }
 
+/**
+ * Payment details for order screen
+ */
 const PaymentScreen = ({
   shippingAddresses: {items: addresses},
   shippingMethods: {items: delivery},
@@ -56,13 +57,19 @@ const PaymentScreen = ({
   const selectedPayment = Payments[0];
   const selectedDelivery = delivery[0];
 
+  /**
+   * Buy button onPress
+   */
+  const onPress = () => {
+    // TODO: submit order
+    navigate(Routes.HOME);
+  };
+
   return (
     <ScreenWrapper
       headerText="Complete your order"
       header={<CheckoutNavBar currentScreen={Routes.PAYMENT} />}
-      topButtonOnPress={() => {
-        navigate(Routes.HOME);
-      }}
+      topButtonOnPress={onPress}
       scroll
       topButtonText="BUY">
       <>

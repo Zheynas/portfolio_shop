@@ -19,9 +19,6 @@ export type NavigationParamList = {
   [Routes.HOME]: undefined;
   [Routes.LOGIN]: undefined;
   [Routes.REGISTER]: undefined;
-  [Routes.SHOP]: {
-    categoryId: string;
-  };
   [Routes.SECTIONS]: undefined;
   [Routes.MENU]: undefined;
   [Routes.PRODUCT_LIST]: {

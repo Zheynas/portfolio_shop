@@ -21,7 +21,6 @@ import MenuScreen from '../components/menu/MenuScreen';
 import Header from '../components/headers/Header';
 import SectionScreen from '../components/sections/SectionScreen';
 import SubSectionsScreen from '../components/subSections/SubSectionsScreen';
-import ShopScreen from '../components/shop/ProductCategoryScreen';
 import ShopHeader from '../components/headers/ShopHeader';
 import ProductListScreen from '../components/productList/ProductListScreen';
 import ProductScreen from '../components/product/ProductScreen';
@@ -138,13 +137,6 @@ const AppStack = ({currentUserItem}: Props) => {
       <RootStack.Screen
         name={Routes.SUB_SECTIONS}
         component={SubSectionsScreen}
-        options={{
-          header: () => <ShopHeader />,
-        }}
-      />
-      <RootStack.Screen
-        name={Routes.SHOP}
-        component={ShopScreen}
         options={{
           header: () => <ShopHeader />,
         }}

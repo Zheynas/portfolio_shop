@@ -5,7 +5,6 @@ enum Routes {
   HOME = 'HOME',
   LOGIN = 'LOGIN',
   REGISTER = 'REGISTER',
-  SHOP = 'SHOP',
   MENU = 'MENU',
   SECTIONS = 'SECTIONS',
   PRODUCT_LIST = 'PRODUCT_LIST',
