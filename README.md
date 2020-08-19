@@ -43,3 +43,16 @@ react-native run-android
 
 Press `cmd+m` to enable hot reloading, live reload and remote debugging.
 
+### TODO
+
+- [ ] Hook up to register endpoint
+- [ ] Tests
+- [ ] Notifications
+- [ ] Cart functionality
+- [ ] Logout endpoint
+- [ ] Search
+- [ ] Filter
+- [ ] Product options (colour, size)
+- [ ] Order submission and history
+- [ ] Contact us screen
+- [ ] Settings
