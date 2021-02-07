@@ -1,14 +1,14 @@
 import React from 'react';
-import {View, ScrollView, ActivityIndicator} from 'react-native';
+import { View, ScrollView, ActivityIndicator } from 'react-native';
 // Redux
-import {ResourcesList, isSyncingWithRemote} from 'redux-and-the-rest';
-import {connect} from 'react-redux';
+import { ResourcesList, isSyncingWithRemote } from 'redux-and-the-rest';
+import { connect } from 'react-redux';
 
 // Redux
-import {ApplicationState} from '../../redux/types';
-import {getOrFetchSections} from '../../redux/resources/sections';
+import { ApplicationState } from '../../redux/types';
+import { getOrFetchSections } from '../../redux/resources/sections';
 // Util
-import {Section} from '../../models/section';
+import { Section } from '../../models/section';
 // Components
 import SectionButton from './SectionButton';
 import SectionHeader from './SectionHeader';
@@ -25,11 +25,11 @@ interface Props {
 /**
  * Section screen
  */
-const SectionScreen = ({sectionsCollection}: Props) => {
+const SectionScreen = ({ sectionsCollection }: Props) => {
   /**
    * Sections state
    */
-  const {items: sections} = sectionsCollection;
+  const { items: sections } = sectionsCollection;
   // TODO: Handle errors
   const isLoading = isSyncingWithRemote(sectionsCollection);
 
@@ -48,7 +48,7 @@ const SectionScreen = ({sectionsCollection}: Props) => {
 
     return (
       <ScrollView style={SharedStyles.flexColumn}>
-        {sections.map(({values: {id, bannerUrl, title}}) => (
+        {sections.map(({ values: { id, bannerUrl, title } }) => (
           <SectionButton text={title} key={id} id={id} image={bannerUrl} />
         ))}
       </ScrollView>
@@ -64,7 +64,7 @@ const SectionScreen = ({sectionsCollection}: Props) => {
 };
 
 // TODO: Move initial fetch to app launch as we will always hit this page
-const mapStateToProps = ({sections}: ApplicationState) => ({
+const mapStateToProps = ({ sections }: ApplicationState) => ({
   sectionsCollection: getOrFetchSections(sections, {}),
 });
 

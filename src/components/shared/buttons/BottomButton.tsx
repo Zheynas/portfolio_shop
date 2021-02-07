@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 
 import Styles from './styles/ButtonStyles';
-import {Colours} from '../../../styles/Themes';
+import { Colours } from '../../../styles/Themes';
 
 interface Props {
   /**
@@ -59,11 +59,12 @@ const BottomButton = ({
   return (
     <View style={[Styles.bottomButtonContainer, style]}>
       <TouchableOpacity
-        style={[Styles.bottomButton, {...extraStyles}]}
+        style={[Styles.bottomButton, { ...extraStyles }]}
         onPress={onPress}
-        disabled={disable}>
+        disabled={disable}
+      >
         {!loading && (
-          <Text style={[Styles.bottomButtonText, {color: textColor}]}>
+          <Text style={[Styles.bottomButtonText, { color: textColor }]}>
             {text}
           </Text>
         )}

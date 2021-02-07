@@ -1,5 +1,5 @@
-import {ViewStyle, TextStyle, StyleProp, ImageStyle} from 'react-native';
-import {moderateScale} from 'react-native-size-matters';
+import { ViewStyle, TextStyle } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 
 import {
   FontSize,

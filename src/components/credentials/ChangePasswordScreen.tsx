@@ -1,18 +1,18 @@
 import React from 'react';
 // Navigation
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 // Redux
-import {isSyncingWithRemote, ResourcesItem} from 'redux-and-the-rest';
-import {ThunkDispatch} from 'redux-thunk';
-import {AnyAction} from 'redux';
-import {connect} from 'react-redux';
+import { isSyncingWithRemote, ResourcesItem } from 'redux-and-the-rest';
+import { ThunkDispatch } from 'redux-thunk';
+import { AnyAction } from 'redux';
+import { connect } from 'react-redux';
 
 // Redux
-import {getUser, updateUser} from '../../redux/resources/user';
-import {ApplicationState} from '../../redux/types';
+import { getUser, updateUser } from '../../redux/resources/user';
+import { ApplicationState } from '../../redux/types';
 // Util
-import {FormItem} from '../../util/models/FormItem';
-import {User} from '../../models/user';
+import { FormItem } from '../../util/models/FormItem';
+import { User } from '../../models/user';
 // Components
 import FormScreen from '../shared/form/FormScreen';
 
@@ -27,11 +27,11 @@ interface Props {
   currentUserItem: ResourcesItem<User>;
 }
 
-const ChangePasswordScreen = ({updateDetails, currentUserItem}: Props) => {
+const ChangePasswordScreen = ({ updateDetails, currentUserItem }: Props) => {
   /**
    * Navigation
    */
-  const {goBack} = useNavigation();
+  const { goBack } = useNavigation();
 
   /**
    * State
@@ -90,7 +90,7 @@ const ChangePasswordScreen = ({updateDetails, currentUserItem}: Props) => {
   );
 };
 
-const mapStateToProps = ({users}: ApplicationState) => ({
+const mapStateToProps = ({ users }: ApplicationState) => ({
   currentUserItem: getUser(users),
 });
 

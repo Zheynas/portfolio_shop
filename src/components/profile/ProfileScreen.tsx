@@ -1,32 +1,32 @@
 import React from 'react';
-import {View, Text, ActivityIndicator} from 'react-native';
+import { View, Text, ActivityIndicator } from 'react-native';
 // Navigation
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 // Redux
 import {
   ResourcesItem,
   ResourcesList,
   isSyncingWithRemote,
 } from 'redux-and-the-rest';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 // Navigation
 import Routes from '../../routes/Routes';
 // Redux
-import {ApplicationState} from '../../redux/types';
-import {getUser} from '../../redux/resources/user';
-import {getOrFetchAddresses} from '../../redux/resources/shippingAddresses';
+import { ApplicationState } from '../../redux/types';
+import { getUser } from '../../redux/resources/user';
+import { getOrFetchAddresses } from '../../redux/resources/shippingAddresses';
 // Components
 import BottomButton from '../shared/buttons/BottomButton';
 import AddressButton from '../shared/buttons/AddressButton';
 import DetailsButton from '../shared/buttons/DetailsButton';
 // Util
-import {User} from '../../models/user';
-import {ShippingAddress} from '../../models/shippingAddress';
+import { User } from '../../models/user';
+import { ShippingAddress } from '../../models/shippingAddress';
 // Styles
 import Styles from './ProfileStyle';
 import SharedStyles from '../shared/styles/SharedStyles';
-import {Colours} from '../../styles/Themes';
+import { Colours } from '../../styles/Themes';
 
 interface Props {
   /**
@@ -45,18 +45,18 @@ interface Props {
 const ProfileScreen = ({
   shippingAddresses,
   currentUserItem: {
-    values: {lastName, firstName, email},
+    values: { lastName, firstName, email },
   },
 }: Props) => {
   /**
    * Navigation
    */
-  const {navigate} = useNavigation();
+  const { navigate } = useNavigation();
 
   /**
    * Shipping address values
    */
-  const {items: addresses} = shippingAddresses;
+  const { items: addresses } = shippingAddresses;
   // TODO: Handle errors
   const addressIsLoading = isSyncingWithRemote(shippingAddresses);
 
@@ -93,10 +93,8 @@ const ProfileScreen = ({
     <View style={SharedStyles.container}>
       <Text style={SharedStyles.header}>Personal Information</Text>
       <Text
-        style={[
-          SharedStyles.mediumText,
-          {color: Colours.coral},
-        ]}>{`${firstName} ${lastName}`}</Text>
+        style={[SharedStyles.mediumText, { color: Colours.coral }]}
+      >{`${firstName} ${lastName}`}</Text>
       <Text style={SharedStyles.bodyText}>{email}</Text>
 
       <View style={[SharedStyles.flexColumn, SharedStyles.topMargin]}>
@@ -132,7 +130,10 @@ const ProfileScreen = ({
   );
 };
 
-const mapStoreDataToProps = ({users, shippingAddresses}: ApplicationState) => ({
+const mapStoreDataToProps = ({
+  users,
+  shippingAddresses,
+}: ApplicationState) => ({
   currentUserItem: getUser(users),
   shippingAddresses: getOrFetchAddresses(shippingAddresses),
 });

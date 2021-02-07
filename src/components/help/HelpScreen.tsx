@@ -15,37 +15,37 @@ const HelpScreen = () => (
       <MenuButton
         text="Buy Guide"
         route={Routes.HELP_INFO}
-        params={{header: 'Buy Guide'}}
+        params={{ header: 'Buy Guide' }}
       />
       <MenuButton
         text="General Information"
         route={Routes.HELP_INFO}
-        params={{header: 'General Information'}}
+        params={{ header: 'General Information' }}
       />
       <MenuButton
         text="Payment"
         route={Routes.HELP_INFO}
-        params={{header: 'Payment'}}
+        params={{ header: 'Payment' }}
       />
       <MenuButton
         text="Shipping"
         route={Routes.HELP_INFO}
-        params={{header: 'Shipping'}}
+        params={{ header: 'Shipping' }}
       />
       <MenuButton
         text="Return"
         route={Routes.HELP_INFO}
-        params={{header: 'Return'}}
+        params={{ header: 'Return' }}
       />
       <MenuButton
         text="Exchanges"
         route={Routes.HELP_INFO}
-        params={{header: 'Exchanges'}}
+        params={{ header: 'Exchanges' }}
       />
       <MenuButton
         text="Recalled Items"
         route={Routes.HELP_INFO}
-        params={{header: 'Recalled Items'}}
+        params={{ header: 'Recalled Items' }}
       />
     </>
   </ScreenWrapper>

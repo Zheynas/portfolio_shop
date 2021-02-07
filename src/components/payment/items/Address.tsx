@@ -1,8 +1,8 @@
 import React from 'react';
 // Navigation
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 // Redux
-import {ResourcesItem} from 'redux-and-the-rest';
+import { ResourcesItem } from 'redux-and-the-rest';
 
 // Navigation
 import Routes from '../../../routes/Routes';
@@ -10,7 +10,7 @@ import Routes from '../../../routes/Routes';
 import AddressButton from '../../shared/buttons/AddressButton';
 import InfoButton from '../../shared/buttons/InfoButton';
 // Util
-import {ShippingAddress} from '../../../models/shippingAddress';
+import { ShippingAddress } from '../../../models/shippingAddress';
 
 interface Props {
   /**
@@ -22,11 +22,11 @@ interface Props {
 /**
  * Current shipping address display
  */
-const Address = ({address}: Props) => {
+const Address = ({ address }: Props) => {
   /**
    * Navigation
    */
-  const {navigate} = useNavigation();
+  const { navigate } = useNavigation();
 
   /**
    * No address selected

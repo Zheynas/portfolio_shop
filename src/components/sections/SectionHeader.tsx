@@ -1,14 +1,14 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 // Navigation
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 // Components
 import Icon from 'react-native-vector-icons/EvilIcons';
 
 // Navigation
 import Routes from '../../routes/Routes';
 // Styling
-import {Colours, Measurements} from '../../styles/Themes';
+import { Colours, Measurements } from '../../styles/Themes';
 import Styles from './styles/SectionStyles';
 import SharedStyles from '../shared/styles/SharedStyles';
 
@@ -19,7 +19,7 @@ const SectionHeader = () => {
   /**
    * Navigation
    */
-  const {navigate} = useNavigation();
+  const { navigate } = useNavigation();
 
   return (
     <View style={Styles.sectionHeader}>
@@ -28,7 +28,8 @@ const SectionHeader = () => {
       <TouchableOpacity
         onPress={() => {
           navigate(Routes.MENU);
-        }}>
+        }}
+      >
         <Icon name="user" size={Measurements.largeIcon} color={Colours.grey} />
       </TouchableOpacity>
     </View>

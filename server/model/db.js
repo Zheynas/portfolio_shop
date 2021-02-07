@@ -1,14 +1,14 @@
-var mysql = require('mysql');
+const mysql = require('mysql');
 
-//local mysql db connection
-var connection = mysql.createConnection({
+// local mysql db connection
+const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'dub1t',
   database: 'mydb',
 });
 
-connection.connect(function (err) {
+connection.connect((err) => {
   if (err) {
     throw err;
   }

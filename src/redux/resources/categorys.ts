@@ -1,6 +1,6 @@
-import {resources} from 'redux-and-the-rest';
+import { resources } from 'redux-and-the-rest';
 
-import {Category} from '../../models/category';
+import { Category } from '../../models/category';
 
 const url = '';
 
@@ -13,7 +13,7 @@ const {
     url,
     name: 'categorys',
   },
-  {fetchList: true, show: true, index: true, create: true},
+  { fetchList: true, show: true, index: true, create: true },
 );
 
-export {categoryReducer, getOrFetchCategorys, getOrFetchCategory};
+export { categoryReducer, getOrFetchCategorys, getOrFetchCategory };

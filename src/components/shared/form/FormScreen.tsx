@@ -1,11 +1,11 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 
 // Components
 import TextField from '../inputs/TextField';
 import ScreenWrapper from '../wrappers/ScreenWrapper';
 // Util
-import {FormItem} from '../../../util/models/FormItem';
+import { FormItem } from '../../../util/models/FormItem';
 
 interface Props {
   /**
@@ -57,9 +57,10 @@ const FormScreen = ({
     topButtonText={buttonText}
     topButtonOnPress={buttonOnPress}
     bottomButtonText={bottomButtonText}
-    bottomButtonOnPress={bottomButtonOnPress}>
+    bottomButtonOnPress={bottomButtonOnPress}
+  >
     <View>
-      {fields.map(({label, value, setValue, password}: FormItem) => (
+      {fields.map(({ label, value, setValue, password }: FormItem) => (
         <TextField
           label={label}
           value={value}

@@ -1,13 +1,13 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 // Components
 import Icon from 'react-native-vector-icons/EvilIcons';
 // Styling
-import {moderateScale} from 'react-native-size-matters';
+import { moderateScale } from 'react-native-size-matters';
 
 // Styling
 import Styles from './styles/ButtonStyles';
-import {Colours} from '../../../styles/Themes';
+import { Colours } from '../../../styles/Themes';
 import SharedStyles from '../styles/SharedStyles';
 
 interface Props {
@@ -24,20 +24,18 @@ interface Props {
 /**
  * Button that displays an array of text
  */
-const DetailsButton = ({onPress, text}: Props) => {
-  return (
-    <TouchableOpacity onPress={onPress} style={Styles.detailsButtonContainer}>
-      <View style={SharedStyles.flexColumn}>{renderText(text)}</View>
-      <View style={SharedStyles.centered}>
-        <Icon
-          name="chevron-right"
-          size={moderateScale(40)}
-          color={Colours.grey}
-        />
-      </View>
-    </TouchableOpacity>
-  );
-};
+const DetailsButton = ({ onPress, text }: Props) => (
+  <TouchableOpacity onPress={onPress} style={Styles.detailsButtonContainer}>
+    <View style={SharedStyles.flexColumn}>{renderText(text)}</View>
+    <View style={SharedStyles.centered}>
+      <Icon
+        name="chevron-right"
+        size={moderateScale(40)}
+        color={Colours.grey}
+      />
+    </View>
+  </TouchableOpacity>
+);
 
 /**
  * Helper function to determine how to render the text

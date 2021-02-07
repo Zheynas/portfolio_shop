@@ -1,14 +1,14 @@
 import React from 'react';
-import {View, Text, Image, TouchableOpacity, ViewStyle} from 'react-native';
+import { View, Text, Image, TouchableOpacity, ViewStyle } from 'react-native';
 // Navigation
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 // Redux
-import {ResourcesItem} from 'redux-and-the-rest';
+import { ResourcesItem } from 'redux-and-the-rest';
 
 // Navigation
 import Routes from '../../../routes/Routes';
 // Util
-import {Product} from '../../../models/product';
+import { Product } from '../../../models/product';
 // Styling
 import Styles from './styles/GridStyles';
 import SharedStyles from '../../shared/styles/SharedStyles';
@@ -33,7 +33,7 @@ interface Props {
  */
 const ProductPreview = ({
   item: {
-    values: {name, largePictureUrl, smallPictureUrl, price, id},
+    values: { name, largePictureUrl, smallPictureUrl, price, id },
   },
   large,
   style = {},
@@ -41,7 +41,7 @@ const ProductPreview = ({
   /**
    * Navigation
    */
-  const {navigate} = useNavigation();
+  const { navigate } = useNavigation();
 
   /**
    * Display logic
@@ -55,8 +55,9 @@ const ProductPreview = ({
     <TouchableOpacity
       style={[SharedStyles.flexContainer, style]}
       onPress={() => {
-        navigate(Routes.PRODUCT, {productId: id});
-      }}>
+        navigate(Routes.PRODUCT, { productId: id });
+      }}
+    >
       <View style={SharedStyles.flexContainer}>
         <Image source={bannerImage} style={Styles.image} />
       </View>
@@ -79,10 +80,10 @@ function getImageUrl(
   large?: boolean,
 ) {
   if (large) {
-    return {uri: largePictureUrl};
+    return { uri: largePictureUrl };
   }
 
-  return {uri: smallPictureUrl};
+  return { uri: smallPictureUrl };
 }
 
 export default ProductPreview;

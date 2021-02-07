@@ -1,15 +1,15 @@
 import React from 'react';
 // Navigation
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 // Redux
-import {ResourcesItem} from 'redux-and-the-rest';
+import { ResourcesItem } from 'redux-and-the-rest';
 
 // Navigation
 import Routes from '../../../routes/Routes';
 // Components
 import DetailsButton from './DetailsButton';
 // Util
-import {ShippingAddress} from '../../../models/shippingAddress';
+import { ShippingAddress } from '../../../models/shippingAddress';
 
 interface Props {
   /**
@@ -25,17 +25,17 @@ interface Props {
 /**
  * Address button
  */
-const AddressButton = ({address, onPress}: Props) => {
+const AddressButton = ({ address, onPress }: Props) => {
   /**
    * Navigation
    */
-  const {navigate} = useNavigation();
+  const { navigate } = useNavigation();
 
   /**
    * Display logic
    */
   const {
-    values: {id},
+    values: { id },
   } = address;
   const text = convertAddressForButton(address);
 
@@ -43,7 +43,7 @@ const AddressButton = ({address, onPress}: Props) => {
     if (onPress) {
       onPress(id);
     } else {
-      navigate(Routes.EDIT_ADDRESS, {id});
+      navigate(Routes.EDIT_ADDRESS, { id });
     }
   };
 
@@ -54,7 +54,7 @@ const AddressButton = ({address, onPress}: Props) => {
  * Helper function to convert resource address object into array of strings to display
  */
 function convertAddressForButton({
-  values: {label, houseNumber, lineOne, postCode, phoneNumber},
+  values: { label, houseNumber, lineOne, postCode, phoneNumber },
 }: ResourcesItem<ShippingAddress>) {
   return [label, `${houseNumber} ${lineOne}`, postCode, phoneNumber];
 }

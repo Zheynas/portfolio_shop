@@ -1,9 +1,9 @@
 import React from 'react';
-import {Text, TouchableOpacity, ActivityIndicator} from 'react-native';
+import { Text, TouchableOpacity, ActivityIndicator } from 'react-native';
 
 // Styling
 import Styles from './styles/ButtonStyles';
-import {Colours} from '../../../styles/Themes';
+import { Colours } from '../../../styles/Themes';
 
 interface Props {
   /**
@@ -28,11 +28,12 @@ interface Props {
 /**
  * Small button
  */
-const SmallButton = ({onPress, text, loading, disable}: Props) => (
+const SmallButton = ({ onPress, text, loading, disable }: Props) => (
   <TouchableOpacity
     style={Styles.smallButtonContainer}
     onPress={onPress}
-    disabled={disable}>
+    disabled={disable}
+  >
     {!loading && <Text style={Styles.smallButtonText}>{text}</Text>}
     {loading && <ActivityIndicator size="large" color={Colours.white} />}
   </TouchableOpacity>

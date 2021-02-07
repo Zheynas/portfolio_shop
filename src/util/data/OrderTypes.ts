@@ -1,5 +1,5 @@
 import OrderType from '../enums/OrderType';
-import {OrderButton} from '../models/OrderButton';
+import { OrderButton } from '../models/OrderButton';
 
 const OrderTypes: OrderButton[] = [
   {

@@ -1,4 +1,4 @@
-import {SubSubCategory} from './subSubCategory';
+import { SubSubCategory } from './subSubCategory';
 
 export interface SubCategory {
   id: string;

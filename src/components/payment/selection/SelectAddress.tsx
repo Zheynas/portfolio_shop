@@ -1,7 +1,7 @@
 import React from 'react';
 
 // Navigation
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 // Component
 import DisplayAddresses from '../../shared/addresses/DisplayAddresses';
 
@@ -12,7 +12,7 @@ const SelectAddress = () => {
   /**
    * Navigation
    */
-  const {goBack} = useNavigation();
+  const { goBack } = useNavigation();
 
   return (
     <DisplayAddresses

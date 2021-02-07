@@ -1,4 +1,4 @@
-import {SubSection} from './subSection';
+import { SubSection } from './subSection';
 
 export interface Section {
   id: string;

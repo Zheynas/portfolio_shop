@@ -1,17 +1,17 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import { View, Text } from 'react-native';
 // Navigation
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 // Redux
-import {connect} from 'react-redux';
-import {ResourcesList} from 'redux-and-the-rest';
+import { connect } from 'react-redux';
+import { ResourcesList } from 'redux-and-the-rest';
 
 // Navigation
 import Routes from '../../routes/Routes';
 // Redux
-import {ApplicationState} from '../../redux/types';
-import {getOrFetchShippingMethods} from '../../redux/resources/shippingMethods';
-import {getOrFetchAddresses} from '../../redux/resources/shippingAddresses';
+import { ApplicationState } from '../../redux/types';
+import { getOrFetchShippingMethods } from '../../redux/resources/shippingMethods';
+import { getOrFetchAddresses } from '../../redux/resources/shippingAddresses';
 // Components
 import CheckoutNavBar from '../checkout/nav/CheckoutNavBar';
 import ScreenWrapper from '../shared/wrappers/ScreenWrapper';
@@ -19,8 +19,8 @@ import Address from './items/Address';
 import Payment from './items/Payment';
 import Shipping from './items/Shipping';
 // Util
-import {ShippingAddress} from '../../models/shippingAddress';
-import {ShippingMethod} from '../../models/shippingMethod';
+import { ShippingAddress } from '../../models/shippingAddress';
+import { ShippingMethod } from '../../models/shippingMethod';
 import Payments from '../../util/data/Payments';
 // Styling
 import Styles from './styles/PaymentStyles';
@@ -41,13 +41,13 @@ interface Props {
  * Payment details for order screen
  */
 const PaymentScreen = ({
-  shippingAddresses: {items: addresses},
-  shippingMethods: {items: delivery},
+  shippingAddresses: { items: addresses },
+  shippingMethods: { items: delivery },
 }: Props) => {
   /**
    * Navigation
    */
-  const {navigate} = useNavigation();
+  const { navigate } = useNavigation();
 
   /**
    * Current order's values
@@ -71,7 +71,8 @@ const PaymentScreen = ({
       header={<CheckoutNavBar currentScreen={Routes.PAYMENT} />}
       topButtonOnPress={onPress}
       scroll
-      topButtonText="BUY">
+      topButtonText="BUY"
+    >
       <>
         <Address address={selectedAddress} />
         <Shipping shipping={selectedDelivery} />

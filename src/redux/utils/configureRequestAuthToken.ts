@@ -1,4 +1,4 @@
-import {configure} from 'redux-and-the-rest';
+import { configure } from 'redux-and-the-rest';
 
 /**
  * Configure redux-and-the-rest globally with an authentication token

@@ -1,20 +1,20 @@
 import React from 'react';
 // Navigation
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 // Redux
-import {isSyncingWithRemote, ResourcesItem} from 'redux-and-the-rest';
-import {ThunkDispatch} from 'redux-thunk';
-import {AnyAction} from 'redux';
-import {connect} from 'react-redux';
+import { isSyncingWithRemote, ResourcesItem } from 'redux-and-the-rest';
+import { ThunkDispatch } from 'redux-thunk';
+import { AnyAction } from 'redux';
+import { connect } from 'react-redux';
 
 // Navigation
 import Routes from '../../routes/Routes';
 // Redux
-import {createUser, getUser} from '../../redux/resources/user';
-import {ApplicationState} from '../../redux/types';
+import { createUser, getUser } from '../../redux/resources/user';
+import { ApplicationState } from '../../redux/types';
 // Util
-import {FormItem} from '../../util/models/FormItem';
-import {User} from '../../models/user';
+import { FormItem } from '../../util/models/FormItem';
+import { User } from '../../models/user';
 // Components
 import FormScreen from '../shared/form/FormScreen';
 
@@ -32,11 +32,11 @@ interface Props {
 /**
  * Login screen
  */
-const LoginScreen = ({login, currentUserItem}: Props) => {
+const LoginScreen = ({ login, currentUserItem }: Props) => {
   /**
    * Navigation
    */
-  const {navigate} = useNavigation();
+  const { navigate } = useNavigation();
 
   /**
    * State
@@ -84,7 +84,7 @@ const LoginScreen = ({login, currentUserItem}: Props) => {
   );
 };
 
-const mapStateToProps = ({users}: ApplicationState) => ({
+const mapStateToProps = ({ users }: ApplicationState) => ({
   currentUserItem: getUser(users),
 });
 

@@ -1,14 +1,14 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 // Navigation
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 // Components
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 // Styling
 import Styles from './styles/ProductListStyles';
-import {Measurements, Colours} from '../../styles/Themes';
+import { Measurements, Colours } from '../../styles/Themes';
 import SharedStyles from '../shared/styles/SharedStyles';
 
 interface Props {
@@ -21,11 +21,11 @@ interface Props {
 /**
  * Product list header
  */
-const Header = ({title}: Props) => {
+const Header = ({ title }: Props) => {
   /**
    * Navigation
    */
-  const {goBack} = useNavigation();
+  const { goBack } = useNavigation();
 
   /**
    * Filter onPress
@@ -40,7 +40,8 @@ const Header = ({title}: Props) => {
       <TouchableOpacity
         onPress={() => {
           goBack();
-        }}>
+        }}
+      >
         <Icon
           name="ios-arrow-round-back"
           size={Measurements.headerHeight}

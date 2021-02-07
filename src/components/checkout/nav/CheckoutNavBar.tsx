@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 
 // Navigation
 import Routes from '../../../routes/Routes';
@@ -19,7 +19,7 @@ interface Props {
 /**
  * Checkout navigation header
  */
-const CheckoutNavBar = ({currentScreen}: Props) => (
+const CheckoutNavBar = ({ currentScreen }: Props) => (
   <View style={Styles.navBarContainer}>
     <NavButton destination={Routes.CART} currentScreen={currentScreen} />
     <NavSeparator />

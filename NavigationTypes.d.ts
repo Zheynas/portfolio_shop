@@ -1,5 +1,4 @@
-import {StackNavigationProp} from '@react-navigation/stack';
-import {ImageSourcePropType} from 'react-native';
+import { StackNavigationProp } from '@react-navigation/stack';
 
 import Routes from './src/routes/Routes';
 

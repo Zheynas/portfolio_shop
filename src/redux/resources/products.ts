@@ -1,6 +1,6 @@
-import {resources} from 'redux-and-the-rest';
+import { resources } from 'redux-and-the-rest';
 
-import {Product} from '../../models/product';
+import { Product } from '../../models/product';
 
 const url = 'http://localhost:3000/api/v1/categories/:id/products';
 
@@ -17,7 +17,7 @@ const {
     urlOnlyParams: ['include'],
     keyBy: ['id'],
   },
-  {fetchList: true, show: true, index: true, create: true, fetchItem: true},
+  { fetchList: true, show: true, index: true, create: true, fetchItem: true },
 );
 
-export {productReducer, getOrFetchProducts, getOrFetchProduct, getProduct};
+export { productReducer, getOrFetchProducts, getOrFetchProduct, getProduct };

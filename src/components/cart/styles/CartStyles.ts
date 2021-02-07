@@ -1,7 +1,7 @@
-import {ViewStyle, TextStyle, ImageStyle, StyleProp} from 'react-native';
-import {moderateScale} from 'react-native-size-matters';
+import { ViewStyle, TextStyle, ImageStyle, StyleProp } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 
-import {Colours} from '../../../styles/Themes';
+import { Colours } from '../../../styles/Themes';
 import SharedStyles from '../../shared/styles/SharedStyles';
 
 export interface CartStyle {

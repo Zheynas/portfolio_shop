@@ -17,8 +17,8 @@ interface Props {
 /**
  * Wrapper for details button that accepts a single string
  */
-const InfoButton = ({text, onPress}: Props) => {
-  return <DetailsButton text={[text]} onPress={onPress} />;
-};
+const InfoButton = ({ text, onPress }: Props) => (
+  <DetailsButton text={[text]} onPress={onPress} />
+);
 
 export default InfoButton;

@@ -1,11 +1,13 @@
 # Porfolio Ecommerce Clothing App (WIP)
+
 A work in progress for an example Ecommerce clothing app using React Native and Typescript.
 The backend server is being written in Ruby On Rails in a separate repo. This repo requires the server to be run locally in order to receive data until I finish and host it.
 
 # Development
+
 ## Prerequisites
 
-Follow the [React Native getting started instructions](https://facebook.github.io/react-native/docs/getting-started) for your operating system (select the *React Native CLI Quickstart* option).
+Follow the [React Native getting started instructions](https://facebook.github.io/react-native/docs/getting-started) for your operating system (select the _React Native CLI Quickstart_ option).
 
 ## Installation
 

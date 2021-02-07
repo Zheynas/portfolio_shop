@@ -1,5 +1,5 @@
-import {ViewStyle, StyleProp, ImageStyle} from 'react-native';
-import {moderateScale} from 'react-native-size-matters';
+import { ViewStyle, StyleProp, ImageStyle } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 
 export interface ProductStyle {
   backButton: ViewStyle;

@@ -1,8 +1,13 @@
 import React from 'react';
-import {StyleProp, ViewStyle} from 'react-native';
+import { StyleProp, ViewStyle } from 'react-native';
 
 import Image from '../../../../assets/images/Images';
-import {ApplePay, GooglePay, Mastercard, Visa} from '../../../../assets/images';
+import {
+  ApplePay,
+  GooglePay,
+  Mastercard,
+  Visa,
+} from '../../../../assets/images';
 
 interface Props {
   // Image to render
@@ -20,7 +25,7 @@ interface Props {
 /**
  * Renders an image
  */
-const ImageRenderer = ({image, width, height, style, colour}: Props) => {
+const ImageRenderer = ({ image, width, height, style, colour }: Props) => {
   switch (image) {
     /**
      * Icons

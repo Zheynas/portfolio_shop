@@ -1,17 +1,17 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 // Redux
-import {ResourcesItem, isSuccessfullyFetched} from 'redux-and-the-rest';
-import {connect} from 'react-redux';
+import { ResourcesItem, isSuccessfullyFetched } from 'redux-and-the-rest';
+import { connect } from 'react-redux';
 
 // Navigation
-import {NavigationParamList} from 'NavigationTypes';
+import { NavigationParamList } from 'NavigationTypes';
 import Routes from './Routes';
 // Redux
-import {getUser} from '../redux/resources/user';
-import {ApplicationState} from '../redux/types';
+import { getUser } from '../redux/resources/user';
+import { ApplicationState } from '../redux/types';
 // Util
-import {User} from '../models/user';
+import { User } from '../models/user';
 
 // Screens
 import HomeScreen from '../components/home/HomeScreen';
@@ -55,7 +55,7 @@ interface Props {
 /**
  * App navigation
  */
-const AppStack = ({currentUserItem}: Props) => {
+const AppStack = ({ currentUserItem }: Props) => {
   /**
    * Logged in state
    */
@@ -68,7 +68,8 @@ const AppStack = ({currentUserItem}: Props) => {
         headerTransparent: true,
         animationEnabled: false,
         header: () => <Header />,
-      })}>
+      })}
+    >
       {!isLoggedIn && (
         <>
           <RootStack.Screen name={Routes.LOGIN} component={LoginScreen} />
@@ -164,7 +165,7 @@ const AppStack = ({currentUserItem}: Props) => {
   );
 };
 
-const mapStateToProps = ({users}: ApplicationState) => ({
+const mapStateToProps = ({ users }: ApplicationState) => ({
   currentUserItem: getUser(users),
 });
 

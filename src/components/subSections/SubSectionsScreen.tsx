@@ -1,28 +1,28 @@
 import React from 'react';
-import {View, ScrollView, ActivityIndicator} from 'react-native';
+import { View, ScrollView, ActivityIndicator } from 'react-native';
 // Navigation
-import {RouteProp} from '@react-navigation/native';
+import { RouteProp } from '@react-navigation/native';
 // Redux
 import {
   ResourcesItem,
   ResourcesList,
   isSyncingWithRemote,
 } from 'redux-and-the-rest';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 // Navigation
-import {NavigationParamList} from 'NavigationTypes';
+import { NavigationParamList } from 'NavigationTypes';
 import Routes from '../../routes/Routes';
 // Redux
-import {ApplicationState} from '../../redux/types';
-import {getOrFetchSubSections} from '../../redux/resources/subSections';
-import {getItem} from '../../redux/resources/sections';
+import { ApplicationState } from '../../redux/types';
+import { getOrFetchSubSections } from '../../redux/resources/subSections';
+import { getItem } from '../../redux/resources/sections';
 // Components
 import SectionButton from '../sections/SectionButton';
 import SubSection from './SubSection';
 // Util
-import {Section} from '../../models/section';
-import {SubSection as SubsectionModel} from '../../models/subSection';
+import { Section } from '../../models/section';
+import { SubSection as SubsectionModel } from '../../models/subSection';
 // Styling
 import Styles from './styles/SubSectionStyles';
 import SharedStyles from '../shared/styles/SharedStyles';
@@ -53,13 +53,13 @@ interface Props {
 const SubSectionsScreen = ({
   subSectionsCollection,
   currentSection: {
-    values: {bannerUrl},
+    values: { bannerUrl },
   },
 }: Props) => {
   /**
    * Subsection values
    */
-  const {items: subSections} = subSectionsCollection;
+  const { items: subSections } = subSectionsCollection;
   // TODO: Error handling
   const isLoading = isSyncingWithRemote(subSectionsCollection);
 
@@ -78,7 +78,7 @@ const SubSectionsScreen = ({
 
     return (
       <ScrollView style={SharedStyles.flexContainer}>
-        {subSections.map(({values: {title, categories, id}}) => (
+        {subSections.map(({ values: { title, categories, id } }) => (
           <SubSection
             key={`subSection-${id}`}
             title={title}
@@ -98,10 +98,10 @@ const SubSectionsScreen = ({
 };
 
 const mapStateToProps = (
-  {subSections, sections}: ApplicationState,
+  { subSections, sections }: ApplicationState,
   {
     route: {
-      params: {sectionId},
+      params: { sectionId },
     },
   }: Props,
 ) => ({

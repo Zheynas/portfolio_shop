@@ -1,18 +1,18 @@
 import React from 'react';
 // Navigation
-import {useNavigation, RouteProp} from '@react-navigation/native';
+import { useNavigation, RouteProp } from '@react-navigation/native';
 // Redux
 import {
   isSyncingWithRemote,
   ResourcesItem,
   ResourcesReduxState,
 } from 'redux-and-the-rest';
-import {ThunkDispatch} from 'redux-thunk';
-import {AnyAction} from 'redux';
-import {connect} from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { AnyAction } from 'redux';
+import { connect } from 'react-redux';
 
 // Navigation
-import {NavigationParamList} from 'NavigationTypes';
+import { NavigationParamList } from 'NavigationTypes';
 import Routes from '../../routes/Routes';
 // Redux
 import {
@@ -20,10 +20,10 @@ import {
   updateAddress,
   destroyAddress,
 } from '../../redux/resources/shippingAddresses';
-import {ApplicationState} from '../../redux/types';
+import { ApplicationState } from '../../redux/types';
 // Util
-import {FormItem} from '../../util/models/FormItem';
-import {ShippingAddress} from '../../models/shippingAddress';
+import { FormItem } from '../../util/models/FormItem';
+import { ShippingAddress } from '../../models/shippingAddress';
 // Components
 import FormScreen from '../shared/form/FormScreen';
 
@@ -61,17 +61,17 @@ interface Props {
 /**
  * Edit shipping address screen
  */
-const EditAddress = ({saveAddress, deleteAddress, addressItem}: Props) => {
+const EditAddress = ({ saveAddress, deleteAddress, addressItem }: Props) => {
   /**
    * Navigation
    */
-  const {goBack} = useNavigation();
+  const { goBack } = useNavigation();
 
   /**
    * Address values
    */
   const {
-    values: {id, label, houseNumber, lineOne, postCode, phoneNumber},
+    values: { id, label, houseNumber, lineOne, postCode, phoneNumber },
   } = addressItem;
   const addressIsLoading = isSyncingWithRemote(addressItem);
 
@@ -179,7 +179,7 @@ interface DispatchProps {
   saveShippingAddress: (address: ShippingAddress) => void;
 }
 
-const mapStateToProps = ({shippingAddresses}: ApplicationState) => ({
+const mapStateToProps = ({ shippingAddresses }: ApplicationState) => ({
   shippingAddresses,
 });
 
@@ -187,10 +187,10 @@ const mapDispatchToProps = (
   dispatch: ThunkDispatch<void, unknown, AnyAction>,
 ) => ({
   saveShippingAddress: (address: ShippingAddress) => {
-    //TODO: add addresses to list straight away
+    // TODO: add addresses to list straight away
     dispatch(
       updateAddress(
-        {id: address.id},
+        { id: address.id },
         {
           ...address,
           type: 'shipping_address',
@@ -199,8 +199,8 @@ const mapDispatchToProps = (
     );
   },
   deleteShippingAddress: (id: string) => {
-    //TODO: remove address from list straight away
-    dispatch(destroyAddress({id}));
+    // TODO: remove address from list straight away
+    dispatch(destroyAddress({ id }));
   },
 });
 

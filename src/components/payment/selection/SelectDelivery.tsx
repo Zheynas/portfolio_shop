@@ -1,19 +1,19 @@
 import React from 'react';
-import {View, ActivityIndicator, Text, ScrollView} from 'react-native';
+import { View, ActivityIndicator, Text, ScrollView } from 'react-native';
 // Redux
-import {connect} from 'react-redux';
-import {ResourcesList, isSyncingWithRemote} from 'redux-and-the-rest';
+import { connect } from 'react-redux';
+import { ResourcesList, isSyncingWithRemote } from 'redux-and-the-rest';
 // Navigation
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 // Redux
-import {ApplicationState} from '../../../redux/types';
-import {getOrFetchShippingMethods} from '../../../redux/resources/shippingMethods';
+import { ApplicationState } from '../../../redux/types';
+import { getOrFetchShippingMethods } from '../../../redux/resources/shippingMethods';
 // Components
 import ScreenWrapper from '../../shared/wrappers/ScreenWrapper';
 import DeliveryButton from '../../shared/buttons/DeliveryButton';
 // Util
-import {ShippingMethod} from '../../../models/shippingMethod';
+import { ShippingMethod } from '../../../models/shippingMethod';
 // Stylings
 import SharedStyles from '../../shared/styles/SharedStyles';
 
@@ -27,16 +27,16 @@ interface Props {
 /**
  * Select shipping method screen
  */
-const SelectDelivery = ({shippingCollection}: Props) => {
+const SelectDelivery = ({ shippingCollection }: Props) => {
   /**
    * Navigation
    */
-  const {goBack} = useNavigation();
+  const { goBack } = useNavigation();
 
   /**
    * Shipping method values
    */
-  const {items: methods} = shippingCollection;
+  const { items: methods } = shippingCollection;
   // TODO: Error handling
   const isLoading = isSyncingWithRemote(shippingCollection);
 
@@ -93,7 +93,7 @@ const SelectDelivery = ({shippingCollection}: Props) => {
   );
 };
 
-const mapStateToProps = ({shippingMethods}: ApplicationState) => ({
+const mapStateToProps = ({ shippingMethods }: ApplicationState) => ({
   shippingCollection: getOrFetchShippingMethods(shippingMethods, {}),
 });
 

@@ -1,11 +1,11 @@
 import React from 'react';
-import {TouchableOpacity} from 'react-native';
+import { TouchableOpacity } from 'react-native';
 // Components
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 // Styling
 import Styles from './styles/CartStyles';
-import {Colours, Measurements} from '../../styles/Themes';
+import { Colours, Measurements } from '../../styles/Themes';
 
 interface Props {
   /**
@@ -25,7 +25,7 @@ interface Props {
 /**
  * Cart item selector
  */
-const Selector = ({show, selected, onPress}: Props) => {
+const Selector = ({ show, selected, onPress }: Props) => {
   if (!show) {
     return null;
   }

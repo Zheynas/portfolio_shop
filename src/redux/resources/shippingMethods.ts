@@ -1,6 +1,6 @@
-import {resources} from 'redux-and-the-rest';
+import { resources } from 'redux-and-the-rest';
 
-import {ShippingMethod} from '../../models/shippingMethod';
+import { ShippingMethod } from '../../models/shippingMethod';
 
 const url = 'http://localhost:3000/api/v1/shipping_methods';
 
@@ -15,7 +15,7 @@ const {
     localOnly: false,
     urlOnlyParams: ['include'],
   },
-  {fetchList: true, show: true, index: true, create: true},
+  { fetchList: true, show: true, index: true, create: true },
 );
 
 export {

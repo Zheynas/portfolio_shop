@@ -1,7 +1,7 @@
-var Task = require('../model/appModel.js');
+const Task = require('../model/appModel.js');
 
 exports.list_all_tasks = function (req, res) {
-  Task.getAllTask(function (err, task) {
+  Task.getAllTask((err, task) => {
     console.log('controller');
     if (err) {
       res.send(err);
@@ -12,13 +12,15 @@ exports.list_all_tasks = function (req, res) {
 };
 
 exports.create_a_task = function (req, res) {
-  var new_task = new Task(req.body);
+  const new_task = new Task(req.body);
 
-  //handles null error
+  // handles null error
   if (!new_task.task || !new_task.status) {
-    res.status(400).send({error: true, message: 'Please provide task/status'});
+    res
+      .status(400)
+      .send({ error: true, message: 'Please provide task/status' });
   } else {
-    Task.createTask(new_task, function (err, task) {
+    Task.createTask(new_task, (err, task) => {
       if (err) {
         res.send(err);
       }
@@ -28,7 +30,7 @@ exports.create_a_task = function (req, res) {
 };
 
 exports.read_a_task = function (req, res) {
-  Task.getTaskById(req.params.taskId, function (err, task) {
+  Task.getTaskById(req.params.taskId, (err, task) => {
     if (err) {
       res.send(err);
     }
@@ -37,7 +39,7 @@ exports.read_a_task = function (req, res) {
 };
 
 exports.update_a_task = function (req, res) {
-  Task.updateById(req.params.taskId, new Task(req.body), function (err, task) {
+  Task.updateById(req.params.taskId, new Task(req.body), (err, task) => {
     if (err) {
       res.send(err);
     }
@@ -46,10 +48,10 @@ exports.update_a_task = function (req, res) {
 };
 
 exports.delete_a_task = function (req, res) {
-  Task.remove(req.params.taskId, function (err, task) {
+  Task.remove(req.params.taskId, (err, task) => {
     if (err) {
       res.send(err);
     }
-    res.json({message: 'Task successfully deleted'});
+    res.json({ message: 'Task successfully deleted' });
   });
 };

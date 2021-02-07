@@ -1,6 +1,6 @@
-import {resource} from 'redux-and-the-rest';
+import { resource } from 'redux-and-the-rest';
 
-import {User} from '../../models/user';
+import { User } from '../../models/user';
 
 const {
   reducers: userReducer,

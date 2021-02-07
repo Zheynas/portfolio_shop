@@ -1,10 +1,10 @@
 import React from 'react';
-import {Text} from 'react-native';
+import { Text } from 'react-native';
 // Navigation
-import {RouteProp} from '@react-navigation/native';
+import { RouteProp } from '@react-navigation/native';
 
 // Navigation
-import {NavigationParamList} from 'NavigationTypes';
+import { NavigationParamList } from 'NavigationTypes';
 import Routes from '../../routes/Routes';
 // Components
 import ScreenWrapper from '../shared/wrappers/ScreenWrapper';
@@ -23,7 +23,7 @@ interface Props {
  */
 const InformationScreen = ({
   route: {
-    params: {header},
+    params: { header },
   },
 }: Props) => (
   <ScreenWrapper headerText={header} scroll>

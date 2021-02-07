@@ -1,10 +1,10 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 // Navigation
-import {RouteProp} from '@react-navigation/native';
+import { RouteProp } from '@react-navigation/native';
 
 // Navigation
-import {NavigationParamList} from 'NavigationTypes';
+import { NavigationParamList } from 'NavigationTypes';
 import Routes from '../../routes/Routes';
 // Components
 import OrderHeader from './ordering/OrderHeader';
@@ -37,7 +37,7 @@ interface Props {
  */
 const ProductListScreen = ({
   route: {
-    params: {title, id},
+    params: { title, id },
   },
 }: Props) => {
   /**

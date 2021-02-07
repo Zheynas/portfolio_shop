@@ -1,22 +1,22 @@
 import React from 'react';
-import {View, Text, FlatList, ActivityIndicator} from 'react-native';
+import { View, Text, FlatList, ActivityIndicator } from 'react-native';
 // Navigation
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 // Redux
-import {connect} from 'react-redux';
-import {ResourcesList, isSyncingWithRemote} from 'redux-and-the-rest';
+import { connect } from 'react-redux';
+import { ResourcesList, isSyncingWithRemote } from 'redux-and-the-rest';
 
 // Navigation
 import Routes from '../../routes/Routes';
 // Redux
-import {getOrFetchProducts} from '../../redux/resources/products';
-import {ApplicationState} from '../../redux/types';
+import { getOrFetchProducts } from '../../redux/resources/products';
+import { ApplicationState } from '../../redux/types';
 // Components
 import BottomButton from '../shared/buttons/BottomButton';
 import CartItem from './CartItem';
 import CartMenu from './CartMenu';
 // Util
-import {Product} from '../../models/product';
+import { Product } from '../../models/product';
 // Styling
 import Styles from './styles/CartStyles';
 import SharedStyles from '../shared/styles/SharedStyles';
@@ -31,11 +31,11 @@ interface Props {
 /**
  * Screen to display current cart
  */
-const CartScreen = ({productsCollection}: Props) => {
+const CartScreen = ({ productsCollection }: Props) => {
   /**
    * Navigation
    */
-  const {navigate} = useNavigation();
+  const { navigate } = useNavigation();
 
   /**
    * State
@@ -45,7 +45,7 @@ const CartScreen = ({productsCollection}: Props) => {
   /**
    * Fetching state
    */
-  const {items: products} = productsCollection;
+  const { items: products } = productsCollection;
   // TODO: handle errors
   const productsAreLoading = isSyncingWithRemote(productsCollection);
 
@@ -82,7 +82,7 @@ const CartScreen = ({productsCollection}: Props) => {
         <View style={Styles.productContainer}>
           <FlatList
             data={products}
-            renderItem={({item, index}) => (
+            renderItem={({ item, index }) => (
               <CartItem
                 cartItem={item}
                 lastItem={index === products.length - 1}
@@ -126,7 +126,7 @@ const CartScreen = ({productsCollection}: Props) => {
 };
 
 // TODO: get products from cart endpoint when made instead of spoofing with a category's products
-const mapStateToProps = ({products}: ApplicationState) => ({
+const mapStateToProps = ({ products }: ApplicationState) => ({
   productsCollection: getOrFetchProducts(products, {
     id: 1,
   }),

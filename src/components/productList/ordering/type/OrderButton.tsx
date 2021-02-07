@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, TouchableOpacity} from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 
 // Styling
 import SharedStyles from '../../../shared/styles/SharedStyles';
@@ -23,7 +23,7 @@ interface Props {
 /**
  * Order type button
  */
-const OrderButton = ({onPress, text, selected}: Props) => {
+const OrderButton = ({ onPress, text, selected }: Props) => {
   const textStyle = selected
     ? SharedStyles.boldBodyText
     : SharedStyles.bodyText;

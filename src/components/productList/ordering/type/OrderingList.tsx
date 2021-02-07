@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 
 // Components
 import OrderButton from './OrderButton';
@@ -23,21 +23,20 @@ interface Props {
 /**
  * Menu for order type
  */
-const OrderingList = ({selectedOrderType, onPress}: Props) => {
-  return (
-    <View style={Styles.orderTextContainer}>
-      {OrderTypes.map(({text, type}) => (
-        <OrderButton
-          text={text}
-          onPress={() => {
-            onPress(type);
-          }}
-          selected={isSelected(selectedOrderType, type)}
-        />
-      ))}
-    </View>
-  );
-};
+const OrderingList = ({ selectedOrderType, onPress }: Props) => (
+  <View style={Styles.orderTextContainer}>
+    {OrderTypes.map(({ text, type }, index: number) => (
+      <OrderButton
+        key={index}
+        text={text}
+        onPress={() => {
+          onPress(type);
+        }}
+        selected={isSelected(selectedOrderType, type)}
+      />
+    ))}
+  </View>
+);
 
 /**
  * Helper function for checking if a button is selected

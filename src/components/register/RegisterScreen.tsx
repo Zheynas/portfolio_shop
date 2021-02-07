@@ -1,16 +1,16 @@
 import React from 'react';
 // Redux
-import {AnyAction} from 'redux';
-import {connect} from 'react-redux';
-import {ThunkDispatch} from 'redux-thunk';
-import {ResourcesItem, isSyncingWithRemote} from 'redux-and-the-rest';
+import { AnyAction } from 'redux';
+import { connect } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { ResourcesItem, isSyncingWithRemote } from 'redux-and-the-rest';
 
 // Redux
-import {ApplicationState} from '../../redux/types';
-import {createUser, getUser} from '../../redux/resources/user';
+import { ApplicationState } from '../../redux/types';
+import { createUser, getUser } from '../../redux/resources/user';
 // Util
-import {User} from '../../models/user';
-import {FormItem} from '../../util/models/FormItem';
+import { User } from '../../models/user';
+import { FormItem } from '../../util/models/FormItem';
 // Components
 import FormScreen from '../shared/form/FormScreen';
 
@@ -33,7 +33,7 @@ interface Props {
 /**
  * Register screen
  */
-const RegisterScreen = ({register, currentUserItem}: Props) => {
+const RegisterScreen = ({ register, currentUserItem }: Props) => {
   /**
    * State
    */
@@ -94,7 +94,7 @@ const RegisterScreen = ({register, currentUserItem}: Props) => {
   );
 };
 
-const mapStateToProps = ({users}: ApplicationState) => ({
+const mapStateToProps = ({ users }: ApplicationState) => ({
   currentUserItem: getUser(users),
 });
 

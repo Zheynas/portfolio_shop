@@ -1,11 +1,11 @@
 import React from 'react';
-import {Text, TouchableOpacity} from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 // Components
 import Icon from 'react-native-vector-icons/EvilIcons';
 
 // Styling
 import Styles from './styles/CartStyles';
-import {Colours, Measurements} from '../../styles/Themes';
+import { Colours, Measurements } from '../../styles/Themes';
 import SharedStyles from '../shared/styles/SharedStyles';
 
 interface Props {
@@ -26,7 +26,7 @@ interface Props {
 /**
  * Cart menu icon button
  */
-const CartMenu = ({onPress, show, edit}: Props) => {
+const CartMenu = ({ onPress, show, edit }: Props) => {
   if (!show) {
     return null;
   }

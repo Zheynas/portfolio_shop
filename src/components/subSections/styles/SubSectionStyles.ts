@@ -1,7 +1,7 @@
-import {ViewStyle, TextStyle} from 'react-native';
-import {moderateScale} from 'react-native-size-matters';
+import { ViewStyle, TextStyle } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 
-import {Measurements} from '../../../styles/Themes';
+import { Measurements } from '../../../styles/Themes';
 
 export interface SubSectionStyle {
   container: ViewStyle;

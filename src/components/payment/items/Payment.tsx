@@ -1,6 +1,6 @@
 import React from 'react';
 // Navigation
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 // Navigation
 import Routes from '../../../routes/Routes';
@@ -8,7 +8,7 @@ import Routes from '../../../routes/Routes';
 import MenuButton from '../../shared/buttons/MenuButton';
 import InfoButton from '../../shared/buttons/InfoButton';
 // Util
-import {PaymentOption} from '../../../util/enums/PaymentOption';
+import { PaymentOption } from '../../../util/enums/PaymentOption';
 
 interface Props {
   /**
@@ -20,11 +20,11 @@ interface Props {
 /**
  * Current payment method display
  */
-const Payment = ({payment}: Props) => {
+const Payment = ({ payment }: Props) => {
   /**
    * Navigation
    */
-  const {navigate} = useNavigation();
+  const { navigate } = useNavigation();
 
   /**
    * No payment method selected
@@ -43,7 +43,7 @@ const Payment = ({payment}: Props) => {
   /**
    * Values
    */
-  const {image, name} = payment;
+  const { image, name } = payment;
 
   return (
     <MenuButton

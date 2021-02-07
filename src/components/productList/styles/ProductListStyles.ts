@@ -1,7 +1,7 @@
-import {ViewStyle} from 'react-native';
-import {moderateScale} from 'react-native-size-matters';
+import { ViewStyle } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 
-import {Colours, Measurements} from '../../../styles/Themes';
+import { Colours, Measurements } from '../../../styles/Themes';
 
 export interface ProductListStyle {
   header: ViewStyle;

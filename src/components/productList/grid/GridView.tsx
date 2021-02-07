@@ -1,12 +1,12 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 // Redux
-import {ResourcesItem} from 'redux-and-the-rest';
+import { ResourcesItem } from 'redux-and-the-rest';
 
 // Components
 import ProductPreview from './ProductPreview';
 // Util
-import {Product} from '../../../models/product';
+import { Product } from '../../../models/product';
 // Styling
 import Styles from './styles/GridStyles';
 
@@ -20,7 +20,7 @@ interface Props {
 /**
  * Renders a chunk of products (0 - 3 size)
  */
-const GridView = ({products}: Props) => {
+const GridView = ({ products }: Props) => {
   const productsLength = products ? products.length : 0;
 
   if (productsLength === 0) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 
 // Components
 import DirectionButton from './DirectionButton';
@@ -23,23 +23,21 @@ interface Props {
  * Container for order (direction) buttons for ordering products
  * // TODO: Rethink naming of ordering stuff
  */
-const OrderChevrons = ({selectedOrder, onPress}: Props) => {
-  return (
-    <View style={Styles.chevronWrapper}>
-      <DirectionButton
-        onPress={onPress}
-        direction={Order.ASCENDING}
-        icon="chevron-up"
-        selectedOrder={selectedOrder}
-      />
-      <DirectionButton
-        onPress={onPress}
-        direction={Order.DESCENDING}
-        icon="chevron-down"
-        selectedOrder={selectedOrder}
-      />
-    </View>
-  );
-};
+const OrderChevrons = ({ selectedOrder, onPress }: Props) => (
+  <View style={Styles.chevronWrapper}>
+    <DirectionButton
+      onPress={onPress}
+      direction={Order.ASCENDING}
+      icon="chevron-up"
+      selectedOrder={selectedOrder}
+    />
+    <DirectionButton
+      onPress={onPress}
+      direction={Order.DESCENDING}
+      icon="chevron-down"
+      selectedOrder={selectedOrder}
+    />
+  </View>
+);
 
 export default OrderChevrons;

@@ -1,9 +1,8 @@
-import React, {ReactElement} from 'react';
-import {View, Text, ScrollView} from 'react-native';
+import React, { ReactElement } from 'react';
+import { View, Text, ScrollView } from 'react-native';
 
 import BottomButton from '../buttons/BottomButton';
 
-import Styles from '../styles/SharedStyles';
 import SharedStyles from '../styles/SharedStyles';
 
 interface Props {
@@ -126,12 +125,12 @@ const ScreenWrapper = ({
       return null;
     }
 
-    const extraStyles = header ? {marginTop: 20, marginBottom: 10} : {};
-    return <Text style={[Styles.header, extraStyles]}>{headerText}</Text>;
+    const extraStyles = header ? { marginTop: 20, marginBottom: 10 } : {};
+    return <Text style={[SharedStyles.header, extraStyles]}>{headerText}</Text>;
   };
 
   return (
-    <View style={Styles.container}>
+    <View style={SharedStyles.container}>
       {renderHeader()}
       {renderHeaderText()}
       {renderContent()}

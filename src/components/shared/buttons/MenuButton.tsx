@@ -1,16 +1,16 @@
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 // Navigation
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 // Components
 import Icon from 'react-native-vector-icons/EvilIcons';
 // Styling
-import {moderateScale} from 'react-native-size-matters';
+import { moderateScale } from 'react-native-size-matters';
 
 // Components
 import ImageRenderer from '../images/ImageRenderer';
-//Styling
-import {Colours, Measurements} from '../../../styles/Themes';
+// Styling
+import { Colours, Measurements } from '../../../styles/Themes';
 import SharedStyles from '../styles/SharedStyles';
 import Styles from './styles/ButtonStyles';
 
@@ -34,7 +34,7 @@ interface Props {
   /**
    * params
    */
-  params?: {[key: string]: string | number};
+  params?: { [key: string]: string | number };
   /**
    * Image
    */
@@ -60,7 +60,7 @@ const MenuButton = ({
   /**
    * Navigation
    */
-  const {navigate} = useNavigation();
+  const { navigate } = useNavigation();
 
   if (hide) {
     return null;

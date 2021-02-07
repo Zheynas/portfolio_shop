@@ -1,4 +1,4 @@
-import {moderateScale} from 'react-native-size-matters';
+import { moderateScale } from 'react-native-size-matters';
 
 /**
  * Common colours for project
@@ -69,4 +69,4 @@ const Measurements = {
   smallIcon: moderateScale(30),
 };
 
-export {Colours, Fonts, Zindex, Measurements, FontSize};
+export { Colours, Fonts, Zindex, Measurements, FontSize };

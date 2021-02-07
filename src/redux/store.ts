@@ -1,9 +1,9 @@
-import {createStore, applyMiddleware, compose, Middleware} from 'redux';
+import { createStore, applyMiddleware, compose, Middleware } from 'redux';
 import Thunk from 'redux-thunk';
-import {createLogger} from 'redux-logger';
-import {configure} from 'redux-and-the-rest';
+import { createLogger } from 'redux-logger';
+import { configure } from 'redux-and-the-rest';
 import AsyncStorage from '@react-native-community/async-storage';
-import {persistReducer, persistStore} from 'redux-persist';
+import { persistReducer, persistStore } from 'redux-persist';
 
 import reducers from './resources';
 import deserializeResponse from './utils/deserializeResponse';
@@ -40,4 +40,4 @@ configure({
   contentType: 'application/vnd.api+json',
 });
 
-export {store, persistor};
+export { store, persistor };

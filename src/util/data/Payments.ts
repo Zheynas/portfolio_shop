@@ -1,4 +1,4 @@
-import {PaymentOption} from '../enums/PaymentOption';
+import { PaymentOption } from '../enums/PaymentOption';
 import Image from '../../../assets/images/Images';
 
 const Payments: PaymentOption[] = [

@@ -1,6 +1,6 @@
 import React from 'react';
 // Navigation
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 // Navigation
 import Routes from '../../routes/Routes';
@@ -15,7 +15,7 @@ const CheckoutScreen = () => {
   /**
    * Navigation
    */
-  const {navigate} = useNavigation();
+  const { navigate } = useNavigation();
 
   // TODO: Stop users that are not logged in from progressing
   return (

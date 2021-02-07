@@ -1,13 +1,13 @@
 import React from 'react';
 // Redux
-import {ResourcesItem} from 'redux-and-the-rest';
+import { ResourcesItem } from 'redux-and-the-rest';
 // Util
 import moment from 'moment';
 
 // Components
 import DetailsButton from './DetailsButton';
 // Util
-import {ShippingMethod} from '../../../models/shippingMethod';
+import { ShippingMethod } from '../../../models/shippingMethod';
 
 interface Props {
   /**
@@ -23,11 +23,14 @@ interface Props {
 /**
  * Delivery method display button
  */
-const DeliveryButton = ({shippingMethod: {values: method}, onPress}: Props) => {
+const DeliveryButton = ({
+  shippingMethod: { values: method },
+  onPress,
+}: Props) => {
   /**
    * Display logic
    */
-  const {id} = method;
+  const { id } = method;
   const text = convertShippingMethodForButton(method);
 
   return (

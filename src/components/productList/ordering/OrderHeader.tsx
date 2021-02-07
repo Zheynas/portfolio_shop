@@ -1,5 +1,5 @@
 import React from 'react';
-import {View} from 'react-native';
+import { View } from 'react-native';
 
 // Components
 import OrderChevrons from './direction/OrderChevrons';
@@ -37,16 +37,14 @@ const OrderHeader = ({
   setSelectedOrderType,
   selectedOrder,
   setSelectedOrder,
-}: Props) => {
-  return (
-    <View style={Styles.orderBar}>
-      <OrderingList
-        selectedOrderType={selectedOrderType}
-        onPress={setSelectedOrderType}
-      />
-      <OrderChevrons onPress={setSelectedOrder} selectedOrder={selectedOrder} />
-    </View>
-  );
-};
+}: Props) => (
+  <View style={Styles.orderBar}>
+    <OrderingList
+      selectedOrderType={selectedOrderType}
+      onPress={setSelectedOrderType}
+    />
+    <OrderChevrons onPress={setSelectedOrder} selectedOrder={selectedOrder} />
+  </View>
+);
 
 export default OrderHeader;

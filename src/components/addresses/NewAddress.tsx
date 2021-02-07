@@ -1,16 +1,16 @@
 import React from 'react';
 // Navigation
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 // Redux
-import {ThunkDispatch} from 'redux-thunk';
-import {AnyAction} from 'redux';
-import {connect} from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { AnyAction } from 'redux';
+import { connect } from 'react-redux';
 
 // Redux
-import {createAddress} from '../../redux/resources/shippingAddresses';
+import { createAddress } from '../../redux/resources/shippingAddresses';
 // Util
-import {FormItem} from '../../util/models/FormItem';
-import {ShippingAddress} from '../../models/shippingAddress';
+import { FormItem } from '../../util/models/FormItem';
+import { ShippingAddress } from '../../models/shippingAddress';
 // Components
 import FormScreen from '../shared/form/FormScreen';
 
@@ -26,11 +26,11 @@ interface Props {
 /**
  * Create a new shipping address screen
  */
-const NewAddress = ({saveAddress}: Props) => {
+const NewAddress = ({ saveAddress }: Props) => {
   /**
    * Navigation
    */
-  const {goBack} = useNavigation();
+  const { goBack } = useNavigation();
 
   /**
    * State
@@ -110,7 +110,7 @@ const mapDispatchToProps = (
   dispatch: ThunkDispatch<void, unknown, AnyAction>,
 ) => ({
   saveAddress: (address: ShippingAddress) => {
-    //TODO: add addresses to list straight away
+    // TODO: add addresses to list straight away
     dispatch(
       createAddress({
         ...address,

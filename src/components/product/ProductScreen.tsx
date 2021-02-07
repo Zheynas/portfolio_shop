@@ -1,27 +1,27 @@
 import React from 'react';
-import {View, Image, Text, TouchableOpacity} from 'react-native';
+import { View, Image, Text, TouchableOpacity } from 'react-native';
 // Navigation
-import {RouteProp, useNavigation} from '@react-navigation/native';
+import { RouteProp, useNavigation } from '@react-navigation/native';
 // Redux
-import {connect} from 'react-redux';
-import {ResourcesItem} from 'redux-and-the-rest';
+import { connect } from 'react-redux';
+import { ResourcesItem } from 'redux-and-the-rest';
 // Components
 import Icon from 'react-native-vector-icons/Ionicons';
 import EvilIcon from 'react-native-vector-icons/EvilIcons';
 
 // Navigation
-import {NavigationParamList} from 'NavigationTypes';
+import { NavigationParamList } from 'NavigationTypes';
 import Routes from '../../routes/Routes';
 // Redux
-import {ApplicationState} from '../../redux/types';
-import {getProduct} from '../../redux/resources/products';
+import { ApplicationState } from '../../redux/types';
+import { getProduct } from '../../redux/resources/products';
 // Components
 import SmallButton from '../shared/buttons/SmallButton';
 // Util
-import {Product} from '../../models/product';
+import { Product } from '../../models/product';
 // Styling
 import Styles from './styles/ProductStyles';
-import {Measurements, Colours} from '../../styles/Themes';
+import { Measurements, Colours } from '../../styles/Themes';
 import SharedStyles from '../shared/styles/SharedStyles';
 
 /**
@@ -45,13 +45,13 @@ interface Props {
  */
 const ProductScreen = ({
   productItem: {
-    values: {name, price, largePictureUrl, description},
+    values: { name, price, largePictureUrl, description },
   },
 }: Props) => {
   /**
    * Navigation
    */
-  const {goBack, navigate} = useNavigation();
+  const { goBack, navigate } = useNavigation();
 
   return (
     <View style={SharedStyles.flexColumn}>
@@ -67,7 +67,8 @@ const ProductScreen = ({
         style={Styles.cartButton}
         onPress={() => {
           navigate(Routes.CART);
-        }}>
+        }}
+      >
         <EvilIcon
           name="cart"
           size={Measurements.mediumIcon}
@@ -76,7 +77,7 @@ const ProductScreen = ({
       </TouchableOpacity>
 
       <View style={SharedStyles.flexContainer}>
-        <Image source={{uri: largePictureUrl}} style={Styles.image} />
+        <Image source={{ uri: largePictureUrl }} style={Styles.image} />
       </View>
 
       <View style={Styles.infoContainer}>
@@ -84,10 +85,8 @@ const ProductScreen = ({
 
         <View style={Styles.priceContainer}>
           <Text
-            style={[
-              SharedStyles.boldBodyText,
-              SharedStyles.rightMargin,
-            ]}>{`£${price.toFixed(2)}`}</Text>
+            style={[SharedStyles.boldBodyText, SharedStyles.rightMargin]}
+          >{`£${price.toFixed(2)}`}</Text>
           <SmallButton text="ADD TO CART" />
         </View>
 
@@ -98,14 +97,14 @@ const ProductScreen = ({
 };
 
 const mapStateToProps = (
-  {products}: ApplicationState,
+  { products }: ApplicationState,
   {
     route: {
-      params: {productId},
+      params: { productId },
     },
   }: Props,
 ) => ({
-  productItem: getProduct(products, {id: productId}),
+  productItem: getProduct(products, { id: productId }),
 });
 
 export default connect(mapStateToProps)(ProductScreen);

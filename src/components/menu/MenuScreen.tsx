@@ -1,20 +1,20 @@
 import React from 'react';
 // Redux
-import {ResourcesItem} from 'redux-and-the-rest';
-import {connect} from 'react-redux';
-import {ThunkDispatch} from 'redux-thunk';
-import {AnyAction} from 'redux';
+import { ResourcesItem } from 'redux-and-the-rest';
+import { connect } from 'react-redux';
+import { ThunkDispatch } from 'redux-thunk';
+import { AnyAction } from 'redux';
 
 // Navigation
 import Routes from '../../routes/Routes';
 // Redux
-import {ApplicationState} from '../../redux/types';
-import {getUser, destroyUser} from '../../redux/resources/user';
+import { ApplicationState } from '../../redux/types';
+import { getUser, destroyUser } from '../../redux/resources/user';
 import ScreenWrapper from '../shared/wrappers/ScreenWrapper';
 // Components
 import MenuButton from '../shared/buttons/MenuButton';
 // Util
-import {User} from '../../models/user';
+import { User } from '../../models/user';
 
 interface Props {
   /**
@@ -30,7 +30,7 @@ interface Props {
 /**
  * User and company info menu screen
  */
-const MenuScreen = ({logout, currentUserItem: {values: user}}: Props) => {
+const MenuScreen = ({ logout, currentUserItem: { values: user } }: Props) => {
   /**
    * Render logic
    */
@@ -45,7 +45,8 @@ const MenuScreen = ({logout, currentUserItem: {values: user}}: Props) => {
       scroll
       bottomButtonText="LOGOUT"
       bottomButtonOnPress={logout}
-      bottomButtonHide={!loggedIn}>
+      bottomButtonHide={!loggedIn}
+    >
       <>
         <MenuButton
           text="Login / Register"
@@ -82,7 +83,7 @@ const MenuScreen = ({logout, currentUserItem: {values: user}}: Props) => {
   );
 };
 
-const mapStoreDataToProps = ({users}: ApplicationState) => ({
+const mapStoreDataToProps = ({ users }: ApplicationState) => ({
   currentUserItem: getUser(users),
 });
 

@@ -1,7 +1,7 @@
 import React from 'react';
-import {Text, TouchableOpacity} from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 // Navigation
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 // Navigation
 import Routes from '../../../routes/Routes';
@@ -22,18 +22,19 @@ interface Props {
 /**
  * Checkout nav button
  */
-const NavButton = ({currentScreen, destination}: Props) => {
+const NavButton = ({ currentScreen, destination }: Props) => {
   /**
    * Navigation
    */
-  const {navigate} = useNavigation();
+  const { navigate } = useNavigation();
 
   return (
     <TouchableOpacity
       style={SharedStyles.centeredContainer}
       onPress={() => {
         navigate(destination);
-      }}>
+      }}
+    >
       <Text style={getTextStyle(currentScreen, destination)}>
         {destination}
       </Text>

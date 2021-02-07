@@ -1,18 +1,18 @@
-import React, {ReactElement} from 'react';
-import {View, Text, ScrollView, ActivityIndicator} from 'react-native';
+import React, { ReactElement } from 'react';
+import { View, Text, ScrollView, ActivityIndicator } from 'react-native';
 // Navigation
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 // Redux
-import {ResourcesList, isSyncingWithRemote} from 'redux-and-the-rest';
-import {connect} from 'react-redux';
+import { ResourcesList, isSyncingWithRemote } from 'redux-and-the-rest';
+import { connect } from 'react-redux';
 
 // Navigation
 import Routes from '../../../routes/Routes';
 // Redux
-import {ApplicationState} from '../../../redux/types';
-import {getOrFetchAddresses} from '../../../redux/resources/shippingAddresses';
+import { ApplicationState } from '../../../redux/types';
+import { getOrFetchAddresses } from '../../../redux/resources/shippingAddresses';
 // Util
-import {ShippingAddress} from '../../../models/shippingAddress';
+import { ShippingAddress } from '../../../models/shippingAddress';
 // Styling
 import SharedStyles from '../styles/SharedStyles';
 import AddressButton from '../buttons/AddressButton';
@@ -49,12 +49,12 @@ const DisplayAddresses = ({
   /**
    * Navigation
    */
-  const {navigate} = useNavigation();
+  const { navigate } = useNavigation();
 
   /**
    * Shipping address values
    */
-  const {items: addresses} = userAddressList;
+  const { items: addresses } = userAddressList;
   // TODO: Handle errors
   const addressIsLoading = isSyncingWithRemote(userAddressList);
 
@@ -101,13 +101,14 @@ const DisplayAddresses = ({
       topButtonOnPress={() => {
         navigate(Routes.NEW_ADDRESS);
       }}
-      topButtonText="Add Shipping Address">
+      topButtonText="Add Shipping Address"
+    >
       {renderAddresses()}
     </ScreenWrapper>
   );
 };
 
-const mapStoreDataToProps = ({shippingAddresses}: ApplicationState) => ({
+const mapStoreDataToProps = ({ shippingAddresses }: ApplicationState) => ({
   userAddressList: getOrFetchAddresses(shippingAddresses),
 });
 

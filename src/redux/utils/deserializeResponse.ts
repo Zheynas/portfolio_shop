@@ -1,5 +1,5 @@
 import Jsona from 'jsona';
-import {TJsonApiBody} from 'jsona/lib/JsonaTypes';
+import { TJsonApiBody } from 'jsona/lib/JsonaTypes';
 
 /**
  * Deserialize a response from an external API which has been serialized using the JSON API spec to

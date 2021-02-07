@@ -1,12 +1,12 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import { View, Text, Image } from 'react-native';
 // Redux
-import {ResourcesItem} from 'redux-and-the-rest';
+import { ResourcesItem } from 'redux-and-the-rest';
 
 // Components
 import Selector from './Selector';
 // Util
-import {Product} from '../../models/product';
+import { Product } from '../../models/product';
 // Styling
 import SharedStyles from '../shared/styles/SharedStyles';
 import Styles from './styles/CartStyles';
@@ -31,7 +31,7 @@ interface Props {
  */
 const CartItem = ({
   cartItem: {
-    values: {name, smallPictureUrl, price},
+    values: { name, smallPictureUrl, price },
   },
   lastItem,
   edit,
@@ -47,7 +47,9 @@ const CartItem = ({
   const bottomBorder = lastItem ? 0 : 1;
 
   return (
-    <View style={[Styles.cartItemContainer, {borderBottomWidth: bottomBorder}]}>
+    <View
+      style={[Styles.cartItemContainer, { borderBottomWidth: bottomBorder }]}
+    >
       <Selector
         show={edit}
         selected={selected}
@@ -57,7 +59,7 @@ const CartItem = ({
       />
 
       <View style={SharedStyles.row}>
-        <Image source={{uri: smallPictureUrl}} style={Styles.image} />
+        <Image source={{ uri: smallPictureUrl }} style={Styles.image} />
 
         <View style={Styles.cartItemContentWrapper}>
           <View>

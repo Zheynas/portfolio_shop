@@ -1,7 +1,7 @@
-import {ViewStyle, TextStyle} from 'react-native';
-import {moderateScale} from 'react-native-size-matters';
+import { ViewStyle, TextStyle } from 'react-native';
+import { moderateScale } from 'react-native-size-matters';
 
-import {FontSize, Fonts, Colours, Measurements} from '../../styles/Themes';
+import { FontSize, Fonts, Colours, Measurements } from '../../styles/Themes';
 import SharedStyles from '../shared/styles/SharedStyles';
 
 export interface HeaderStyle {

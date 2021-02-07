@@ -1,10 +1,10 @@
 import React from 'react';
-import {TouchableOpacity, View, Text} from 'react-native';
+import { TouchableOpacity, View, Text } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 import Styles from './HeaderStyles';
-import {Colours, Measurements} from '../../styles/Themes';
+import { Colours, Measurements } from '../../styles/Themes';
 
 interface Props {
   /**
@@ -16,8 +16,8 @@ interface Props {
 /**
  * Common empty header with back button.
  */
-const Header = ({title}: Props) => {
-  const {goBack} = useNavigation();
+const Header = ({ title }: Props) => {
+  const { goBack } = useNavigation();
 
   return (
     <View style={Styles.container}>
@@ -25,7 +25,8 @@ const Header = ({title}: Props) => {
         onPress={() => {
           goBack();
         }}
-        style={Styles.backButton}>
+        style={Styles.backButton}
+      >
         <Icon
           name="ios-arrow-round-back"
           size={Measurements.headerHeight}

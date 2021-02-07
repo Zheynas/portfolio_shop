@@ -2,7 +2,7 @@ import React from 'react';
 
 // Navigation
 import Routes from '../../routes/Routes';
-//Components
+// Components
 import MenuButton from '../shared/buttons/MenuButton';
 import ScreenWrapper from '../shared/wrappers/ScreenWrapper';
 
